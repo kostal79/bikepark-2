@@ -1,0 +1,30 @@
+.clock {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: rgba(20, 35, 61, 1);
+    width:fit-content;
+}
+
+.time {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+    .title {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    .title {
+        display: block;
+    }
+}
+

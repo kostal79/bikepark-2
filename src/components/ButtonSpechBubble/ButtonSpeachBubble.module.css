@@ -1,0 +1,57 @@
+.container {
+    position: relative;
+}
+
+.button {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(221, 227, 235, 1);
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.speachBubble--active {
+    display: block;
+    position: absolute;
+    top: 52px;
+    left: -100px;
+    padding: 12px;
+    border: 1px solid rgba(221, 227, 235, 1);
+    background-color: #fff;
+    width: 220px;
+    border-radius: 10px;
+    color: rgba(171, 177, 197, 1);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.speachBubble--disactive {
+    display: none;
+}
+
+.cube {
+    position: absolute;
+    top: -11px;
+    left: 108px;
+    width: 20px;
+    height: 20px;
+    border-top: 1px solid rgba(221, 227, 235, 1);
+    border-left: 1px solid rgba(221, 227, 235, 1);
+    transform: rotate(45deg);
+    background-color: #fff;
+}
+
+@media screen and (max-width: 1019px) {
+    .speachBubble--active {
+        top: -142px;
+    }
+
+    .cube {
+        transform: rotate(225deg);
+        top: 114px;
+    }
+}

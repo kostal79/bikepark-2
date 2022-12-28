@@ -1,0 +1,50 @@
+.rentType__wrapper {
+    padding-top: 17px;
+}
+
+.rentType__title {
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(171, 177, 197, 1)
+}
+
+.rentType__container {
+    position: relative;
+    display: flex;
+    padding: 6px;
+    height: 60px;
+    border: 1px solid rgba(221, 227, 235, 1);
+    border-radius: 16px;
+    background-color: rgba(255, 255, 255, 1);
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(20, 35, 61, 1);
+}
+
+
+.rentType__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.rentType__toggler {
+    position: absolute;
+    display: flex;
+    width: calc(50% - 6px);
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #297FFF;
+    color:rgba(255, 255, 255, 1);
+    transition: all .5s;
+}
+
+.rentType__toggler--shifted {
+    transform: translateX(100%);
+    transition: all .5s;
+}

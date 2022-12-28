@@ -1,0 +1,15 @@
+.input {
+    color: rgba(171, 177, 197, 1);
+    border: 1px solid rgba(221, 227, 235, 1);
+    border-radius: 12px;
+    width: 87px;
+    padding: 4px 10px;
+    background-color: rgba(242, 244, 247, 1);
+    
+}
+
+
+.input:focus {
+    color: rgba(20, 35, 61, 1);
+}
+

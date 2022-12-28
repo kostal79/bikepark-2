@@ -1,0 +1,49 @@
+.container {
+    background-color: transparent;
+    width: 220px;
+    border-radius: 15px;
+}
+
+.image {
+    width: 220px;
+    height: 117px;
+    position: relative;
+    top: 20px;
+}
+
+.type {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(20, 35, 61, 1);
+    margin-bottom: 5px;
+    grid-area: t;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(41, 127, 255, 1);
+    grid-area: p;
+}
+
+
+.buttonsBlock {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+.caracters {
+    display: grid;
+    grid-template-areas:
+    "t t"
+    "p b"
+    ;
+    align-items: center;
+    padding: 31px 20px 27px 20px;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+}
+
+
+

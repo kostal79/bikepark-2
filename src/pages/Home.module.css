@@ -1,0 +1,56 @@
+
+.container {
+    background-color: rgba(242, 244, 247, 1);
+    border-radius: 20px;
+    padding: 30px 20px 25px 20px;
+    position: relative;
+}
+
+.selections {
+    margin-top: 90px;
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+    .rentType {
+        grid-area: t;
+    }
+
+    .selectDate {
+        grid-area: dt;
+    }
+
+    .selectDelivery {
+        grid-area: dl;
+    }
+
+    .selections{
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "t dl"
+        "dt dt";
+        column-gap: 30px;
+    }
+
+
+}
+
+@media screen and (min-width: 1240px) {
+    .container {
+        padding: 56px 40px 35px 40px;
+    }
+
+    .selections{
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+        "t dt dt dl";
+        column-gap: 30px;
+    }
+
+}

@@ -1,0 +1,62 @@
+.footer {
+    background-color: rgba(39, 41, 52, 1);
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 59px 20px 35px 20px;
+    color: rgba(255, 255, 255, 1);
+    row-gap: 47px;
+    column-gap: 87px;
+    justify-content: space-between;
+    min-width: 360px;
+    max-width: 1240px;
+}
+
+.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.rentbike__list {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 35px 0 0 0;
+}
+
+.rentbike__item {
+    list-style: none;
+}
+
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 85px;
+    row-gap: 15px;
+}
+
+.bottom {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 10px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.media {
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+}
+
+@media screen and (min-width: 465px){
+    .links {
+        column-gap: 20px;
+    }
+}

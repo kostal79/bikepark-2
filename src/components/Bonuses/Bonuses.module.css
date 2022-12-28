@@ -1,0 +1,176 @@
+
+
+.header {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 43px;
+    margin-bottom: 25px;
+    max-width: 383px;
+}
+
+.banner {
+    display: flex;
+}
+
+.cube {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 7px 0 5px 13px;
+    position: absolute;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.image {
+    height: 61px;
+    width: 80px;
+    margin-left: 5px;
+}
+
+.cube1 {
+    background-color: rgba(215, 230, 255, 1);
+    width: 136px;
+    height: 89px;
+
+}
+
+.cube2 {
+    background-color: rgba(185, 213, 255, 1);
+    left: 120px;
+    width: 129px;
+    height: 89px;
+}
+
+.cube3 {
+    width: 100px;
+    height: 89px;
+    background-color: rgba(165, 199, 250, 1);
+    left: 220px;
+    border-top-right-radius: 15px;
+}
+
+.text {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(41, 127, 255, 1);
+}
+
+.name {
+    display: none;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .cube {
+        width: 211px;
+        height: 143px;
+        padding-left: 33px;
+        padding-bottom: 19px
+    }
+
+    .topContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .banner {
+        position: relative;
+    }
+
+
+    .header {
+        font-size: 36px;
+    }
+
+    .cube1, .cube2 {
+        width: 211px;
+        height: 143px;
+        clip-path: path("M58.3158 7.49174C60.5595 2.90687 65.2184 0 70.3229 0H203V143H13.4249C3.53718 143 -2.9286 132.637 1.41773 123.756L58.3158 7.49174Z");
+    }
+
+    .cube3 {
+        left: -180px;
+        width: 182px;
+        height: 143px;
+        clip-path: path("M58.3158 7.49174C60.5595 2.90687 65.2184 0 70.3229 0H203V143H13.4249C3.53718 143 -2.9286 132.637 1.41773 123.756L58.3158 7.49174Z");
+    }
+
+    .cube2 {
+        left: -317px;
+    }
+
+    .cube1 {
+        left: -452px;
+    }
+
+    .image {
+        width: 95px;
+        height: 69px;
+        margin-top: 16px;
+        margin-left: 35px;
+    }
+
+    .text {
+        font-size: 17px;
+    }
+    .name {
+        display: block;
+    }
+}
+
+
+@media screen and (min-width: 1000px) {
+    .header {
+        max-width: none;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+
+    .header {
+        font-size: 48px;
+        line-height: 58px;
+    }
+
+    .cube1, .cube2 {
+        width: 316px;
+        height: 207px;
+        clip-path: path("M87.2552 10.9657C90.6608 4.23955 97.5593 0 105.098 0H304V207H20.5438C5.63204 207 -4.03533 191.269 2.70053 177.966L87.2552 10.9657Z");
+    }
+
+    .cube2 {
+        left: -185px;
+    }
+
+    .cube1 {
+        left: -380px;
+    }
+
+    .cube3 {
+        left: 0;
+        width: 272px;
+        height: 207px;
+        clip-path: path("M87.2552 10.9657C90.6608 4.23955 97.5593 0 105.098 0H240C251.046 0 260 8.9543 260 20V207H20.5438C5.63205 207 -4.03533 191.269 2.70053 177.966L87.2552 10.9657Z");
+    }
+
+    .image {
+        width: 145px;
+        height: 109px;
+    }
+
+    .banner {
+        top: -54px;
+        left: -220px;
+    }
+
+    .text {
+        font-size: 20px;
+    }
+
+    .name {
+        font-size: 18px;
+    }
+}

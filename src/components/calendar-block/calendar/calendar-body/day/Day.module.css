@@ -1,0 +1,72 @@
+.activeDate, .activePeriod, .disabled, .day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    border-radius: 10px;
+}
+
+.activeDateFinish {
+    background-color: rgba(236, 244, 255, 1);;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.activeDateStart {
+    background-color: rgba(236, 244, 255, 1);;
+    border-radius: 0;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.inside {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.activeDateStart .inside {
+
+    background-color: rgba(41, 127, 255, 1);
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.activeDateFinish .inside {
+
+    background-color: rgba(41, 127, 255, 1);
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.activePeriod {
+    color:rgba(41, 127, 255, 1);
+    background-color: rgba(236, 244, 255, 1);
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.activePeriod[day = '0'] {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.activePeriod[day = '1'] {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.disabled {
+    color: rgba(171, 177, 197, 1);
+    width: 28px;
+}
+
+.day {
+    color: rgba(20, 35, 61, 1);
+    cursor: pointer;
+}
+

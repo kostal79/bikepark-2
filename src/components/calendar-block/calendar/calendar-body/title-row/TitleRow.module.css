@@ -1,0 +1,12 @@
+.daysNames {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    color: rgba(119, 117, 127, 1);
+    font-size: 10px;
+    line-height: 16px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 700;
+    padding-bottom: 18px;
+
+}
