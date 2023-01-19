@@ -67,6 +67,51 @@ describe("isBooded test", () => {
         expect(isBooked(startDate, startTime, finishDate, finishTime, bookedDates)).toBe(false)
     })
 
+    test("select dates without time", () => {
+        const startDate = "Tue Jan 24 2023 00:00:00 GMT+0300 (Москва, стандартное время)";
+        const finishDate = "Tue Jan 31 2023 00:00:00 GMT+0300 (Москва, стандартное время)";
+        const startTime = "--:--";
+        const finishTime = "--:--";
+        const bookedDates = {
+            0: {
+                finish:
+                    "Sat Mar 04 2023 12:00:00 GMT+0300 (Москва, стандартное время)",
+                start:
+                    "Wed Mar 01 2023 12:00:00 GMT+0300 (Москва, стандартное время)"
+            },
+            1: {
+                finish:
+                    "Sun Feb 05 2023 12:00:00 GMT+0300 (Москва, стандартное время)",
+                start:
+                    "Wed Feb 01 2023 12:00:00 GMT+0300 (Москва, стандартное время)"
+            },
+        }
+        expect(isBooked(startDate, startTime, finishDate, finishTime, bookedDates)).toBe(false)
+    })
+
+
+    test("select date without minutes", () => {
+        const startDate = "Sun Feb 05 2023 12:00:00 GMT+0300 (Москва, стандартное время)";
+        const finishDate = "Wed Mar 01 2023 12:00:00 GMT+0300 (Москва, стандартное время)";
+        const startTime = "12:--";
+        const finishTime = "11:--";
+        const bookedDates = {
+            0: {
+                finish:
+                    "Sat Mar 04 2023 12:00:00 GMT+0300 (Москва, стандартное время)",
+                start:
+                    "Wed Mar 01 2023 12:00:00 GMT+0300 (Москва, стандартное время)"
+            },
+            1: {
+                finish:
+                    "Sun Feb 05 2023 12:00:00 GMT+0300 (Москва, стандартное время)",
+                start:
+                    "Wed Feb 01 2023 12:00:00 GMT+0300 (Москва, стандартное время)"
+            },
+        }
+        expect(isBooked(startDate, startTime, finishDate, finishTime, bookedDates)).toBe(true)
+    })
+
     test("border selection", () => {
         const startDate = "Sun Feb 05 2023 12:00:00 GMT+0300 (Москва, стандартное время)";
         const finishDate = "Wed Mar 01 2023 12:00:00 GMT+0300 (Москва, стандартное время)";

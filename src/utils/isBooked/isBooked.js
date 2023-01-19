@@ -3,13 +3,13 @@ function isBooked(startDate, startTime, finishDate, finishTime, bookedDates) {
         return false 
     }
     startTime = startTime.split(":")
-    const startHour = startTime[0]
-    const startMin = startTime[1]
+    const startHour = startTime[0] === "--" ? '00' : startTime[0]
+    const startMin = startTime[1] === "--" ? '00' : startTime[1]
     startDate = (new Date(startDate)).setHours(startHour, startMin)
 
     finishTime = finishTime.split(":")
-    const finishHour = finishTime[0];
-    const finishMin = finishTime[1];
+    const finishHour = finishTime[0] === "--"? "23" : finishTime[0];
+    const finishMin = finishTime[1] === "--" ? "59" : finishTime[1];
     finishDate = (new Date(finishDate)).setHours(finishHour, startMin)
 
     let res = []
