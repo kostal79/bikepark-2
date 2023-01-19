@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTime } from "../../redux/slices/clockSlice";
-import calcTime from "../../utils/calcTime";
+import calcTime from "../../utils/calcTime/calcTime";
 import classes from "./Clock.module.css";
 
 const Clock = () => {

@@ -5,10 +5,14 @@ import { database } from "../../firebase/firebase";
 import TypeBikeItem from "../TypeBikeItem/TypeBikeItem";
 import BlueButton from "../BlueButton/BlueButton";
 import TypeSkeleton from "../TypeSkeleton/TypeSkeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { setResultList } from "../../redux/slices/searchResultsSlice";
 
 const SelectBikeType = () => {
   const [types, setTypes] = useState();
   const scrollRef = useRef(0);
+  const selectedBikeTypes = useSelector((state) => state.bikes.bikeTypes);
+  const dispatch = useDispatch();
 
   const scrollBikes = () => {
     const scrollField = document.querySelector(`.${classes.types}`);
@@ -17,6 +21,34 @@ const SelectBikeType = () => {
     scrollRef.current =
       scrollRef.current < maxScroll ? scrollRef.current + shift : 0;
     scrollField.scrollLeft = scrollRef.current;
+  };
+
+  const searchBikes = () => {
+    const dbRef = ref(database);
+    get(child(dbRef, "/bike_list"))
+      .then((snapshot) => {
+        if (snapshot.exists() && selectedBikeTypes) {
+          let result = [];
+          for (let [key, value] of Object.entries(snapshot.val())) {
+            if (selectedBikeTypes.includes(value.type)) {
+              result.push({
+                key: key,
+                type: value.type,
+                image: value.image,
+                name: value.name,
+                price: value.price,
+                size: value.size,
+                booked: value.booked,
+                description: value.description,
+              });
+            }
+          }
+          dispatch(setResultList(result));
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -28,14 +60,14 @@ const SelectBikeType = () => {
             let result = [];
             for (let [key, value] of Object.entries(snapshot.val())) {
               result.push(
-                  <TypeBikeItem
-                    key={key}
-                    type={key}
-                    text={value.text}
-                    price={value.price}
-                    imageLink={value.image}
-                    description={value.description}
-                  />
+                <TypeBikeItem
+                  key={key}
+                  type={key}
+                  text={value.text}
+                  price={value.price}
+                  imageLink={value.image}
+                  description={value.description}
+                />
               );
             }
             setTypes(result);
@@ -117,7 +149,7 @@ const SelectBikeType = () => {
           text={"Найти"}
           uppercase={false}
           fontSize={18}
-          onClick={() => console.log("find")}
+          onClick={searchBikes}
         />
       </div>
     </div>

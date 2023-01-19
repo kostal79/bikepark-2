@@ -13,9 +13,9 @@ const ButtonContent = ({ pressed }) => {
         <path
           d="M1 3L3.99951 6L8.99951 1"
           stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
     );

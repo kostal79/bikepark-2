@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import getWeekDay from "../../../utils/GetWeekDay";
+import getWeekDay from "../../../utils/getWeekDay/GetWeekDay";
 import Month from "./month/Month";
 
 const Calendar = (props) => {

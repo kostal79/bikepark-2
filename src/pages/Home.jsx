@@ -2,12 +2,14 @@ import React from "react";
 import Bonuses from "../components/Bonuses/Bonuses";
 import Bridge from "../components/Bridge/Bridge";
 import RentType from "../components/RentType/RentType";
+import SelectBikeOptions from "../components/SelectBikeOptions/SelectBikeOptions";
 import SelectBikeType from "../components/SelectBikeType/SelectBikeType";
 import SelectDate from "../components/SelectDate/SelectDate";
 import SelectDelivery from "../components/SelectDelivery/SelectDelivery";
 import classes from "./Home.module.css";
 
 const Home = () => {
+
   return (
     <>
       <div className={classes.container}>
@@ -34,6 +36,7 @@ const Home = () => {
       </div>
       <Bridge />
       <SelectBikeType />
+      <SelectBikeOptions />
     </>
   );
 };

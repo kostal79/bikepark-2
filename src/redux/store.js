@@ -6,6 +6,7 @@ import rentTypeReducer from './slices/rentTypeSlice'
 import deliverySlice from './slices/deliverySlice'
 import calendarSlice from './slices/calendarSlice'
 import bikeSlice from './slices/bikeSlice'
+import searchResultsSlice from './slices/searchResultsSlice'
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,6 @@ export const store = configureStore({
     deliveryType: deliverySlice,
     calendar: calendarSlice,
     bikes: bikeSlice,
-
+    searchResults: searchResultsSlice,
   },
 })

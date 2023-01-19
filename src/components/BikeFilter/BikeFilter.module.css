@@ -1,0 +1,54 @@
+.selected {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgba(221, 227, 235, 1);
+    border-radius: 15px;
+    background-color: white;
+}
+
+.container {
+    position: relative;
+}
+
+.selected {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.select {
+    position: absolute;
+    display: none;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid rgba(221, 227, 235, 1);
+    border-radius: 15px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.select--active {
+    display: block;
+    z-index: 1;
+}
+
+.option {
+    padding: 18px;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: rgba(242, 244, 247, 1);
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(171, 177, 197, 1);
+    margin-top: 19px;
+    margin-bottom: 10px;
+}

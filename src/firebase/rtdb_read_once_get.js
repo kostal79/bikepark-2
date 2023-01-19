@@ -6,10 +6,8 @@ async function readOnce(basePath) {
     const dbRef = ref(database)
     get(child(dbRef, basePath)).then((snapshot) => {
         if (snapshot.exists()) {
-            let result = []
-             for (let item of snapshot.val()) {
-                console.log(item)
-             };
+            console.log("readOnce finished")
+           console.log(snapshot.val())
         } else {
             console.log("No data available");
         }
