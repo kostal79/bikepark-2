@@ -15,38 +15,38 @@ const Header = () => {
     <div className={classes.header}>
       <div className={classes.leftSide}>
         <div className={classes.logo}>
-          <NavLink to="/">
+          <NavLink to="/" data-testid="main-link">
             <img className={classes.imgLogo} src={logo} alt="logo" />
           </NavLink>
         </div>
         <div className={classes.about}>
-            <NavLink to="/about">О нас</NavLink>
+            <NavLink to="/about" data-testid="about-link">О нас</NavLink>
         </div>
         <div
           className={
             isActive ? classes["rent--disactive"] : classes["rent--active"]
           }
         >
-          <NavLink to="/rent" >Аренда</NavLink>
+          <NavLink to="/rent" data-testid="rent-link">Аренда</NavLink>
         </div>
         <div
           className={
             isActive ? classes["delivery--disactive"] : classes["delivery--active"]
           }
         >
-          <NavLink to="/delivery" >Доставка</NavLink>
+          <NavLink to="/delivery" data-testid="delivery-link">Доставка</NavLink>
         </div>
         <div className={classes.wheretoride}>
-            <NavLink to="/wheretoride">Где кататься</NavLink>
+            <NavLink to="/wheretoride" data-testid="wheretoride-link">Где кататься</NavLink>
         </div>
         <div className={classes.contacts}>
-            <NavLink to="/contacts">Контакты</NavLink>
+            <NavLink to="/contacts" data-testid="contacts-link">Контакты</NavLink>
         </div>
       </div>
       <div className={classes.menu}>
         <a href="tel:+971525634064" className={classes.phone}>+971 52 563 4064</a>
         <div className={classes.additionalSignIn}>
-          <NavLink to="/signin">
+          <NavLink to="/signin" data-testid="signin-link">
             <img className={classes.imgSignLogo} src={signInLogo} alt=""></img>
           </NavLink>
         </div>

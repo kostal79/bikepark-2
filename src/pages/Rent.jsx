@@ -2,7 +2,7 @@ import React from 'react'
 
 const Rent = () => {
     return (
-        <div>
+        <div data-testid="rent-page">
             Rent
         </div>
     );

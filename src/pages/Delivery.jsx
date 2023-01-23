@@ -2,7 +2,7 @@ import React from 'react'
 
 const Delivery = () => {
     return (
-        <div>
+        <div data-testid="delivery-page">
             delivery
         </div>
     );

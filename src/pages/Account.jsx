@@ -2,8 +2,8 @@ import React from 'react'
 
 const Account = () => {
     return (
-        <div>
-
+        <div data-testid="account-page">
+            Account page
         </div>
     );
 };

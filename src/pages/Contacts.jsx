@@ -2,7 +2,7 @@ import React from 'react'
 
 const Contacts = () => {
     return (
-        <div>
+        <div data-testid="contacts-page">
             Contacts
         </div>
     );

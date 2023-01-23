@@ -1,4 +1,13 @@
-function sum(a, b) {
-    return a + b;
+export default class MySum {
+  first() {
+    return 1
   }
-export default sum
+
+  second() {
+    return 2
+  }
+
+  sum() {
+      return this.second() + this.first() ;
+    }
+}

@@ -11,7 +11,7 @@ import classes from "./Home.module.css";
 const Home = () => {
 
   return (
-    <>
+    <div data-testid="home-page">
       <div className={classes.container}>
         <div className={classes.bonuses}>
           <Bonuses />
@@ -37,7 +37,7 @@ const Home = () => {
       <Bridge />
       <SelectBikeType />
       <SelectBikeOptions />
-    </>
+    </div>
   );
 };
 

@@ -1,12 +1,16 @@
-import sum from "./sum";
+import MySum from "./sum";
 
-describe('summ test', () => {
-  test('adds 1 + 2 to equal 3', () => {
-    expect(sum(1, 2)).toBe(3);
-  });
-  
-  test('minus', () => {
-    expect(sum(-1, -1)).toBe(-2);
-  });
+test('summ test', () => {
+  const sumClass = new MySum()
+  const spyC = jest.spyOn(sumClass, 'first');
+  const spyD = jest.spyOn(sumClass, "second")
+  spyC.mockReturnValue(10);
+  spyD.mockReturnValue(1)
+  expect(sumClass.sum()).toBe(11);
+  spyC.mockRestore();
+  spyD.mockRestore();
+  // test('minus', () => {
+  //   expect(sum(-1, -1)).toBe(-2);
+  // });
 
 })

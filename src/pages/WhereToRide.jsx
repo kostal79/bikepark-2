@@ -2,7 +2,7 @@ import React from 'react'
 
 const WhereToRide = () => {
     return (
-        <div>
+        <div data-testid="wheretoride-page">
             Where to ride
         </div>
     );
