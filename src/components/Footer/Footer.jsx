@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Footer.module.css";
 import instagram__logo from "../../assets/instagram.svg";
 import facebook__logo from "../../assets/facebook.svg";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -17,9 +18,9 @@ const Footer = () => {
           </ul>
         </div>
         <div className={classes.links}>
-          <div className={classes.title}>Правила</div>
+          <Link to="/rules" className={classes.title}>Правила</Link>
           <div className={classes.title}>Отзывы</div>
-          <div className={classes.title}>Контакты</div>
+          <Link to="/contacts" className={classes.title}>Контакты</Link>
           <div className={classes.title}>Обратная связь</div>
         </div>
         <div className={classes.bottom}>

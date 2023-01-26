@@ -1,0 +1,18 @@
+.container {
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    width: 117px;
+    height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(41, 127, 255, 1);
+    top: 6px;
+    left: 32px;
+}
+
+.arrow {
+    cursor: pointer;
+}

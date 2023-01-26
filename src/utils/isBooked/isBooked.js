@@ -9,8 +9,8 @@ function isBooked(startDate, startTime, finishDate, finishTime, bookedDates) {
 
     finishTime = finishTime.split(":")
     const finishHour = finishTime[0] === "--"? "23" : finishTime[0];
-    const finishMin = finishTime[1] === "--" ? "59" : finishTime[1];
-    finishDate = (new Date(finishDate)).setHours(finishHour, startMin)
+    const finishMax = finishTime[1] === "--" ? "59" : finishTime[1];
+    finishDate = (new Date(finishDate)).setHours(finishHour, finishMax)
 
     let res = []
     for (let[key, value] of Object.entries(bookedDates)) {

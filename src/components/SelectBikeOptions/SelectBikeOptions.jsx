@@ -1,22 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import BikeCardSmall from "../BikeCardSmall/BikeCardSmall";
-import BlueButton from "../BlueButton/BlueButton";
 import Bridge from "../Bridge/Bridge";
 import BikeFilter from "../BikeFilter/BikeFilter";
 import classes from "./SelectBikeOptions.module.css";
+import { Link } from "react-router-dom";
 
 const SelectBikeOptions = () => {
   const allResults = useSelector((state) => state.searchResults.resultList);
   const [brend, setBrend] = useState("Все");
   const [size, setSize] = useState("Все");
   const [filteredBikes, setFilteredBikes] = useState();
+  const orderedBikes = useSelector((state) => state.orderedBikes.bikeForOrder);
 
   function getResults(data) {
     return data.map((item) => {
       return (
         <li className={classes.card} key={item.key}>
           <BikeCardSmall
+            id={item.id}
             image={item.image}
             booked={item.booked}
             name={item.name}
@@ -106,14 +108,18 @@ const SelectBikeOptions = () => {
           </div>
           <ul className={classes.list}>{filteredBikes}</ul>
           <div className={classes.button}>
-            <BlueButton
-              width={300}
-              height={60}
-              text="Далее"
-              uppercase={false}
-              fontSize={18}
-              onClick={() => console.log("next")}
-            />
+            {orderedBikes.length > 0 ? (
+              <Link
+                className={`${classes.link} ${classes["link--active"]}`}
+                to="/order"
+              >
+                Далее
+              </Link>
+            ) : (
+              <div className={`${classes.link} ${classes["link--disactive"]}`}>
+                Далее
+              </div>
+            )}
           </div>
         </div>
       </div>

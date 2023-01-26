@@ -1,0 +1,60 @@
+
+td {
+    text-align: left;
+    vertical-align: middle;
+    padding: 10px 15px;
+    min-width: 98px;
+}
+
+.description {
+    width: 214px;
+}
+
+.image {
+    width: 65.75px;
+    height: 34.25px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.input {
+    appearance: none;
+    border: 1px solid rgba(221, 227, 235, 1);
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    display: grid;
+    place-content: center;
+}
+
+.input::after {
+    content: url("../../assets/mark.svg");
+    transform: scale(0);
+    transition: 220ms transform ease-in-out;
+}
+
+.input:checked {
+    background-color: rgba(41, 127, 255, 1);
+    border-color: rgba(41, 127, 255, 1);
+}
+
+.input:checked::after {
+    transform: scale(1);
+}
+
+.price {
+    color:rgba(41, 127, 255, 1);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.firstColumn {
+    padding: 0;
+}
+
+.price-cell {
+    display: flex;
+    justify-content: flex-end;
+}

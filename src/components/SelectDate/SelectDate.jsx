@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import getStringDate from "../../utils/getStringDate";
 import CalendarBlock from "../calendar-block/CalendarBlock";
 import Modal from "../Modal/Modal";
 import classes from "./SelectDate.module.css";
@@ -10,14 +11,6 @@ const SelectDate = () => {
   const [isActive, setIsActive] = useState(false);
   const timeStart = useSelector((state) => state.calendar.timeStart);
   const timeFinish = useSelector((state) => state.calendar.timeFinish);
-
-  const getDate = (date) => {
-    const options = { day: "2-digit", month: "2-digit", year: "2-digit" };
-    const result = date
-      ? new Date(date).toLocaleDateString("ru-RU", options)
-      : "--.--.----";
-    return result;
-  };
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -35,7 +28,7 @@ const SelectDate = () => {
           <p className={classes.title}>Дата и время начала</p>
           <div className={classes.box} onClick={handleClick}>
             <div className={classes.text}>
-              {`${getDate(dateStart)} ${timeStart ? timeStart : "--.--"}`}
+              {`${getStringDate(dateStart)} ${timeStart ? timeStart : "--.--"}`}
             </div>
             <svg
               width="12"
@@ -58,7 +51,7 @@ const SelectDate = () => {
           <p className={classes.title}>Дата и время конца</p>
           <div className={classes.box} onClick={handleClick}>
             <div className={classes.text}>
-              {` ${getDate(dateFinish)} ${timeFinish ? timeFinish : "--.--"}`}
+              {` ${getStringDate(dateFinish)} ${timeFinish ? timeFinish : "--.--"}`}
             </div>
             <svg
               width="12"

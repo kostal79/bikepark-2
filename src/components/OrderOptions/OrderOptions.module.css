@@ -1,0 +1,31 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 22px;
+    column-gap: 30px;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(171, 177, 197, 1);
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(20, 35, 61, 1);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}

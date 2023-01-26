@@ -1,0 +1,74 @@
+.container {
+    margin-top: 26px;
+}
+.title {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(171, 177, 197, 1);
+    text-align:left;
+    padding: 10px 15px;
+}
+
+.table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.tableblock {
+    overflow: scroll;
+    scroll-behavior: smooth;
+    margin: 10px;
+}
+
+.scroll {
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+.total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 11px;
+    min-width: 260px;
+}
+
+.category {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(171, 177, 197, 1);
+}
+
+.total-delivery {
+    font-size: 18px;
+    font-weight: 500;
+    color: rgba(20, 35, 61, 1)
+}
+
+.total-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(41, 127, 255, 1);
+}
+
+.foot {
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px 0 0;
+}
+
+@media screen and (min-width: 768px) {
+    .foot {
+        flex-direction:row-reverse;
+        justify-content: space-between;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 799px) {
+    .scroll {
+        display: none;
+    }
+}
