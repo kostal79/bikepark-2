@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import dayBetween from "../../utils/dayBetween/dayBetween";
 import classes from "./BikeInOrderList.module.css";
+import { Field } from "formik";
 
 const BikeInOrderList = ({
   id,
@@ -27,31 +28,48 @@ const BikeInOrderList = ({
         </p>
       </td>
       <td>
-        <input
-          className={classes.input}
-          type="checkbox"
-          name={`${id} helmet`}
-          value="helmet"
+        <Field
+          render={({ field }) => (
+            <input
+              {...field}
+              name={`helmet`}
+              value={id}
+              type="checkbox"
+              className={classes.input}
+            />
+          )}
         />
       </td>
       <td>
-        <input
-          className={classes.input}
-          type="checkbox"
-          name={`${id} flashlighter`}
-          value="helmet"
+        <Field
+          render={({ field }) => (
+            <input
+              {...field}
+              type="checkbox"
+              value={id}
+              name={`flashlighter`}
+              className={classes.input}
+            />
+          )}
         />
       </td>
       <td>
-        <input
-          className={classes.input}
-          type="checkbox"
-          name={`${id} locker`}
-          value="helmet"
+        <Field
+          render={({ field }) => (
+            <input
+              {...field}
+              type="checkbox"
+              name="locker"
+              value={id}
+              className={classes.input}
+            />
+          )}
         />
       </td>
       <td className={classes["price-cell"]}>
-        <p className={classes.price}>{price * dayBetween(dateStart, dateFinish)} AED</p>
+        <p className={classes.price}>
+          {price * dayBetween(dateStart, dateFinish)} AED
+        </p>
       </td>
     </tr>
   );
