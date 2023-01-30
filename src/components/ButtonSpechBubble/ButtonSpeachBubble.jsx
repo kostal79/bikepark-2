@@ -5,7 +5,7 @@ const ButtonSpeachBubble = ({ description }) => {
   const [isActive, setIsActive] = useState(false);
   return (
     <div className={classes.container}>
-      <button className={classes.button} onClick={()=> setIsActive(!isActive)}>
+      <div className={classes.button} onClick={()=> setIsActive(!isActive)}>
         <svg
           width="10"
           height="13"
@@ -21,7 +21,7 @@ const ButtonSpeachBubble = ({ description }) => {
           />
           <circle cx="4" cy="11" r="1" fill="#297FFF" />
         </svg>
-      </button>
+      </div>
       <div
         className={
           isActive

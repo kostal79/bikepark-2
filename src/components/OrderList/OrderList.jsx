@@ -4,8 +4,8 @@ import BikeInOrderList from "../BikeInOrderList/BikeInOrderList";
 import classes from "./OrderList.module.css";
 import { ReactComponent as Scroller } from "../../assets/scroller.svg";
 import { useRef } from "react";
-import BackArrow from "../back-arrow/BackArrow";
 import dayBetween from "../../utils/dayBetween/dayBetween";
+import BackArrow from "../back-arrow/BackArrow";
 
 const OrderList = () => {
   const orderedBikesIds = useSelector(
@@ -20,7 +20,7 @@ const OrderList = () => {
   const orderSum = orderedBikesIds.reduce((acc, id) => {
     for (let bike of bikesList) {
       if (id === bike.id) {
-        return bike.price*dayBetween(dateStart, dateFinish) + acc;
+        return bike.price * dayBetween(dateStart, dateFinish) + acc;
       }
     }
   }, 0);
@@ -69,19 +69,19 @@ const OrderList = () => {
           <tbody>{orderedBikesList}</tbody>
         </table>
       </div>
-        <div className={classes.foot}>
-          <div>
-            <div className={classes.total}>
-              <h4 className={classes.category}>Доставка</h4>
-              <div className={classes["total-delivery"]}>0 AED</div>
-            </div>
-            <div className={classes.total}>
-              <h4 className={classes.category}>Итого</h4>
-              <div className={classes["total-price"]}>{orderSum} AED</div>
-            </div>
+      <div className={classes.foot}>
+        <div>
+          <div className={classes.total}>
+            <h4 className={classes.category}>Доставка</h4>
+            <div className={classes["total-delivery"]}>0 AED</div>
           </div>
-        <BackArrow />
+          <div className={classes.total}>
+            <h4 className={classes.category}>Итого</h4>
+            <div className={classes["total-price"]}>{orderSum} AED</div>
+          </div>
         </div>
+        <BackArrow />
+      </div>
     </div>
   );
 };
