@@ -91,22 +91,4 @@ describe("Header link test", () => {
     userEvent.click(contactsLink);
     expect(screen.getByTestId("contacts-page")).toBeInTheDocument();
   });
-
-  test("test signIn link", () => {
-    render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <Header />
-          <Routes>
-          <Route path="/signin" element={<SignIn />} />
-          </Routes>
-        </MemoryRouter>
-      </Provider>
-    );
-    const signInLink = screen.getByTestId("signin-link");
-    userEvent.click(signInLink);
-    expect(screen.getByTestId("signIn-page")).toBeInTheDocument();
-  });
-
-
 });

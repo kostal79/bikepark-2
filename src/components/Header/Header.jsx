@@ -6,10 +6,25 @@ import { NavLink } from "react-router-dom";
 import logo from "../../logo.svg";
 import BlueButton from "../BlueButton/BlueButton";
 import signInLogo from "../../assets/contacts.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import Modal from "../Modal/Modal";
+import { setSignIn } from "../../redux/slices/modalSlice";
+import Registration from "../Registration/Registration";
 
 const Header = () => {
   const isActive = useSelector((state) => state.hamburger.isActive);
+  const isSignInIsActive = useSelector((state) => state.modal.isSignInIsActive);
+  const dispatch = useDispatch();
+
+  const openModal = () => {
+    dispatch(setSignIn(true));
+  };
+
+  const closeModal = (event) => {
+    if (event.target.className === `${classes.sign}`) {
+      dispatch(setSignIn(false));
+    }
+  };
 
   return (
     <div className={classes.header}>
@@ -20,36 +35,51 @@ const Header = () => {
           </NavLink>
         </div>
         <div className={classes.about}>
-            <NavLink to="/about" data-testid="about-link">О нас</NavLink>
+          <NavLink to="/about" data-testid="about-link">
+            О нас
+          </NavLink>
         </div>
         <div
           className={
             isActive ? classes["rent--disactive"] : classes["rent--active"]
           }
         >
-          <NavLink to="/rent" data-testid="rent-link">Аренда</NavLink>
+          <NavLink to="/rent" data-testid="rent-link">
+            Аренда
+          </NavLink>
         </div>
         <div
           className={
-            isActive ? classes["delivery--disactive"] : classes["delivery--active"]
+            isActive
+              ? classes["delivery--disactive"]
+              : classes["delivery--active"]
           }
         >
-          <NavLink to="/delivery" data-testid="delivery-link">Доставка</NavLink>
+          <NavLink to="/delivery" data-testid="delivery-link">
+            Доставка
+          </NavLink>
         </div>
         <div className={classes.wheretoride}>
-            <NavLink to="/wheretoride" data-testid="wheretoride-link">Где кататься</NavLink>
+          <NavLink to="/wheretoride" data-testid="wheretoride-link">
+            Где кататься
+          </NavLink>
         </div>
         <div className={classes.contacts}>
-            <NavLink to="/contacts" data-testid="contacts-link">Контакты</NavLink>
+          <NavLink to="/contacts" data-testid="contacts-link">
+            Контакты
+          </NavLink>
         </div>
       </div>
       <div className={classes.menu}>
-        <a href="tel:+971525634064" className={classes.phone}>+971 52 563 4064</a>
-        <div className={classes.additionalSignIn}>
-          <NavLink to="/signin" data-testid="signin-link">
-            <img className={classes.imgSignLogo} src={signInLogo} alt=""></img>
-          </NavLink>
-        </div>
+        <a href="tel:+971525634064" className={classes.phone}>
+          +971 52 563 4064
+        </a>
+        <img
+          className={classes.imgSignLogo}
+          src={signInLogo}
+          alt="sign in"
+          onClick={openModal}
+        ></img>
         <div className={classes.additionalButton}>
           <BlueButton
             width={"150"}
@@ -62,6 +92,13 @@ const Header = () => {
         <Clock />
         <HamburgerMenu />
       </div>
+      <Modal>
+        {isSignInIsActive ? (
+          <div className={classes.sign} onClick={closeModal}>
+            <Registration />
+          </div>
+        ) : null}
+      </Modal>
     </div>
   );
 };

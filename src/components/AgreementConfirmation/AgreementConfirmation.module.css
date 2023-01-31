@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.label {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(20, 35, 61, 1);
+}
+
+.checkbutton {
+    appearance: none;
+    border: 1px solid rgba(221, 227, 235, 1);
+    margin: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 1);
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.checkbutton::after {
+    content: url("../../assets/mark.svg");
+    transform: scale(0);
+    transition: 220ms transform ease-in-out;
+}
+
+.checkbutton:checked {
+    background-color: rgba(41, 127, 255, 1);
+    border-color: rgba(41, 127, 255, 1);
+}
+
+.checkbutton:checked::after {
+    transform: scale(1);
+}

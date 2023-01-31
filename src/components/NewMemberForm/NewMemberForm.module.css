@@ -1,0 +1,45 @@
+.container {
+    margin-top: 35px;
+}
+
+.password {
+    position: relative;
+}
+
+.tab {
+    position: absolute;
+    right: 15px;
+    top: 38px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    position: relative;
+    top: -30px;
+}
+
+.bottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    column-gap: 12px;
+    font-size:16px;
+    font-weight: 500;
+    margin-top: 21px;
+}
+
+.bottom-text {
+    display: block;
+    color:rgba(171, 177, 197, 1);
+}
+
+.bottom-link {
+    color: rgba(41, 127, 255, 1);
+    text-decoration:underline;
+    border: none;
+    background-color: transparent;
+    font-size:16px;
+    font-weight: 500;
+    cursor: pointer;
+}

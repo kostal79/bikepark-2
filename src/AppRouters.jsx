@@ -8,7 +8,6 @@ import Home from './pages/Home';
 import OrderPage from "./pages/OrderPage";
 import Rent from "./pages/Rent";
 import Rules from "./pages/Rules";
-import SignIn from "./pages/SignIn";
 import WhereToRide from "./pages/WhereToRide";
 
 
@@ -22,7 +21,6 @@ const AppRouters = () => {
             <Route path="/feedback" element={<Feedback />} />
             <Route path="/rent" element={<Rent />} />
             <Route path="/wheretoride" element={<WhereToRide />} />
-            <Route path="/signin" element={<SignIn />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/order" element={<OrderPage />} />
             <Route path="/*" element={<ErrorPage />} />

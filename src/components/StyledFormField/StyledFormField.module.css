@@ -1,0 +1,27 @@
+.wrapper {
+    margin-bottom: 35px;
+}
+
+.field {
+    padding: 20px;
+    border: 1px solid rgba(221, 227, 235, 1);
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(115, 123, 152, 1);
+    width: 100%;
+}
+
+.field:focus {
+    border: 2px solid rgba(41, 127, 255, 1);
+    outline: none;
+}
+
+.label {
+    display: block;
+    color: rgba(171, 177, 197, 1);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}

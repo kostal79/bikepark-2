@@ -1,0 +1,41 @@
+.container {
+    margin-top: 35px;
+}
+
+.password {
+    position: relative;
+}
+
+.tab {
+    position: absolute;
+    right: 15px;
+    top: 38px;
+    cursor: pointer;
+}
+
+.error-message {
+    color: red;
+    position: relative;
+    top: -30px;
+}
+
+.button_container {
+    display: flex;
+    justify-content: center;
+}
+
+.recovery {
+    border: none;
+    align-self: center;
+    background-color:transparent;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 20px auto 0;
+    text-decoration: underline;
+    color:rgba(41, 127, 255, 1);
+    cursor: pointer;
+}
+
+.recovery:hover {
+    color: rgba(0, 91, 226, 1)
+}

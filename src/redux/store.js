@@ -8,6 +8,8 @@ import calendarSlice from './slices/calendarSlice'
 import bikeSlice from './slices/bikeSlice'
 import searchResultsSlice from './slices/searchResultsSlice'
 import orderBikeSlice from './slices/orderBikeSlice'
+import modalSlice from './slices/modalSlice'
+import regFormSlice from './slices/regFormSlice'
 
 export const store = configureStore({
   reducer: {
@@ -20,5 +22,7 @@ export const store = configureStore({
     bikes: bikeSlice,
     searchResults: searchResultsSlice,
     orderedBikes: orderBikeSlice,
+    modal: modalSlice,
+    regform: regFormSlice,
   },
 })
