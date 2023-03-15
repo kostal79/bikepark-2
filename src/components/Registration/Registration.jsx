@@ -8,6 +8,7 @@ import SigninForm from "../SigninForm/SignInForm";
 import NewMemberForm from "../NewMemberForm/NewMemberForm";
 import { setActiveWindow } from "../../redux/slices/regFormSlice";
 
+
 const SignInForm = () => {
   const activeForm = useSelector((state) => state.regform.activeWindow);
   const dispatch = useDispatch();
