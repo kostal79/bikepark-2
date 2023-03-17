@@ -23,7 +23,7 @@ const AppRouters = () => {
             <Route path="/wheretoride" element={<WhereToRide />} />
             <Route path="/rules" element={<Rules />} />
             <Route path="/order" element={<OrderPage />} />
-            <Route path="/*" element={<ErrorPage />} />
+            <Route path="/*" element={<Home />} />
         </Routes>
     )
 }
