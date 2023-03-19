@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { child, get, ref } from "firebase/database";
 import classes from "./SelectBikeType.module.css";
 import TypeBikeItem from "../TypeBikeItem/TypeBikeItem";
 import BlueButton from "../BlueButton/BlueButton";
@@ -7,33 +6,33 @@ import TypeSkeleton from "../TypeSkeleton/TypeSkeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { setResultList } from "../../redux/slices/searchResultsSlice";
 import { ReactComponent as Scroller } from "../../assets/scroller.svg";
-import { collection } from "firebase/firestore";
+import { collection, query, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import getAllCollection from "../../Api/getAllCollection";
+import scrollFunc from "../../utils/scrollFunc/scrollFunc";
 
 const SelectBikeType = () => {
   const [types, setTypes] = useState();
   const scrollRef = useRef(0);
   const selectedBikeTypes = useSelector((state) => state.bikes.bikeTypes);
-  const startDate = useSelector((state) => state.calendar.dateStart);
-  const finisgDate = useSelector((state) => state.calendar.dateFinish);
   const dispatch = useDispatch();
   
   const scrollBikes = () => {
     const scrollField = document.querySelector(`.${classes.types}`);
-    const maxScroll = scrollField.scrollLeftMax;
-    const shift = scrollField.scrollWidth / types.length;
-    scrollRef.current =
-    scrollRef.current < maxScroll ? scrollRef.current + shift : 0;
-    scrollField.scrollLeft = scrollRef.current;
-  };
+    const steps = types.length;
+    scrollFunc(scrollField, steps, scrollRef);
+  }
   
-  const searchBikes = () => {};
+  const searchBikes = async () => {
+    const collectionRef = collection(db, "bikes")
+    const q = query(collectionRef, where("type" , "in", selectedBikeTypes));
+    const searchResults = await getAllCollection(q);
+    dispatch(setResultList(searchResults))
+  };
   
   useEffect(() => {async function fetchData() {
     const typesBikesCollection = collection(db, "bike_types");
     const allBikesTypes = await getAllCollection(typesBikesCollection);
-    console.log(allBikesTypes)
     setTypes(
       allBikesTypes.map((bike) => (
         <TypeBikeItem

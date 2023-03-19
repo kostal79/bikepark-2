@@ -16,16 +16,16 @@ const SelectBikeOptions = () => {
   function getResults(data) {
     return data.map((item) => {
       return (
-        <li className={classes.card} key={item.key}>
+        <li className={classes.card} key={item.id}>
           <BikeCardSmall
             id={item.id}
-            image={item.image}
-            booked={item.booked}
-            name={item.name}
+            image={item.imageRef}
+            bookedDates={item.bookedDates}
+            name={item.brend}
             price={item.price}
             size={item.size}
             type={item.type}
-            description={item.description}
+            model={item.model}
           />
         </li>
       );
@@ -36,7 +36,7 @@ const SelectBikeOptions = () => {
 
   if (allResults.length > 0) {
     const brendList = ["Все"].concat(
-      Array.from(new Set(allResults.map((item) => item.name.mark)))
+      Array.from(new Set(allResults.map((item) => item.brend)))
     );
     const sizeList = ["Все"].concat(
       Array.from(new Set(allResults.map((item) => item.size)))
@@ -48,14 +48,14 @@ const SelectBikeOptions = () => {
         filteredArray = allResults;
       } else if (event.target.value !== "Все" && size === "Все") {
         filteredArray = allResults.filter(
-          (item) => item.name.mark === event.target.value
+          (item) => item.brend === event.target.value
         );
       } else if (event.target.value === "Все" && size !== "Все") {
-        filteredArray = allResults.filter((item) => item.size === Number(size));
+        filteredArray = allResults.filter((item) => item.size === size);
       } else {
         filteredArray = allResults.filter(
           (item) =>
-            item.name.mark === event.target.value && item.size === Number(size)
+            item.brend === event.target.value && item.size === size
         );
       }
       setFilteredBikes(getResults(filteredArray));
@@ -67,14 +67,14 @@ const SelectBikeOptions = () => {
         filteredArray = allResults;
       } else if (event.target.value !== "Все" && brend === "Все") {
         filteredArray = allResults.filter(
-          (item) => item.size === Number(event.target.value)
+          (item) => item.size ===event.target.value
         );
       } else if (event.target.value === "Все" && brend !== "Все") {
-        filteredArray = allResults.filter((item) => item.name.mark === brend);
+        filteredArray = allResults.filter((item) => item.brend === brend);
       } else {
         filteredArray = allResults.filter(
           (item) =>
-            item.size === Number(event.target.value) && item.name.mark === brend
+            item.size === event.target.value && item.brend === brend
         );
       }
       setFilteredBikes(getResults(filteredArray));

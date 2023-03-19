@@ -6,7 +6,7 @@ import BlueButton from "../BlueButton/BlueButton";
 import WhiteButton from "../WhiteButton/WhiteButton";
 import classes from "./BikeCardSmall.module.css";
 
-const BikeCardSmall = ({ id, image, booked, name, price, size, description }) => {
+const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type }) => {
   const startDate = useSelector((state) => state.calendar.dateStart);
   const finishDate = useSelector((state) => state.calendar.dateFinish);
   const startTime = useSelector((state) => state.calendar.timeStart);
@@ -23,14 +23,14 @@ const BikeCardSmall = ({ id, image, booked, name, price, size, description }) =>
   }
 
   if (
-    booked &&
-    isBooked(startDate, startTime, finishDate, finishTime, booked)
+    bookedDates &&
+    isBooked(startDate, startTime, finishDate, finishTime, bookedDates)
   ) {
     return (
       <div className={classes.container}>
         <div className={classes.header}>
           <p>{`${size}”`}</p>
-          <p>{name.mark}</p>
+          <p>{name}</p>
         </div>
         <div className={classes.imageBox}>
           <img className={classes.image} src={image} alt="bike" />
@@ -39,9 +39,9 @@ const BikeCardSmall = ({ id, image, booked, name, price, size, description }) =>
           <p
             className={`${classes.description} ${classes["description--booked"]}`}
           >
-            {description}
+            {type}
             <br />
-            {`${name.mark} ${name.model} ${size}”`}
+            {`${name} ${model} ${size}”`}
           </p>
           <div className={`${classes.price} ${classes["price--booked"]}`}>
             {price} AED/день
@@ -63,16 +63,16 @@ const BikeCardSmall = ({ id, image, booked, name, price, size, description }) =>
       <div className={classes.container}>
         <div className={classes.header}>
           <p>{`${size}”`}</p>
-          <p>{name.mark}</p>
+          <p>{name}</p>
         </div>
         <div className={classes.imageBox}>
           <img className={classes.image} src={image} alt="bike" />
         </div>
         <div className={classes.info}>
           <p className={classes.description}>
-            {description}
+            {type}
             <br />
-            {`${name.mark} ${name.model} ${size}”`}
+            {`${name} ${model} ${size}”`}
           </p>
           <div className={classes.price}>{price} AED/день</div>
           {!isPressed ? (

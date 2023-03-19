@@ -1,5 +1,4 @@
-const scrollFunc = (selector, steps, scrollRef) => {
-    const scrollField = document.querySelector(selector);
+const scrollFunc = (scrollField, steps, scrollRef) => {
     const maxScroll = scrollField.scrollLeftMax;
     const shift = scrollField.scrollWidth / steps;
     scrollRef.current =
