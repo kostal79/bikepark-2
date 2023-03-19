@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import getStringDate from "../../utils/getStringDate";
-import CalendarBlock from "../calendar-block/CalendarBlock";
+import CalendarBlock from "../Calendar-block/CalendarBlock";
 import Modal from "../Modal/Modal";
 import classes from "./SelectDate.module.css";
 

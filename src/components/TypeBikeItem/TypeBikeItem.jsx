@@ -4,16 +4,16 @@ import ButtonSpeachBubble from "../ButtonSpechBubble/ButtonSpeachBubble";
 import classes from './TypeBikeItem.module.css'
 
 
-const TypeBikeItem = ({type, text, price, imageLink, description}) => {
+const TypeBikeItem = ({material, description, price, imageRef, id}) => {
   return (
     <div className={classes.container}>
-      <img className={classes.image} src={imageLink} alt="bike"></img>
+      <img className={classes.image} src={imageRef} alt="bike"></img>
       <div className={classes.caracters}>
-        <p className={classes.type}>{text}</p>
+        <p className={classes.type}>{material}</p>
         <div className={classes.price}>{`${price} AED`}</div>
         <div className={classes.buttonsBlock}>
         <ButtonSpeachBubble description={description}/>
-        <ButtonAddBike type={type}/>
+        <ButtonAddBike type={material}/>
         </div>
       </div>
     </div>

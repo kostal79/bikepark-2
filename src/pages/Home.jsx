@@ -9,13 +9,10 @@ import SelectDelivery from "../components/SelectDelivery/SelectDelivery";
 import classes from "./Home.module.css";
 
 const Home = () => {
-
   return (
     <div data-testid="home-page">
       <div className={classes.container}>
-        <div className={classes.bonuses}>
-          <Bonuses />
-        </div>
+        <Bonuses />
         <section className={classes.selections}>
           <div className={classes.rentType}>
             <RentType />
