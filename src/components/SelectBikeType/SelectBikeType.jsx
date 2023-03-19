@@ -9,7 +9,7 @@ import { setResultList } from "../../redux/slices/searchResultsSlice";
 import { ReactComponent as Scroller } from "../../assets/scroller.svg";
 import { collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
-import getAllCollection from "../../Api/getAllBikesCollection";
+import getAllCollection from "../../Api/getAllCollection";
 
 const SelectBikeType = () => {
   const [types, setTypes] = useState();

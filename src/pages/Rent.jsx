@@ -1,10 +1,14 @@
 import { collection } from "firebase/firestore";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import getAllCollection from "../Api/getAllCollection";
 import makeNewBike from "../Api/makeNewBike";
 import uploadImage from "../Api/uploadImage";
 import { db } from "../config/firebase";
 
 const Rent = () => {
+  const [typesList, setTypesList] = useState([]);
+  const typeRef = useRef("");
+
   const [bike, setBike] = useState({
     material: "",
     description: "",
@@ -15,13 +19,30 @@ const Rent = () => {
   const [realBike, setRealBike] = useState({
     brend: "",
     model: "",
+    type: "",
     size: "",
     price: "",
     material: "",
     imageRef: "",
+    bookedDates: [],
   });
 
+  useEffect(() => {
+    async function getTypesList() {
+      const typesCollection = collection(db, "bike_types");
+      const collectionList = await getAllCollection(typesCollection);
+      const typesList = collectionList.map((item) => (
+        <option value={item.material} key={item.id}>
+          {item.material}
+        </option>
+      ));
+      setTypesList(typesList);
+    }
+    getTypesList();
+  }, []);
+
   const [file, setFile] = useState();
+  const [imageFile, setImageFile] = useState();
 
   const materialOnChange = (material) => {
     setBike({ ...bike, material });
@@ -47,7 +68,13 @@ const Rent = () => {
   };
 
   const handleRealBikeUpload = async () => {
-    const collection = collection(db, "");
+    const collectionRef = collection(db, "bikes");
+    const imageRef = await uploadImage(imageFile);
+    await makeNewBike(
+      { ...realBike, imageRef, type: typeRef.current.value},
+      collectionRef
+    );
+    console.log("new real bike added");
   };
 
   return (
@@ -56,7 +83,7 @@ const Rent = () => {
       <input
         type="text"
         placeholder="material"
-        value={realBike.material}
+        value={bike.material}
         onChange={(event) => materialOnChange(event.target.value)}
       />
       <br />
@@ -102,6 +129,12 @@ const Rent = () => {
         }
       />
       <br />
+      <label htmlFor="types">Choose a type:</label>
+      <br />
+      <select id="types" name="types" ref={typeRef}>
+        {typesList}
+      </select>
+      <br />
       <input
         type="number"
         placeholder="size"
@@ -130,8 +163,11 @@ const Rent = () => {
       />
       <br />
       <br />
-      <input type="file" onChange={(event) => {}} />
-      <button onClick={() => {}}>add bike in collection</button>
+      <input
+        type="file"
+        onChange={(event) => setImageFile(event.target.files[0])}
+      />
+      <button onClick={handleRealBikeUpload}>add bike in collection</button>
     </div>
   );
 };
