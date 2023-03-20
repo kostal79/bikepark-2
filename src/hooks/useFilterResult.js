@@ -1,32 +1,35 @@
-import { useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import BikeCardSmall from "../components/BikeCardSmall/BikeCardSmall";
 
 
-export default function useSearchResult() {
-    const allResults = useSelector((state) => state.searchResults.resultList);
-    const brend = useRef("Все");
-    const size = useRef("Все");
+export default function useFilterResult(allResults) {
+
+    const [brend, setBrend] = useState("Все");
+    const [size, setSize] = useState("Все");
     const [filteredBikes, setFilteredBikes] = useState();
 
     function getResults(data) {
         return data.map((item) => {
             return (
-                <li className={classes.card} key={item.id}>
-                    <BikeCardSmall
-                        id={item.id}
-                        image={item.imageRef}
-                        bookedDates={item.bookedDates}
-                        name={item.brend}
-                        price={item.price}
-                        size={item.size}
-                        type={item.type}
-                        model={item.model}
-                    />
-                </li>
+
+                <BikeCardSmall
+                    id={item.id}
+                    image={item.imageRef}
+                    bookedDates={item.bookedDates}
+                    name={item.brend}
+                    price={item.price}
+                    size={item.size}
+                    type={item.type}
+                    model={item.model}
+                    key={item.id}
+                />
+
             );
         });
     }
 
     useEffect(() => setFilteredBikes(getResults(allResults)), [allResults]);
+
 
     const handleBrend = (event) => {
         let filteredArray;
@@ -65,4 +68,15 @@ export default function useSearchResult() {
         }
         setFilteredBikes(getResults(filteredArray));
     }
+
+
+    return ({
+        filteredBikes,
+        brend,
+        size,
+        setBrend,
+        setSize,
+        handleBrend,
+        handleSize,
+    })
 }
