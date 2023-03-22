@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-   value: "0",
-   text: "Самовывоз"
+   value: "Самовывоз",
 }
 
 export const deliverySlice = createSlice({
@@ -10,8 +9,7 @@ export const deliverySlice = createSlice({
     initialState,
     reducers: {
         setDelivery: (state, action) => {
-            state.value = action.payload.value;
-            state.text = action.payload.text;
+            state.value = action.payload;
         },
     }
 })

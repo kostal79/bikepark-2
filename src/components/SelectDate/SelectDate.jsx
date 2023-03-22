@@ -4,8 +4,9 @@ import getStringDate from "../../utils/getStringDate";
 import CalendarBlock from "../Calendar-block/CalendarBlock";
 import Modal from "../Modal/Modal";
 import classes from "./SelectDate.module.css";
+import { ReactComponent as SelectArrow} from "../../assets/select.svg"
 
-const SelectDate = () => {
+const SelectDate = ({className}) => {
   const dateStart = useSelector((state) => state.calendar.dateStart);
   const dateFinish = useSelector((state) => state.calendar.dateFinish);
   const [isActive, setIsActive] = useState(false);
@@ -22,7 +23,7 @@ const SelectDate = () => {
     }
   };
   return (
-    <div className={classes.container}>
+    <div className={className}>
       <div className={classes.selectors}>
         <div className={classes.from}>
           <p className={classes.title}>Дата и время начала</p>
@@ -30,21 +31,7 @@ const SelectDate = () => {
             <div className={classes.text}>
               {`${getStringDate(dateStart)} ${timeStart ? timeStart : "--.--"}`}
             </div>
-            <svg
-              width="12"
-              height="7"
-              viewBox="0 0 12 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.999451 1L5.99945 6L10.9995 1"
-                stroke="#14233D"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <SelectArrow />
           </div>
         </div>
         <div className={classes.to}>
@@ -53,21 +40,7 @@ const SelectDate = () => {
             <div className={classes.text}>
               {` ${getStringDate(dateFinish)} ${timeFinish ? timeFinish : "--.--"}`}
             </div>
-            <svg
-              width="12"
-              height="7"
-              viewBox="0 0 12 7"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.999451 1L5.99945 6L10.9995 1"
-                stroke="#14233D"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <SelectArrow />
           </div>
         </div>
       </div>

@@ -1,0 +1,48 @@
+.selections {
+    margin-top: 90px;
+}
+
+.selectDate {
+    position: relative;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    .rentType {
+        grid-area: t;
+    }
+
+    .selectDate {
+        grid-area: dt;
+    }
+
+    .selectDelivery {
+        grid-area: dl;
+    }
+
+    .selections {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "t dl"
+            "dt dt";
+        column-gap: 30px;
+    }
+
+
+}
+
+@media screen and (min-width: 1240px) {
+
+    .selections {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "t dt dt dl";
+        column-gap: 30px;
+    }
+
+}

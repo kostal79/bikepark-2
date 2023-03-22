@@ -17,7 +17,7 @@ describe("calcTime test", () => {
     test("Differense minutes", () => {
         const time1 = calcTime("London", "0");
         const time2 = calcTime("Dubai", "+4");
-        const difference = Number(time2.split(":")[1].split(" ")[0]) === Number(time1.split(":")[1].split(" ")[0])
+        const difference = time2.split(":")[1].split(/\s/)[0] === time1.split(":")[1].split(/\s/)[0]
         expect(difference).toBe(true)
     })
 

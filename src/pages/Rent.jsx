@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import getAllCollection from "../Api/getAllCollection";
 import makeNewBike from "../Api/makeNewBike";
 import uploadImage from "../Api/uploadImage";
+import Dropdown from "../components/Dropdown/Dropdown";
 import { db } from "../config/firebase";
 
 const Rent = () => {
@@ -71,7 +72,7 @@ const Rent = () => {
     const collectionRef = collection(db, "bikes");
     const imageRef = await uploadImage(imageFile);
     await makeNewBike(
-      { ...realBike, imageRef, type: typeRef.current.value},
+      { ...realBike, imageRef, type: typeRef.current.value },
       collectionRef
     );
     console.log("new real bike added");
@@ -168,6 +169,10 @@ const Rent = () => {
         onChange={(event) => setImageFile(event.target.files[0])}
       />
       <button onClick={handleRealBikeUpload}>add bike in collection</button>
+      <br />
+      <br />
+      <br />
+      <Dropdown optionsList={[1, 2, 3, 4]} placeholder="placeholder"/>
     </div>
   );
 };

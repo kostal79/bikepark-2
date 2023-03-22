@@ -8,11 +8,11 @@ const BikeInOrderList = ({
   id,
   size,
   booked,
-  image,
-  type,
-  name,
+  imageRef,
+  brend,
+  model,
   price,
-  description,
+  type,
 }) => {
   const dateStart = useSelector((state) => state.calendar.dateStart);
   const dateFinish = useSelector((state) => state.calendar.dateFinish);
@@ -20,11 +20,11 @@ const BikeInOrderList = ({
   return (
     <tr className={classes.row}>
       <td className={classes.firstColumn}>
-        <img className={classes.image} src={image} alt="small bike"></img>
+        <img className={classes.image} src={imageRef} alt="small bike"></img>
       </td>
       <td>
         <p className={classes.description}>
-          {description} {name.mark} {name.model} {size}”
+          {type} {brend} {model} {size}”
         </p>
       </td>
       <td>
