@@ -10,10 +10,13 @@ import { collection, query, where } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import getAllCollection from "../../Api/getAllCollection";
 import scrollFunc from "../../utils/scrollFunc/scrollFunc";
+import { selectedDateFinish, selectedDateStart } from "../../redux/slices/calendarSlice";
 
 const SelectBikeType = () => {
   const [types, setTypes] = useState();
   const scrollRef = useRef(0);
+  const dateStart = useSelector(selectedDateStart);
+  const dateFinish = useSelector(selectedDateFinish);
   const selectedBikeTypes = useSelector((state) => state.bikes.bikeTypes);
   const dispatch = useDispatch();
   
@@ -24,10 +27,14 @@ const SelectBikeType = () => {
   }
   
   const searchBikes = async () => {
-    const collectionRef = collection(db, "bikes")
-    const q = query(collectionRef, where("type" , "in", selectedBikeTypes));
-    const searchResults = await getAllCollection(q);
-    dispatch(setResultList(searchResults))
+    if (dateStart && dateFinish) {
+      const collectionRef = collection(db, "bikes")
+      const q = query(collectionRef, where("type" , "in", selectedBikeTypes));
+      const searchResults = await getAllCollection(q);
+      dispatch(setResultList(searchResults))
+    } else {
+      alert("Choose dates")
+    }
   };
   
   useEffect(() => {async function fetchData() {

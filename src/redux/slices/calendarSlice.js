@@ -28,4 +28,7 @@ export const {
     setDateFinish,
 } = calendarSlice.actions
 
+export const selectedDateStart = (state) => state.calendar.dateStart;
+export const selectedDateFinish = (state) => state.calendar.dateFinish;
+
 export default calendarSlice.reducer

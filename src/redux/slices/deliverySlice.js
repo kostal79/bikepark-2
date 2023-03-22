@@ -14,7 +14,6 @@ export const deliverySlice = createSlice({
     }
 })
 
-// Action creators are generated for each case reducer function
-export const { setDelivery } = deliverySlice.actions
+export const { setDelivery } = deliverySlice.actions;
 
 export default deliverySlice.reducer
