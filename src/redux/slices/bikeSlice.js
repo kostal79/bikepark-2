@@ -32,4 +32,6 @@ export const { setBikesTypes,
     removeBikeMark,
     removeBikeSize
 } = bikeSlice.actions;
+
+export const bikesTypes = state => state.bikes.bikeTypes;
 export default bikeSlice.reducer

@@ -1,6 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  selectedTimeFinish,
+  selectedTimeStart,
   setTimeFinish,
   setTimeStart,
 } from "../../redux/slices/calendarSlice";
@@ -15,8 +17,8 @@ import classes from "./CalendarBlock.module.css";
 
 const CalendarBlock = () => {
   const dispatch = useDispatch();
-  const timeStart = useSelector((state) => state.calendar.timeStart);
-  const timeFinish = useSelector((state) => state.calendar.timeFinish);
+  const timeStart = useSelector(selectedTimeStart);
+  const timeFinish = useSelector(selectedTimeFinish);
 
   const handleTimeStart = (event) => dispatch(setTimeStart(event.target.value));
   const handleTimeFinish = (event) =>

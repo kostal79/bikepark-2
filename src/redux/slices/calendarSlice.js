@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    dateStart: undefined,
-    dateFinish: undefined,
-    timeStart: "--:--",
-    timeFinish: "--:--",
+    dateStart: (new Date()).toString(),
+    dateFinish: (new Date()).toString(),
+    timeStart: "12:00",
+    timeFinish: "12:00",
     isClicked: false,
 }
 
@@ -30,5 +30,7 @@ export const {
 
 export const selectedDateStart = (state) => state.calendar.dateStart;
 export const selectedDateFinish = (state) => state.calendar.dateFinish;
+export const selectedTimeStart = (state) => state.calendar.timeStart;
+export const selectedTimeFinish = (state) => state.calendar.timeFinish;
 
 export default calendarSlice.reducer

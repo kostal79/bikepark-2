@@ -29,7 +29,7 @@ const OrderList = () => {
     // eslint-disable-next-line
     for (let [key, value] of Object.entries(bikeList)) {
       if (value.id === id) {
-        return <BikeInOrderList {...value} />;
+        return <BikeInOrderList {...value} key={value.id}/>;
       }
     }
   };

@@ -1,22 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Bridge from "../Bridge/Bridge";
-import BikeFilter from "../BikeFilter/BikeFilter";
 import classes from "./SelectBikeOptions.module.css";
 import { Link } from "react-router-dom";
 import useFilterBySize from "../../hooks/useFilterBySize/useFilterBySize";
 import useFilterByBrend from "../../hooks/useFilterByBrend/useFilterByBrend";
 import BikeCardSmall from "../BikeCardSmall/BikeCardSmall";
+import Dropdown from "../Dropdown/Dropdown";
 
 const SelectBikeOptions = () => {
   const allResults = useSelector((state) => state.searchResults.resultList);
 
   const orderedBikes = useSelector((state) => state.orderedBikes.bikeForOrder);
 
-  const { filteredByBrend, brend, setBrend, handleBrend } =
+  const { filteredByBrend, handleBrend } =
     useFilterByBrend(allResults);
 
-  const { filteredBySize, size, setSize, handleSize } =
+  const { filteredBySize, handleSize } =
     useFilterBySize(allResults);
 
   if (allResults.length > 0) {
@@ -49,21 +49,15 @@ const SelectBikeOptions = () => {
         <Bridge />
         <div className={classes["search-results-block"]}>
           <div className={classes.filters}>
-            <BikeFilter
-              id="brend"
-              title="Бренд"
-              placeholder={brend}
-              setPlaceholder={setBrend}
+            <Dropdown
               optionsList={brendList}
-              optionOnClick={handleBrend}
+              title="Бренд"
+              onClick={handleBrend}
             />
-            <BikeFilter
-              id="size"
-              title="Размер"
-              placeholder={size}
-              setPlaceholder={setSize}
+            <Dropdown
               optionsList={sizeList}
-              optionOnClick={handleSize}
+              title="Размер"
+              onClick={handleSize}
             />
           </div>
           <ul className={classes.list}>{filteredBikes}</ul>

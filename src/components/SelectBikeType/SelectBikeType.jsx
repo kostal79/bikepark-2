@@ -11,13 +11,14 @@ import { db } from "../../config/firebase";
 import getAllCollection from "../../Api/getAllCollection";
 import scrollFunc from "../../utils/scrollFunc/scrollFunc";
 import { selectedDateFinish, selectedDateStart } from "../../redux/slices/calendarSlice";
+import { bikesTypes } from "../../redux/slices/bikeSlice";
 
 const SelectBikeType = () => {
   const [types, setTypes] = useState();
   const scrollRef = useRef(0);
   const dateStart = useSelector(selectedDateStart);
   const dateFinish = useSelector(selectedDateFinish);
-  const selectedBikeTypes = useSelector((state) => state.bikes.bikeTypes);
+  const selectedBikeTypes = useSelector(bikesTypes);
   const dispatch = useDispatch();
   
   const scrollBikes = () => {

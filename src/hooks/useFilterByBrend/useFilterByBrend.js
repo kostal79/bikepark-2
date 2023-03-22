@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 
 
 export default function useFilterByBrend(allResults) {
-    const [brend, setBrend] = useState("Все");
-    const [filteredByBrend, setFilteredByBrend] = useState();
+    const [filteredByBrend, setFilteredByBrend] = useState([]);
 
     useEffect(() => setFilteredByBrend(allResults), [allResults]);
 
     const handleBrend = (event) => {
         let filteredArray;
-        if (event.target.value === "Все") {
+        if (event.target.innerText === "Все") {
             filteredArray = allResults;
         } else {
             filteredArray = allResults.filter(
                 (item) =>
-                    item.brend === event.target.value
+                    item.brend === event.target.innerText
             );
         }
         setFilteredByBrend(filteredArray);
@@ -22,8 +21,6 @@ export default function useFilterByBrend(allResults) {
 
     return ({
         filteredByBrend,
-        brend,
-        setBrend,
         handleBrend,
     })
 }

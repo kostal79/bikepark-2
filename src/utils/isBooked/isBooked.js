@@ -13,6 +13,7 @@ function isBooked(startDate, startTime, finishDate, finishTime, bookedDates) {
     finishDate = (new Date(finishDate)).setHours(finishHour, finishMax)
 
     let res = []
+    // eslint-disable-next-line
     for (let[key, value] of Object.entries(bookedDates)) {
         if (startDate < (new Date(value.start)) && finishDate < (new Date(value.start))) {
            res.push(false);

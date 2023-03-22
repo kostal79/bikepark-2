@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import getStringDate from "../../utils/getStringDate";
 import CalendarBlock from "../Calendar-block/CalendarBlock";
 import Modal from "../Modal/Modal";
 import classes from "./SelectDate.module.css";
-import { ReactComponent as SelectArrow} from "../../assets/select.svg"
+import DropdownDates from "../OrderOptions/DropdownDates/DropdownDates";
+import useReadableDate from "../../hooks/useReadableDate/useReadableDate";
 
-const SelectDate = ({className}) => {
-  const dateStart = useSelector((state) => state.calendar.dateStart);
-  const dateFinish = useSelector((state) => state.calendar.dateFinish);
+const SelectDate = ({ className }) => {
   const [isActive, setIsActive] = useState(false);
-  const timeStart = useSelector((state) => state.calendar.timeStart);
-  const timeFinish = useSelector((state) => state.calendar.timeFinish);
+  const startValue = useReadableDate("start");
+  const finshValue = useReadableDate("finish");
 
   const handleClick = () => {
     setIsActive(!isActive);
@@ -25,24 +22,18 @@ const SelectDate = ({className}) => {
   return (
     <div className={className}>
       <div className={classes.selectors}>
-        <div className={classes.from}>
-          <p className={classes.title}>Дата и время начала</p>
-          <div className={classes.box} onClick={handleClick}>
-            <div className={classes.text}>
-              {`${getStringDate(dateStart)} ${timeStart ? timeStart : "--.--"}`}
-            </div>
-            <SelectArrow />
-          </div>
-        </div>
-        <div className={classes.to}>
-          <p className={classes.title}>Дата и время конца</p>
-          <div className={classes.box} onClick={handleClick}>
-            <div className={classes.text}>
-              {` ${getStringDate(dateFinish)} ${timeFinish ? timeFinish : "--.--"}`}
-            </div>
-            <SelectArrow />
-          </div>
-        </div>
+        <DropdownDates
+          className={classes.from}
+          title="Дата и время начала"
+          onClick={handleClick}
+          value={startValue}
+        />
+        <DropdownDates
+          className={classes.to}
+          title="Дата и время конца"
+          onClick={handleClick}
+          value={finshValue}
+        />
       </div>
       <Modal>
         <div
@@ -59,7 +50,5 @@ const SelectDate = ({className}) => {
     </div>
   );
 };
-
-new Date().toLocaleDateString();
 
 export default SelectDate;

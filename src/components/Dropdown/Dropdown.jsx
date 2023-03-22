@@ -12,20 +12,21 @@ const Dropdown = ({ optionsList, onClick, title }) => {
       optionsList.map((option) => {
         return (
           <li
-            className={
-              String(option) === String(selectedOption)
-                ? `${classes.option} ${classes["option--active"]}`
-                : classes.option
-            }
-            onClick={(event) => optionClickHandler(event)}
-            key={option}
+          className={
+            String(option) === String(selectedOption)
+            ? `${classes.option} ${classes["option--active"]}`
+            : classes.option
+          }
+          onClick={(event) => optionClickHandler(event)}
+          key={option}
           >
             {option}
           </li>
         );
       })
-    );
-  }, [selectedOption, optionsList]);
+      );
+      // eslint-disable-next-line
+  }, [selectedOption, optionsList, ]);
 
   const clickListener = (event) => {
     if (event.target.className !== classes["select-btn"]) {
