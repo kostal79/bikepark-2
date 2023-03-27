@@ -1,5 +1,5 @@
-import { Form, Formik } from "formik";
-import React, { useState } from "react";
+import { ErrorMessage, Form, Formik } from "formik";
+import React, { useEffect, useState } from "react";
 import { validateEmail } from "../../utils/validateEmail/validateEmail";
 import validateName from "../../utils/validateName/validateName";
 import { validatePassword } from "../../utils/validatePassword/validatePassword";
@@ -12,10 +12,28 @@ import { ReactComponent as EyeHidden } from "../../assets/eyeHidden.svg";
 import AgreementConfirmation from "../AgreementConfirmation/AgreementConfirmation";
 import { useDispatch } from "react-redux";
 import { setActiveWindow } from "../../redux/slices/regFormSlice";
+import IMask from "imask";
 
 const NewMemberForm = () => {
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
+
+  const initialValues = {
+    user_name: "",
+    user_phone: "",
+    user_email: "",
+    user_password: "",
+    user_confirm_password: "",
+    isConfirmed: false,
+  };
+
+  useEffect(() => {
+    const element = document.getElementById("registration_phone");
+    const maskOptions = {
+      mask: "+{7}(000)000-00-00",
+    };
+    IMask(element, maskOptions);
+  }, []);
 
   const tabHandler = (event) => {
     dispatch(setActiveWindow(event.target.value));
@@ -24,19 +42,14 @@ const NewMemberForm = () => {
   return (
     <div className={classes.container}>
       <Formik
-        initialValues={{
-          user_name: "",
-          user_phone: "",
-          user_email: "",
-          user_password: "",
-          isConfirmed: false,
-        }}
+        initialValues={initialValues}
+        //TODO onSubmit
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
           alert(JSON.stringify(values, null, 2));
         }}
       >
-        {({ errors, touched }) => (
+        {(formikProps) => (
           <Form>
             <StyledFormField
               label="Имя*"
@@ -46,22 +59,28 @@ const NewMemberForm = () => {
               validate={validateName}
             />
 
-            {errors.user_name && touched.user_name && (
-              <div className={classes["error-message"]}>{errors.user_name}</div>
-            )}
+            <ErrorMessage
+              name={"user_name"}
+              render={(msg) => (
+                <div className={classes["error-message"]}>{msg}</div>
+              )}
+            />
+
             <StyledFormField
+              id="registration_phone"
               label="Номер телефона*"
               name="user_phone"
               type="phone"
-              placeholder="Введите номер телефона"
+              placeholder="+7 (XXX) XXX-XX-XX"
               validate={validatePhoneNumber}
             />
 
-            {errors.user_phone && touched.user_phone && (
-              <div className={classes["error-message"]}>
-                {errors.user_phone}
-              </div>
-            )}
+            <ErrorMessage
+              name={"user_phone"}
+              render={(msg) => (
+                <div className={classes["error-message"]}>{msg}</div>
+              )}
+            />
 
             <StyledFormField
               label="E-mail"
@@ -70,12 +89,13 @@ const NewMemberForm = () => {
               placeholder="Введите E-mail"
               validate={validateEmail}
             />
+            <ErrorMessage
+              name={"user_email"}
+              render={(msg) => (
+                <div className={classes["error-message"]}>{msg}</div>
+              )}
+            />
 
-            {errors.user_email && touched.user_email && (
-              <div className={classes["error-message"]}>
-                {errors.user_email}
-              </div>
-            )}
             <div className={classes.password}>
               <StyledFormField
                 label="Пароль*"
@@ -84,11 +104,13 @@ const NewMemberForm = () => {
                 placeholder="Введите пароль"
                 validate={validatePassword}
               />
-              {errors.user_password && touched.user_password && (
-                <div className={classes["error-message"]}>
-                  {errors.user_password}
-                </div>
-              )}
+              <ErrorMessage
+                name={"user_password"}
+                render={(msg) => (
+                  <div className={classes["error-message"]}>{msg}</div>
+                )}
+              />
+
               <div
                 className={classes.tab}
                 onClick={() => setIsVisible((prev) => !prev)}
@@ -96,13 +118,36 @@ const NewMemberForm = () => {
                 {isVisible ? <EyeVisible /> : <EyeHidden />}
               </div>
             </div>
+
+            <div className={classes.password}>
+              <StyledFormField
+                label="Подтвердите пароль*"
+                name="user_confirm_password"
+                type={isVisible ? "text" : "password"}
+                placeholder="Введите пароль"
+                validate={(value) => {
+                  if (value !== formikProps.values.user_password) {
+                    return "Confirmation error";
+                  }
+                }}
+              />
+              <ErrorMessage
+                name={"user_confirm_password"}
+                render={(msg) => (
+                  <div className={classes["error-message"]}>{msg}</div>
+                )}
+              />
+
+            </div>
+
             <AgreementConfirmation />
-            {errors.isConfirmed && touched.isConfirmed && (
-              <div className={classes["error-message"]}>
-                {errors.isConfirmed}
-              </div>
-            )}
-            <ConfirmButton text="Войти" type="submit" />
+            {formikProps.errors.isConfirmed &&
+              formikProps.touched.isConfirmed && (
+                <div className={classes["error-message"]}>
+                  {formikProps.errors.isConfirmed}
+                </div>
+              )}
+            <ConfirmButton text="Регистрация" type="submit" />
           </Form>
         )}
       </Formik>
