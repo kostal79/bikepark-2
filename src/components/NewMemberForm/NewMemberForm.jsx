@@ -13,6 +13,9 @@ import AgreementConfirmation from "../AgreementConfirmation/AgreementConfirmatio
 import { useDispatch } from "react-redux";
 import { setActiveWindow } from "../../redux/slices/regFormSlice";
 import IMask from "imask";
+import useCreateUserWithEmailAndPassword from "../../hooks/useCreateUserWithEmailAndPassword/useCreateUserWithEmailAndPassword";
+import { auth } from "../../config/firebase";
+import Loader from "../Loader/Loader";
 
 const NewMemberForm = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,10 +30,13 @@ const NewMemberForm = () => {
     isConfirmed: false,
   };
 
+  const [error, registeredUser, isLoading, createNewUserWithEmail] =
+    useCreateUserWithEmailAndPassword(auth);
+
   useEffect(() => {
     const element = document.getElementById("registration_phone");
     const maskOptions = {
-      mask: "+{7}(000)000-00-00",
+      mask: "+7 000-000-00-00",
     };
     IMask(element, maskOptions);
   }, []);
@@ -44,10 +50,7 @@ const NewMemberForm = () => {
       <Formik
         initialValues={initialValues}
         //TODO onSubmit
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={(values) => createNewUserWithEmail(values)}
       >
         {(formikProps) => (
           <Form>
@@ -71,7 +74,7 @@ const NewMemberForm = () => {
               label="Номер телефона*"
               name="user_phone"
               type="phone"
-              placeholder="+7 (XXX) XXX-XX-XX"
+              placeholder="+7 XXX-XXX-XX-XX"
               validate={validatePhoneNumber}
             />
 
@@ -137,7 +140,6 @@ const NewMemberForm = () => {
                   <div className={classes["error-message"]}>{msg}</div>
                 )}
               />
-
             </div>
 
             <AgreementConfirmation />
@@ -161,6 +163,7 @@ const NewMemberForm = () => {
           Войти
         </button>
       </div>
+      {isLoading && <Loader />}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import validatePhoneNumber from "./validatePhoneNumber";
 
 describe("validatePhoneNumber", () => {
     test("Correct number", () => {
-        expect(validatePhoneNumber("1234567890")).toBeUndefined()
+        expect(validatePhoneNumber("+7 111-111-11-11")).toBeUndefined()
     })
 
     test("Incorrect format", () => {

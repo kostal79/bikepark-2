@@ -1,7 +1,10 @@
 export default function validatePhoneNumber(phone) {
-    const regPhone = /^[1-9][0-9]{9}$/;
+    const regPhone = /^\+7 [0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
     let error;
     if (!phone) {
-        return "Phone number is required"
+        error = "Phone number is required"
+    } else if (!regPhone.test(phone)) {
+        error = "Incorrect format"
     }
+    return error;
 }

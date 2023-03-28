@@ -3,7 +3,7 @@ import classes from "./ConfirmButton.module.css"
 
 const ConfirmButton = ({type, text, ...props}) => {
     return (
-        <button type={type} {...props} className={classes.confirmation}>
+        <button id="sign-in-button" type={type} {...props} className={classes.confirmation}>
             {text}
         </button>
     );

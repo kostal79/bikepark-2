@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { ErrorMessage, Form, Formik } from "formik";
 import React from "react";
 import { useState } from "react";
 import StyledFormField from "../StyledFormField/StyledFormField";
@@ -6,10 +6,9 @@ import classes from "./SigninForm.module.css";
 import { ReactComponent as EyeVisible } from "../../assets/eyeVisible.svg";
 import { ReactComponent as EyeHidden } from "../../assets/eyeHidden.svg";
 import ConfirmButton from "../ConfirmButton/ConfirmButton";
-import validatePhoneNumber from "../../utils/validatePhoneNumber/validatePhoneNumber";
-import { validatePassword } from "../../utils/validatePassword/validatePassword";
 import { useDispatch } from "react-redux";
 import { setActiveWindow } from "../../redux/slices/regFormSlice";
+import { sighInWithEmail } from "../../Api/authSignIn";
 
 const SigninForm = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,42 +22,36 @@ const SigninForm = () => {
     <div className={classes.container}>
       <Formik
         initialValues={{
-          user_phone: "",
+          user_email: "",
           user_password: "",
         }}
-        onSubmit={async (values) => {
-          await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={(values) => {
+          sighInWithEmail(values.user_email, values.user_password)}}
       >
-        {({ errors, touched }) => (
+        {(formikProps) => (
           <Form>
             <StyledFormField
-              label="Номер телефона"
-              name="user_phone"
-              type="phone"
-              placeholder="Введите номер телефона"
-              validate={validatePhoneNumber}
+              label="E-mail"
+              name="user_email"
+              type="email"
+              placeholder="Введите email"
             />
 
-            {errors.user_phone && touched.user_phone && (
-              <div className={classes["error-message"]}>
-                {errors.user_phone}
-              </div>
-            )}
+            <ErrorMessage
+              name={"user_email"}
+              render={(msg) => (
+                <div className={classes["error-message"]}>{msg}</div>
+              )}
+            />
+
             <div className={classes.password}>
               <StyledFormField
                 label="Пароль"
                 name="user_password"
                 type={isVisible ? "text" : "password"}
                 placeholder="Введите пароль"
-                validate={validatePassword}
               />
-              {errors.user_password && touched.user_password && (
-                <div className={classes["error-message"]}>
-                  {errors.user_password}
-                </div>
-              )}
+
               <div
                 className={classes.tab}
                 onClick={() => setIsVisible((prev) => !prev)}
