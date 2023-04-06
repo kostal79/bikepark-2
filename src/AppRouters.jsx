@@ -9,6 +9,7 @@ import OrderPage from "./pages/OrderPage";
 import Rent from "./pages/Rent";
 import Rules from "./pages/Rules";
 import WhereToRide from "./pages/WhereToRide";
+import Account from "./pages/Account";
 
 const AppRouters = () => {
   return (
@@ -22,6 +23,7 @@ const AppRouters = () => {
       <Route path="/wheretoride" element={<WhereToRide />} />
       <Route path="/rules" element={<Rules />} />
       <Route path="/order" element={<OrderPage />} />
+      <Route path="/account" element={<Account />} />
       <Route path="/bikepark-2" element={<ErrorPage />} />
     </Routes>
   );

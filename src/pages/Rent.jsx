@@ -4,6 +4,7 @@ import getAllCollection from "../Api/getAllCollection";
 import makeNewBike from "../Api/makeNewBike";
 import uploadImage from "../Api/uploadImage";
 import Dropdown from "../components/Dropdown/Dropdown";
+import UserWidget from "../components/UserWidget/UserWidget";
 import { db } from "../config/firebase";
 
 const Rent = () => {
@@ -173,6 +174,10 @@ const Rent = () => {
       <br />
       <br />
       <Dropdown optionsList={[1, 2, 3, 4]} placeholder="placeholder"/>
+      <br />
+      <br />
+      <br />
+      <UserWidget visability={true}/>
     </div>
   );
 };

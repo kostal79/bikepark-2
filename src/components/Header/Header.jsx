@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Clock from "../Clock/Clock";
 import HamburgerMenu from "../Hamburger/HamburgerMenu";
 import classes from "./Header.module.css";
@@ -6,15 +6,21 @@ import { NavLink } from "react-router-dom";
 import logo from "../../logo.svg";
 import BlueButton from "../BlueButton/BlueButton";
 import signInLogo from "../../assets/contacts.svg";
+import signedInLogo from "../../assets/authorizedLogo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../Modal/Modal";
 import { setSignIn } from "../../redux/slices/modalSlice";
 import Registration from "../Registration/Registration";
+import useGetAuth from "../../hooks/useGetAuth/useGetAuth";
+import UserWidget from "../UserWidget/UserWidget";
 
 const Header = () => {
   const isActive = useSelector((state) => state.hamburger.isActive);
   const isSignInIsActive = useSelector((state) => state.modal.isSignInIsActive);
   const dispatch = useDispatch();
+  const [isAuth, error, userId] = useGetAuth();
+  const userLogo = isAuth ? signedInLogo : signInLogo;
+  const [widget, setWidget] = useState(false)
 
   const openModal = () => {
     dispatch(setSignIn(true));
@@ -25,6 +31,11 @@ const Header = () => {
       dispatch(setSignIn(false));
     }
   };
+
+  const widgetHandler = () => {
+    setWidget(!widget)
+  }
+  
 
   return (
     <div className={classes.header}>
@@ -74,12 +85,15 @@ const Header = () => {
         <a href="tel:+971525634064" className={classes.phone}>
           +971 52 563 4064
         </a>
+        <div>
         <img
           className={classes.imgSignLogo}
-          src={signInLogo}
+          src={userLogo}
           alt="sign in"
-          onClick={openModal}
-        ></img>
+          onClick={isAuth ? widgetHandler : openModal}
+          ></img>
+          <div>{widget && <UserWidget />}</div>
+        </div>
         <div className={classes.additionalButton}>
           <BlueButton
             width={"150"}
