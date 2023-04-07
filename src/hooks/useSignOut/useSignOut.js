@@ -1,7 +1,6 @@
 import { getAuth, signOut } from "firebase/auth";
 import { useCallback, useState } from "react";
 
-
 export function useSignOut() {
     const auth = getAuth();
     const [error, setError] = useState();

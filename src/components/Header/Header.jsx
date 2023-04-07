@@ -1,26 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import Clock from "../Clock/Clock";
 import HamburgerMenu from "../Hamburger/HamburgerMenu";
 import classes from "./Header.module.css";
 import { NavLink } from "react-router-dom";
 import logo from "../../logo.svg";
 import BlueButton from "../BlueButton/BlueButton";
-import signInLogo from "../../assets/contacts.svg";
-import signedInLogo from "../../assets/authorizedLogo.svg";
+import {ReactComponent as SignInLogo} from "../../assets/contacts.svg";
+import {ReactComponent as SignedInLogo} from "../../assets/authorizedLogo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../Modal/Modal";
 import { setSignIn } from "../../redux/slices/modalSlice";
 import Registration from "../Registration/Registration";
 import useGetAuth from "../../hooks/useGetAuth/useGetAuth";
 import UserWidget from "../UserWidget/UserWidget";
+import { setUserWidget, widgetState } from "../../redux/slices/tooltipsSlice";
 
 const Header = () => {
   const isActive = useSelector((state) => state.hamburger.isActive);
   const isSignInIsActive = useSelector((state) => state.modal.isSignInIsActive);
   const dispatch = useDispatch();
   const [isAuth, error, userId] = useGetAuth();
-  const userLogo = isAuth ? signedInLogo : signInLogo;
-  const [widget, setWidget] = useState(false)
+  const userLogo = isAuth ? <SignedInLogo /> : <SignInLogo />;
+  const widget = useSelector(widgetState);
 
   const openModal = () => {
     dispatch(setSignIn(true));
@@ -33,7 +34,7 @@ const Header = () => {
   };
 
   const widgetHandler = () => {
-    setWidget(!widget)
+    dispatch(setUserWidget(!widget))
   }
   
 
@@ -86,12 +87,10 @@ const Header = () => {
           +971 52 563 4064
         </a>
         <div>
-        <img
+        <div
           className={classes.imgSignLogo}
-          src={userLogo}
-          alt="sign in"
           onClick={isAuth ? widgetHandler : openModal}
-          ></img>
+          >{userLogo}</div>
           <div>{widget && <UserWidget />}</div>
         </div>
         <div className={classes.additionalButton}>

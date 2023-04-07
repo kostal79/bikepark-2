@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setUserWidget } from "../../redux/slices/tooltipsSlice";
 import classes from "./TooltipHOC.module.css";
 
 const TooltipHOC = (OriginalComponent) => {
   return function NewComponent({ style }) {
-    const [isActive, setIsActive] = useState(true);
+    const dispatch = useDispatch();
 
-    useEffect(() => {
-      function closeTooltip(event) {
-        if (!event.target.closest("#tooltip-hoc")) {
-          console.log(event.target)
-         setIsActive(false);
-        }
+    function closeTooltip(event) {
+      if (!event.target.closest("#tooltip-hoc")) {
+        dispatch(setUserWidget(false));
       }
-      document.addEventListener("click", closeTooltip, {capture: true, once: true});
+    }
+    document.addEventListener("click", closeTooltip, {
+      capture: true,
+      once: true,
     });
 
-    if (isActive) {
-      return (
-        <div id="tooltip-hoc" className={classes.container} style={style}>
-          <div className={classes.tail}></div>
-          <OriginalComponent setIsVisible={setIsActive} />
-        </div>
-      );
-    }
+    return (
+      <div id="tooltip-hoc" className={classes.container} style={style}>
+        <div className={classes.tail}></div>
+        <OriginalComponent />
+      </div>
+    );
   };
 };
 

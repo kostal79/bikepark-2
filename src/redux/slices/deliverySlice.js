@@ -15,5 +15,6 @@ export const deliverySlice = createSlice({
 })
 
 export const { setDelivery } = deliverySlice.actions;
+export const deliveryState = state => state.deliveryType.value
 
 export default deliverySlice.reducer

@@ -8,15 +8,15 @@ import classes from "./HomeUpperSelectionZone.module.css";
 
 const HomeUpperSelectionZone = () => {
   const dispatch = useDispatch();
-  const onClickDelivery = (event) => dispatch(setDelivery({value: event.target.innerText}))
-
+  const onClickDelivery = (event) =>
+    dispatch(setDelivery(event.target.innerText));
 
   return (
     <section className={classes.selections}>
       <RentType className={classes.rentType} />
       <SelectDate className={classes.selectDate} />
       <Dropdown
-        optionsList={["Самовывоз" ,"Доставка" ]}
+        optionsList={["Самовывоз", "Доставка"]}
         onClick={onClickDelivery}
         title="Доставка"
       />

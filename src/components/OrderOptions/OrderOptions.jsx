@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { deliveryState } from "../../redux/slices/deliverySlice";
 import getStringDate from "../../utils/getStringDate";
 import classes from "./OrderOptions.module.css";
 
@@ -19,7 +20,7 @@ const OrderOptions = () => {
   const timeFinish = useSelector(
     (state) => state.calendar.timeFinish || "12:00"
   );
-  const deliveryType = useSelector((state) => state.deliveryType.text);
+  const deliveryType = useSelector(deliveryState);
   return (
     <div className={classes.container}>
       <section className={classes.section}>

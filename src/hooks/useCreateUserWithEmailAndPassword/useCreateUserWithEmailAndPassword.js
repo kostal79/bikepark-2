@@ -15,6 +15,7 @@ export default function useCreateUserWithEmailAndPassword(auth) {
                 setIsLoading(true);
                 const userCredential = await createUserWithEmailAndPassword(auth, user_email, user_password);
                 const uid = userCredential.user.uid;
+                const displayName = []
                 setRegisteredUser(uid)
                 const docRef = doc(db, "users", uid);
                 const docData = { user_name, user_email, user_phone }

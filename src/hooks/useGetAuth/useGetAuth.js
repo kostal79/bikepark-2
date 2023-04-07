@@ -1,7 +1,6 @@
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 
-
 export default function useGetAuth() {
     const [isAuth, setIsAuth] = useState(false);
     const [error, setError] = useState();
@@ -14,7 +13,7 @@ export default function useGetAuth() {
                 if (user) {
                     const uid = user.uid;
                     setIsAuth(true);
-                    setUserId(uid)
+                    setUserId(uid);                    
                 } else {
                     setError("not authorized")
                     setIsAuth(false)

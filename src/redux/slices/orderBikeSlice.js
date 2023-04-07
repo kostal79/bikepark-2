@@ -9,7 +9,7 @@ export const orderBikeSlice = createSlice({
     initialState,
     reducers: {
         addBikeForOrder: (state, action) => {state.bikeForOrder.push(action.payload)},
-        removeBikeFromOrder: (state, action) => {state.bikeForOrder = state.bikeForOrder.filter((bike) => bike !== action.payload)}
+        removeBikeFromOrder: (state, action) => {state.bikeForOrder = state.bikeForOrder.filter((bike) => bike.id !== action.payload)}
     }
 })
 

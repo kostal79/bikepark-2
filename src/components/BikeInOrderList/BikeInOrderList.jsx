@@ -28,8 +28,8 @@ const BikeInOrderList = ({
         </p>
       </td>
       <td>
-        <Field
-          render={({ field }) => (
+        <Field>
+          {({ field }) => (
             <input
               {...field}
               name={`helmet`}
@@ -38,11 +38,11 @@ const BikeInOrderList = ({
               className={classes.input}
             />
           )}
-        />
+        </Field>
       </td>
       <td>
-        <Field
-          render={({ field }) => (
+        <Field>
+          {({ field }) => (
             <input
               {...field}
               type="checkbox"
@@ -51,11 +51,11 @@ const BikeInOrderList = ({
               className={classes.input}
             />
           )}
-        />
+        </Field>
       </td>
       <td>
-        <Field
-          render={({ field }) => (
+        <Field>
+          {({ field }) => (
             <input
               {...field}
               type="checkbox"
@@ -64,7 +64,7 @@ const BikeInOrderList = ({
               className={classes.input}
             />
           )}
-        />
+        </Field>
       </td>
       <td className={classes["price-cell"]}>
         <p className={classes.price}>

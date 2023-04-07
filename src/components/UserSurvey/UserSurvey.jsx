@@ -1,12 +1,21 @@
 import { Field } from "formik";
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./UserSurvey.module.css";
 import ButtonSpechBubble from "../ButtonSpechBubble/ButtonSpeachBubble";
 import validateName from "../../utils/validateName/validateName";
 import validatePhoneNumber from "../../utils/validatePhoneNumber/validatePhoneNumber";
 import validateNotEmpty from "../../utils/validateName/validateNotEmpty";
+import IMask from "imask";
 
 const UserSurvey = ({ errors, touched }) => {
+  useEffect(() => {
+    const element = document.querySelector("#phone");
+    const maskOptions = {
+      mask: "+7 000-000-00-00",
+    };
+    IMask(element, maskOptions);
+  }, []);
+
   return (
     <div className={classes.container}>
       <div className={classes.contacts}>
@@ -25,11 +34,11 @@ const UserSurvey = ({ errors, touched }) => {
         </section>
         <section className={classes["contacts_section"]}>
           <Field
+            id="phone"
             className={`${classes.input} ${classes["conatacts__tel"]}`}
             type="tel"
             name="phone"
-            placeholder="Номер телефона*"
-            pattern="[0-9]{10}"
+            placeholder="+7 XXX-XXX-XX-XX*"
             validate={validatePhoneNumber}
           />
           {errors.phone && touched.phone && (
@@ -117,9 +126,9 @@ const UserSurvey = ({ errors, touched }) => {
           </p>
         </section>
       </article>
-        <button className={classes.button} type="submit">
-          Забронировать
-        </button>
+      <button className={classes.button} type="submit">
+        Забронировать
+      </button>
     </div>
   );
 };

@@ -10,6 +10,8 @@ import searchResultsSlice from './slices/searchResultsSlice'
 import orderBikeSlice from './slices/orderBikeSlice'
 import modalSlice from './slices/modalSlice'
 import regFormSlice from './slices/regFormSlice'
+import tooltipsSlice from './slices/tooltipsSlice'
+import orderSlice from './slices/orderSlice'
 
 export const store = configureStore({
   reducer: {
@@ -24,5 +26,7 @@ export const store = configureStore({
     orderedBikes: orderBikeSlice,
     modal: modalSlice,
     regform: regFormSlice,
+    tooltips: tooltipsSlice,
+    order: orderSlice,
   },
 })
