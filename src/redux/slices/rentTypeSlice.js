@@ -14,5 +14,6 @@ export const rentTypeSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { setType } = rentTypeSlice.actions
+export const getRentType = state => state.rentType.type;
 
 export default rentTypeSlice.reducer

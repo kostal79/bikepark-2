@@ -3,7 +3,7 @@ import classes from "./WhiteButton.module.css"
 
 const WhiteButton = ({width, height, text, fontSize, onClick, uppercase}) => {
     const style = {
-        width: `${width}`,
+        width: `${width}px`,
         height: `${height}px`,
         textTransform: `${uppercase ? 'uppercase' : 'none'}`,
         fontSize: `${fontSize ? fontSize : 16}px`,

@@ -8,35 +8,18 @@ import dayBetween from "../../utils/dayBetween/dayBetween";
 import BackArrow from "../back-arrow/BackArrow";
 
 const OrderList = () => {
-  const orderedBikesIds = useSelector(
+  const bikesList = useSelector(
     (state) => state.orderedBikes.bikeForOrder
   );
-  const bikesList = useSelector((state) => state.searchResults.resultList);
 
   const dateFinish = useSelector((state) => state.calendar.dateFinish);
   const dateStart = useSelector((state) => state.calendar.dateStart);
 
-  // eslint-disable-next-line
-  const orderSum = orderedBikesIds.reduce((acc, id) => {
-    for (let bike of bikesList) {
-      if (id === bike.id) {
+  const orderSum = bikesList.reduce((acc, bike) => {
         return bike.price * dayBetween(dateStart, dateFinish) + acc;
-      }
-    }
-  }, 0);
+    }, 0);
 
-  const getBikeForId = (bikeList, id) => {
-    // eslint-disable-next-line
-    for (let [key, value] of Object.entries(bikeList)) {
-      if (value.id === id) {
-        return <BikeInOrderList {...value} key={value.id}/>;
-      }
-    }
-  };
-
-  const orderedBikesList = orderedBikesIds.map((id) =>
-    getBikeForId(bikesList, id)
-  );
+  const orderedBikesList = bikesList.map(bike => <BikeInOrderList {...bike} key={bike.id}/>)
 
   const scrollRef = useRef(0);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addBikeForOrder, removeBikeFromOrder } from "../../redux/slices/orderBikeSlice";
 import isBooked from "../../utils/isBooked/isBooked";
@@ -11,14 +11,16 @@ const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type 
   const finishDate = useSelector((state) => state.calendar.dateFinish);
   const startTime = useSelector((state) => state.calendar.timeStart);
   const finishTime = useSelector((state) => state.calendar.timeFinish);
-  const isPressed = useSelector((state) => state.orderedBikes.bikeForOrder.includes(id));
+  const [isPressed, setIsPressed] = useState(false);
   const dispatch = useDispatch();
 
   const addBike = () => {
-    dispatch(addBikeForOrder(id))
+    setIsPressed(true)
+    dispatch(addBikeForOrder({ id, image, name, price, size, model, type }))
   };
 
   const removeBike = () => {
+    setIsPressed(false)
     dispatch(removeBikeFromOrder(id))
   }
 

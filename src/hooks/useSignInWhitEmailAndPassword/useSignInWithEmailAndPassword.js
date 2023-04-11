@@ -12,7 +12,6 @@ export default function useSignInWithEmailAndPassword(auth) {
     const [userName, setUserName] = useState();
 
     const logIn = useCallback(async ( email, password) => {
-        console.log("useCallback")
         setIsLoading(true)
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);

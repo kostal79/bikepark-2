@@ -7,8 +7,7 @@ import { Field } from "formik";
 const BikeInOrderList = ({
   id,
   size,
-  booked,
-  imageRef,
+  image,
   brend,
   model,
   price,
@@ -20,7 +19,7 @@ const BikeInOrderList = ({
   return (
     <tr className={classes.row}>
       <td className={classes.firstColumn}>
-        <img className={classes.image} src={imageRef} alt="small bike"></img>
+        <img className={classes.image} src={image} alt="small bike"></img>
       </td>
       <td>
         <p className={classes.description}>

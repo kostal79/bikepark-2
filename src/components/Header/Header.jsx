@@ -9,17 +9,17 @@ import {ReactComponent as SignInLogo} from "../../assets/contacts.svg";
 import {ReactComponent as SignedInLogo} from "../../assets/authorizedLogo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../Modal/Modal";
-import { setSignIn } from "../../redux/slices/modalSlice";
+import { getIsSignActive, setSignIn } from "../../redux/slices/modalSlice";
 import Registration from "../Registration/Registration";
-import useGetAuth from "../../hooks/useGetAuth/useGetAuth";
 import UserWidget from "../UserWidget/UserWidget";
 import { setUserWidget, widgetState } from "../../redux/slices/tooltipsSlice";
+import { getIsAuth } from "../../redux/slices/authSlice";
 
 const Header = () => {
   const isActive = useSelector((state) => state.hamburger.isActive);
-  const isSignInIsActive = useSelector((state) => state.modal.isSignInIsActive);
+  const isSignInActive = useSelector(getIsSignActive);
   const dispatch = useDispatch();
-  const [isAuth, error, userId] = useGetAuth();
+  const isAuth = useSelector(getIsAuth);
   const userLogo = isAuth ? <SignedInLogo /> : <SignInLogo />;
   const widget = useSelector(widgetState);
 
@@ -106,7 +106,7 @@ const Header = () => {
         <HamburgerMenu />
       </div>
       <Modal>
-        {isSignInIsActive ? (
+        {isSignInActive ? (
           <div className={classes.sign} onClick={closeModal}>
             <Registration />
           </div>

@@ -11,7 +11,7 @@ import Modal from "../Modal/Modal";
 
 const Registration = () => {
   const activeForm = useSelector((state) => state.regform.activeWindow);
-  const isModalActive = useSelector((state) => state.modal.isSignInIsActive);
+  const isModalActive = useSelector((state) => state.modal.isSignInActive);
   const dispatch = useDispatch();
 
   const tabHandler = (event) => {

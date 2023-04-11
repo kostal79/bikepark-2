@@ -12,6 +12,7 @@ import modalSlice from './slices/modalSlice'
 import regFormSlice from './slices/regFormSlice'
 import tooltipsSlice from './slices/tooltipsSlice'
 import orderSlice from './slices/orderSlice'
+import authSlice from './slices/authSlice'
 
 export const store = configureStore({
   reducer: {
@@ -28,5 +29,6 @@ export const store = configureStore({
     regform: regFormSlice,
     tooltips: tooltipsSlice,
     order: orderSlice,
+    auth: authSlice,
   },
 })

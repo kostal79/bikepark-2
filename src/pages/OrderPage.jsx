@@ -1,29 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import OrderForm from "../components/orderForm/OrderForm";
 import Bridge from "../components/Bridge/Bridge";
 import UserSurvey from "../components/UserSurvey/UserSurvey";
 import { Form, Formik } from "formik";
-import Registration from "../components/Registration/Registration";
-import { useDispatch, useSelector } from "react-redux";
-import { setSignIn } from "../redux/slices/modalSlice";
-import useGetAuth from "../hooks/useGetAuth/useGetAuth";
+import { useSelector } from "react-redux";
 import { deliveryState } from "../redux/slices/deliverySlice";
-import { selectedDateFinish, selectedDateStart, selectedTimeStart, selectedTimeFinish } from "../redux/slices/calendarSlice";
+import {
+  selectedDateFinish,
+  selectedDateStart,
+  selectedTimeStart,
+  selectedTimeFinish,
+} from "../redux/slices/calendarSlice";
 import getStringDate from "../utils/getStringDate";
+import { getUserId } from "../redux/slices/authSlice";
+import makeNewOrder from "../Api/makeNewOrder";
+import { useNavigate } from "react-router-dom";
+import { getRentType } from "../redux/slices/rentTypeSlice";
 
 const OrderPage = () => {
-  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-  const [isAuth, error, userId] = useGetAuth();
-  const dispatch = useDispatch();
+  const userId = useSelector(getUserId);
   const orderedBikes = useSelector((state) => state.orderedBikes.bikeForOrder);
-  const deliveryType = useSelector(deliveryState)
-  const [submited, setSubmited] = useState(false);
-  const dateStart = getStringDate(useSelector(selectedDateStart));
-  const dateFinish = getStringDate(useSelector(selectedDateFinish));
+  const deliveryType = useSelector(deliveryState);
+  const dateStart = useSelector(selectedDateStart);
+  const dateFinish = useSelector(selectedDateFinish);
   const timeStart = useSelector(selectedTimeStart);
   const timeFinish = useSelector(selectedTimeFinish);
+  const navigate = useNavigate();
+  const rentType = useSelector(getRentType)
 
   const initialValues = {
+    dateOfOrder: new Date(),
     dateStart: dateStart,
     dateFinish: dateFinish,
     timeStart: timeStart,
@@ -37,37 +43,35 @@ const OrderPage = () => {
     phone: "",
     addres: "",
     "payment-type": "",
-  }
+    id: userId,
+    status: "в обработке",
+    isPaid: false,
+    rentType: rentType,
+  };
 
-  if (isAuth && !submited) {
-    dispatch(setSignIn(false))
+  const makeOrder = async (orderInfo) => {
+    await makeNewOrder(orderInfo);
+    navigate("/account");
+  };
 
-    return (
-      <div>
-        <Formik
-          initialValues={initialValues}
-          onSubmit={async (values) => {
-            await sleep(500);
-            console.log(values);
-          }}
-        >
-          {(props) => (
-            <Form>
-              <OrderForm />
-              <Bridge />
-              <UserSurvey {...props} />
-            </Form>
-          )}
-        </Formik>
-      </div>
-    );
-  } else if (isAuth && submited){
-    //TODO
-  } else {
-    dispatch(setSignIn(true));
-    return <Registration />;
-
-  }
+  return (
+    <div>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={async (values) => {
+          makeOrder(values);
+        }}
+      >
+        {(props) => (
+          <Form>
+            <OrderForm />
+            <Bridge />
+            <UserSurvey {...props} />
+          </Form>
+        )}
+      </Formik>
+    </div>
+  );
 };
 
 export default OrderPage;
