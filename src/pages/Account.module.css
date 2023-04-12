@@ -1,0 +1,29 @@
+
+.th__top {
+    padding: 7px 25px;
+    text-align: right;
+}
+
+.table__top {
+    table-layout: fixed;
+    width: 100%;
+}
+
+
+tr .th__top:nth-child(1) {
+    min-width: 300px;
+    width: 48%;
+}
+
+.table__top th:nth-child(1),
+.table__top th:nth-child(2),
+.table__top td:nth-child(1),
+.table__top td:nth-child(2) {
+    width: 24%;
+    text-align: left;
+}
+
+.table__top th:nth-child(1),
+.table__top td:nth-child(1) {
+    padding: 14px 0;
+}

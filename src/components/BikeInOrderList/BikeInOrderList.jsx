@@ -18,15 +18,15 @@ const BikeInOrderList = ({
 
   return (
     <tr className={classes.row}>
-      <td className={classes.firstColumn}>
+      <td className={`${classes.firstColumn} ${classes.td}`}>
         <img className={classes.image} src={image} alt="small bike"></img>
       </td>
-      <td>
+      <td className={classes.td}>
         <p className={classes.description}>
           {type} {brend} {model} {size}”
         </p>
       </td>
-      <td>
+      <td  className={classes.td}>
         <Field>
           {({ field }) => (
             <input
@@ -39,7 +39,7 @@ const BikeInOrderList = ({
           )}
         </Field>
       </td>
-      <td>
+      <td  className={classes.td}>
         <Field>
           {({ field }) => (
             <input
@@ -52,7 +52,7 @@ const BikeInOrderList = ({
           )}
         </Field>
       </td>
-      <td>
+      <td  className={classes.td}>
         <Field>
           {({ field }) => (
             <input
@@ -65,7 +65,7 @@ const BikeInOrderList = ({
           )}
         </Field>
       </td>
-      <td className={classes["price-cell"]}>
+      <td className={`${classes["price-cell"]} ${classes.td}`}>
         <p className={classes.price}>
           {price * dayBetween(dateStart, dateFinish)} AED
         </p>

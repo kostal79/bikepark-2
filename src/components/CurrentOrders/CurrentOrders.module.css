@@ -1,33 +1,62 @@
 .container {
     width: 100%;
     min-width: 730px;
-}
-
-.table {
-    width: 100%;
     border-top: 1px solid rgba(221, 227, 235, 1);
+    border-bottom: 1px solid rgba(221, 227, 235, 1);
+    padding-top: 20px;
 }
 
+.td,
 .th {
-    padding: 11px 0;
-    font-size: 16px;
-    font-weight: 500;
-    color: rgba(171, 177, 197, 1);
+    padding: 7px 25px;
+    text-align: right;
+}
+
+.table__top, .table__center, .table__bottom{
+    table-layout: fixed;
+    width: 100%;
+}
+
+
+tr .th:nth-child(1) {
+    min-width: 300px;
+    width: 48%;
+}
+
+.table__top th:nth-child(1),
+.table__top th:nth-child(2),
+.table__top td:nth-child(1),
+.table__top td:nth-child(2) {
+    width: 24%;
     text-align: left;
 }
 
-.td {
-    padding: 8px 0;
-    font-size: 16px;
-    font-weight: 500;
-    color: rgba(20, 35, 61, 1);
-    line-height: 19.5px; 
+.table__top th:nth-child(1),
+.table__top td:nth-child(1) {
+    padding: 14px 0;
 }
 
-.td_main {
-    border-bottom: 1px solid rgba(221, 227, 235, 1);
-    padding: 25px 0;
+.table__center th:nth-child(1),
+.table__center td:nth-child(1) {
+    text-align: left;
 }
+
+.table__bottom th:nth-child(2),
+.table__bottom td:nth-child(2) {
+    width: 10%;
+}
+
+.tr__clipable {
+    cursor: pointer;
+}
+
+.line {
+    height: 1px;
+    border: none;
+    background-color: rgba(221, 227, 235, 1);
+    margin: 20px 0;
+}
+
 
 .arrow {
     cursor: pointer;
@@ -35,18 +64,7 @@
     margin-bottom: 2px;
 }
 
-.footer__row {
-    padding-top: 14px;
-    border-top: 1px solid rgba(221, 227, 235, 1);
-    border-collapse: collapse;
-}
-
-tfoot .th {
-    text-align: right;
-}
-
 .additional {
-    display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 20px 0 40px;

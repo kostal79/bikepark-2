@@ -11,7 +11,6 @@ import {
   selectedTimeStart,
   selectedTimeFinish,
 } from "../redux/slices/calendarSlice";
-import getStringDate from "../utils/getStringDate";
 import { getUserId } from "../redux/slices/authSlice";
 import makeNewOrder from "../Api/makeNewOrder";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +28,7 @@ const OrderPage = () => {
   const rentType = useSelector(getRentType)
 
   const initialValues = {
-    dateOfOrder: new Date(),
+    dateOfOrder: (new Date()).toString(),
     dateStart: dateStart,
     dateFinish: dateFinish,
     timeStart: timeStart,
