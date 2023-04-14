@@ -72,6 +72,7 @@ const UserSurvey = ({ errors, touched }) => {
               type="radio"
               name="payment-type"
               value="online"
+              checked
             />
             Онлайн
           </label>

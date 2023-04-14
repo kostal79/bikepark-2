@@ -1,0 +1,36 @@
+.table__top {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.th__top {
+    padding: 7px 25px;
+    text-align: right;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(171, 177, 197, 1);
+}
+
+
+
+tr .th__top:nth-child(1) {
+    min-width: 300px;
+    width: 48%;
+}
+
+.table__top th:nth-child(1),
+.table__top th:nth-child(2),
+.table__top td:nth-child(1),
+.table__top td:nth-child(2) {
+    width: 24%;
+    text-align: left;
+}
+
+.table__top th:nth-child(1),
+.table__top td:nth-child(1) {
+    padding: 14px 0;
+}
+
+.spinner {
+    margin-left: calc(50vw - 60px);
+}

@@ -1,0 +1,19 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr repeat(4);
+    row-gap: 18px;
+}
+
+.label {
+    font-size: 14px;
+    color: rgba(171, 177, 197, 1);
+}
+
+.text {
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+section:last-of-type {
+    margin-bottom: 10px;
+}

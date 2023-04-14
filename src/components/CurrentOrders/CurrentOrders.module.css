@@ -1,20 +1,32 @@
 .container {
     width: 100%;
-    min-width: 730px;
+    min-width: 690px;
     border-top: 1px solid rgba(221, 227, 235, 1);
     border-bottom: 1px solid rgba(221, 227, 235, 1);
-    padding-top: 20px;
+    padding: 20px 0;
+    font-size: 16px;
 }
 
 .td,
 .th {
-    padding: 7px 25px;
+    padding: 7px;
     text-align: right;
+}
+
+.th {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(171, 177, 197, 1);
 }
 
 .table__top, .table__center, .table__bottom{
     table-layout: fixed;
     width: 100%;
+}
+
+.table__top {
+    font-size: 14px;
+    font-weight: 600;
 }
 
 
@@ -23,6 +35,14 @@ tr .th:nth-child(1) {
     width: 48%;
 }
 
+.table__top .td:nth-child(5),
+.table__top .th:nth-child(5),
+.table__center .th:nth-child(5)
+.table__center .td:nth-child(5) {
+    min-width: 140px;
+    width: 20%;
+    font-size: 14px;
+}
 .table__top th:nth-child(1),
 .table__top th:nth-child(2),
 .table__top td:nth-child(1),
@@ -44,7 +64,9 @@ tr .th:nth-child(1) {
 .table__bottom th:nth-child(2),
 .table__bottom td:nth-child(2) {
     width: 10%;
+    min-width: 140px;
 }
+
 
 .tr__clipable {
     cursor: pointer;
@@ -65,8 +87,8 @@ tr .th:nth-child(1) {
 }
 
 .additional {
-    flex-direction: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin: 20px 0 40px;
     font-size: 16px;
     font-weight: 500;
@@ -76,10 +98,12 @@ tr .th:nth-child(1) {
 
 .additional__buttons {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     column-gap: 40px;
-    align-items: end;
-    justify-content: end;
+    row-gap: 24px;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 
 .additional__info {
@@ -95,4 +119,5 @@ tr .th:nth-child(1) {
     padding: 10px 14px;
     border: 1px solid grey;
     border-radius: 6px;
+    text-align: center;
 }

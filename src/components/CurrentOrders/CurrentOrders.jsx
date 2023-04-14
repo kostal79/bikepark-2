@@ -8,7 +8,6 @@ import WhiteButton from "../WhiteButton/WhiteButton";
 import { statusColor } from "../../utils/statusColor/statusColor";
 
 const CurrentOrders = (props) => {
-  console.log("props:  ", props);
   masks.orderDate = "dd.mm.yy";
   const amountOfDays = dayBetween(props.dateStart, props.dateFinish);
 
@@ -20,8 +19,7 @@ const CurrentOrders = (props) => {
   const paymentType =
     props["payment-type"] === "on delivery" ? "На месте" : "Онлайн";
 
-  const dateOfOrder = dateFormat(props.dateOfOrder, "orderDate")
-
+  const dateOfOrder = dateFormat(props.dateOfOrder, "orderDate");
 
   const [hidden, setHidden] = useState(true);
   const clickHandler = () => {
@@ -112,7 +110,7 @@ const CurrentOrders = (props) => {
         </table>
         <div
           className={classes.additional}
-          style={{ display: hidden ? "none" : "flex" }}
+          style={{ display: hidden ? "none" : "grid" }}
         >
           <div className={classes.additional__info}>
             <p>{`Тип аренды: ${rentType}`}</p>
@@ -123,7 +121,10 @@ const CurrentOrders = (props) => {
             <p>{`Тип оплаты: ${paymentType}`}</p>
             <p>{`Тип доставки: ${props.deliveryType}`}</p>
           </div>
-          <div className={classes.additional__buttons}>
+          <div
+            className={classes.additional__buttons}
+            style={{ display: props.status === "завершен" ? "none" : "flex" }}
+          >
             <BlueButton
               width={240}
               height={60}
