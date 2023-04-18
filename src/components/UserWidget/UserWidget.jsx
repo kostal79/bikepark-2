@@ -19,9 +19,13 @@ const UserWidget = () => {
       console.log(error);
     }
   };
+
+  const accounLinkHandler  = () => {
+    dispatch(setUserWidget(false))
+  }
   return (
     <ul className={classes.container}>
-      <li>
+      <li onClick={accounLinkHandler}>
         <NavLink to={"/Account"}>Личный кабинет</NavLink>
       </li>
       <li onClick={logoutHandler}>

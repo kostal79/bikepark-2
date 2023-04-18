@@ -1,3 +1,8 @@
+.container {
+    width: fit-content;
+}
+
+
 .table__top {
     table-layout: fixed;
     width: 100%;

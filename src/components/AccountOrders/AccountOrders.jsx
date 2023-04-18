@@ -10,7 +10,7 @@ const AccountOrders = ({ activeWindow }) => {
   const [ordersCurrent, ordersComplited, loaded] = useUserOrders(uid);
 
   return (
-    <div>
+    <div className={classes.container}>
       <table className={classes.table__top}>
         <thead>
           <tr>

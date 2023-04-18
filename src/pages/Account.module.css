@@ -6,6 +6,10 @@
     margin-bottom: 100px;
 }
 
+.scrolling {
+    overflow-x: auto;
+}
+
 .title {
     font-size: 36px;
     font-weight: 600;
