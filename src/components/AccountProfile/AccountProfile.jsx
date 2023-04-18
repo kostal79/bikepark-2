@@ -1,17 +1,26 @@
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/authSlice";
 import classes from "./AccountProfile.module.css";
-import { validateEmail } from "../../utils/validateEmail/validateEmail";
 import BlueButton from "../BlueButton/BlueButton";
+import ConfirmButton from "../ConfirmButton/ConfirmButton";
+import RegistrationPassword from "../RegistrationPassword/RegistrationPassword";
+import RegistrationName from "../RegistrationName/RegistrationName";
+import RegistrationEmail from "../RegistrationEmail/RegistrationEmail";
+import RegistrationPhone from "../RegistrationPhone/RegistrationPhone";
 
 const AccountProfile = () => {
-  const [isUpdating, setIsUpdating] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(true);
   const userData = useSelector(getUserData);
-  console.log(userData)
-  const {user_name, user_email, user_phone} = userData;
-
+  const { user_name, user_email, user_phone } = userData;
+  const initialValues = {
+    user_name: user_name,
+    user_email: user_email,
+    user_phone: user_phone,
+    user_password: "",
+    user_confirm_password: "",
+  };
 
   if (!isUpdating) {
     return (
@@ -32,7 +41,13 @@ const AccountProfile = () => {
           <label className={classes.label}>Пароль</label>
           <p className={classes.text}>*****</p>
         </section>
-        <BlueButton height="60" fontSize="18" text="Редактировать" />
+        <BlueButton
+          width="332"
+          height="60"
+          fontSize="18"
+          text="Редактировать"
+          onClick={() => setIsUpdating(!isUpdating)}
+        />
       </div>
     );
   }
@@ -41,26 +56,22 @@ const AccountProfile = () => {
     <Formik
       enableReinitialize={true}
       onSubmit={(values) => console.log(values)}
+      initialValues={initialValues}
     >
-      <Form>
-        <section className={classes.section}>
-          <label htmlFor="name_first">Имя</label>
-          <Field type="text" name="name_first" />
-        </section>
-        <section className={classes.section}>
-          <label htmlFor="email">E-mail</label>
-          <Field type="email" name="email" validate={validateEmail} />
-        </section>
-        <section className={classes.section}>
-          <label htmlFor="phone_number">Номер телефона</label>
-          <Field id="phone" type="tel" name="phone_number" />
-        </section>
-        <section className={classes.section}>
-          <label htmlFor="password">Пароль</label>
-          <Field name="user_password" />
-        </section>
-        <Field className={classes.button} type="submit" />
-      </Form>
+      {(formikProps) => (
+        <Form>
+          <div className={classes.block}>
+            <RegistrationName classes={classes} />
+            <RegistrationEmail classes={classes} />
+            <RegistrationPhone classes={classes} />
+            <h2 className={classes.subtitle}>Изменение пароля</h2>
+            <RegistrationPassword classes={classes} formikprops={formikProps} />
+            <div className={classes.button}>
+              <ConfirmButton text="Сохранить" type="submit" />
+            </div>
+          </div>
+        </Form>
+      )}
     </Formik>
   );
 };

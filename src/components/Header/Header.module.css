@@ -16,7 +16,7 @@
     filter: invert(37%) sepia(95%) saturate(6927%) hue-rotate(217deg) brightness(100%) contrast(103%);
 }
 
-svg:hover rect, svg:hover circle, svg:hover path {
+.header svg:hover rect, svg:hover circle, svg:hover path {
     filter: invert(37%) sepia(95%) saturate(6927%) hue-rotate(217deg) brightness(100%) contrast(103%);
     fill: none;
 
