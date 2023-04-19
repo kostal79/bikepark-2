@@ -1,0 +1,102 @@
+.container {
+    background-color: rgba(242, 244, 247, 1);
+    border-radius: 20px;
+    padding: 30px 20px 20px 55px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 35px;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: -15px;
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.section {
+    display: grid;
+    row-gap: 35px;
+    margin: 35px 0;
+}
+
+.img {
+    height: 200px;
+    width: 100%;
+    max-width: 530px;
+    border-radius: 15px;
+    justify-self: center;
+    background: no-repeat center url(../../assets/city.png);
+    background-size: auto 200px;
+}
+
+.section--2 .img {
+    height: 220px;
+}
+
+.section--4, .section--5, .section--6, .section--6 {
+   row-gap: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .title {
+        font-size: 36px;
+    }
+    .section--2 {
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 30px;
+    }
+
+    .section--2 .img {
+        height: 154px;
+    }
+
+    .section--3 {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 30px;
+    }
+
+    .section--3 .subtitle {
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .article:last-child {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 30px;
+    }
+
+    .article:last-child .subtitle {
+        grid-column-start: 1;
+        grid-column-end: 5;
+    }
+
+    .article:last-child .img {
+        height: 110px;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+    .section--2 .img {
+        height: 262px;
+        background-size: auto;
+    }
+
+    .section--3 .img {
+        height: 262px;
+        background-size: auto 262px;
+    }
+
+    .article:last-child .img {
+        height: 200px;
+    }
+
+}

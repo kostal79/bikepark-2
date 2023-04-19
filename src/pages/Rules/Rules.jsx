@@ -1,5 +1,5 @@
 import React from 'react'
-import RulesText from '../components/RulesText/RulesText';
+import RulesText from '../../components/RulesText/RulesText';
 
 const Rules = () => {
     return (

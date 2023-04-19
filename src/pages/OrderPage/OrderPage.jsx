@@ -1,20 +1,20 @@
 import React from "react";
-import OrderForm from "../components/orderForm/OrderForm";
-import Bridge from "../components/Bridge/Bridge";
-import UserSurvey from "../components/UserSurvey/UserSurvey";
+import OrderForm from "../../components/orderForm/OrderForm";
+import Bridge from "../../components/Bridge/Bridge";
+import UserSurvey from "../../components/UserSurvey/UserSurvey";
 import { Form, Formik } from "formik";
 import { useSelector } from "react-redux";
-import { deliveryState } from "../redux/slices/deliverySlice";
+import { deliveryState } from "../../redux/slices/deliverySlice";
 import {
   selectedDateFinish,
   selectedDateStart,
   selectedTimeStart,
   selectedTimeFinish,
-} from "../redux/slices/calendarSlice";
-import { getUserId } from "../redux/slices/authSlice";
-import makeNewOrder from "../Api/makeNewOrder";
+} from "../../redux/slices/calendarSlice";
+import { getUserId } from "../../redux/slices/authSlice";
+import makeNewOrder from "../../Api/makeNewOrder";
 import { useNavigate } from "react-router-dom";
-import { getRentType } from "../redux/slices/rentTypeSlice";
+import { getRentType } from "../../redux/slices/rentTypeSlice";
 
 const OrderPage = () => {
   const userId = useSelector(getUserId);

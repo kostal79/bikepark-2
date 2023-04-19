@@ -1,11 +1,11 @@
 import { collection } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
-import getAllCollection from "../Api/getAllCollection";
-import makeNewBike from "../Api/makeNewBike";
-import uploadImage from "../Api/uploadImage";
-import Dropdown from "../components/Dropdown/Dropdown";
-import UserWidget from "../components/UserWidget/UserWidget";
-import { db } from "../config/firebase";
+import getAllCollection from "../../Api/getAllCollection";
+import makeNewBike from "../../Api/makeNewBike";
+import uploadImage from "../../Api/uploadImage";
+import Dropdown from "../../components/Dropdown/Dropdown";
+import UserWidget from "../../components/UserWidget/UserWidget";
+import { db } from "../../config/firebase";
 
 const Rent = () => {
   const [typesList, setTypesList] = useState([]);

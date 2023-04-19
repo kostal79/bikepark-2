@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSignIn } from "../../redux/slices/modalSlice";
 import CloseButton from "../Close-button/CloseButton";
 import classes from "./Registration.module.css";
-import ErrorPage from "../../pages/ErrorPage";
+import ErrorPage from "../../pages/ErrorPage/ErrorPage";
 import SigninForm from "../SigninForm/SignInForm";
 import NewMemberForm from "../NewMemberForm/NewMemberForm";
 import { setActiveWindow } from "../../redux/slices/regFormSlice";

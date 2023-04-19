@@ -9,9 +9,17 @@ import RegistrationPassword from "../RegistrationPassword/RegistrationPassword";
 import RegistrationName from "../RegistrationName/RegistrationName";
 import RegistrationEmail from "../RegistrationEmail/RegistrationEmail";
 import RegistrationPhone from "../RegistrationPhone/RegistrationPhone";
+import { doc } from "firebase/firestore";
+import { db } from "../../config/firebase";
+import { getUserId } from "../../redux/slices/authSlice";
+import { updateDocumentNested } from "../../Api/update_document_nested";
+import { authUpdateUserEmail } from "../../Api/auth_update_user_email";
+import { authUpdatePassword } from "../../Api/auth_update_password";
+import { authUpdateUserName } from "../../Api/auth_update_user_name";
 
 const AccountProfile = () => {
   const [isUpdating, setIsUpdating] = useState(true);
+  const userId = useSelector(getUserId);
   const userData = useSelector(getUserData);
   const { user_name, user_email, user_phone } = userData;
   const initialValues = {
@@ -20,6 +28,24 @@ const AccountProfile = () => {
     user_phone: user_phone,
     user_password: "",
     user_confirm_password: "",
+  };
+
+  const updateProfile = async (values) => {
+    alert("TODO")
+    // const email = values.user_email;
+    // const password = values.user_password;
+    // const docRef = doc(db, "users", userId);
+    // const updatedInfo = { user_phone: values.user_phone };
+    // const newName = values.user_name;
+    // if (values.user_phone !== user_phone){
+    //   await updateDocumentNested(docRef, updatedInfo)
+    // }
+    // if (values.user_email !== user_email) {
+    //   await authUpdateUserEmail(email, docRef)
+    // }
+    // if (values.user_name !== user_name) {
+    //   await authUpdateUserName(docRef, newName)
+    // }
   };
 
   if (!isUpdating) {
@@ -55,7 +81,7 @@ const AccountProfile = () => {
   return (
     <Formik
       enableReinitialize={true}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => updateProfile(values)}
       initialValues={initialValues}
     >
       {(formikProps) => (
