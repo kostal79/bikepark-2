@@ -11,6 +11,7 @@ import Loader from "../Loader/Loader";
 import RegistrationName from "../RegistrationName/RegistrationName";
 import RegistrationPhone from "../RegistrationPhone/RegistrationPhone";
 import RegistrationPassword from "../RegistrationPassword/RegistrationPassword";
+import RegistrationEmail from "../RegistrationEmail/RegistrationEmail";
 
 const NewMemberForm = () => {
   const dispatch = useDispatch();
@@ -40,13 +41,9 @@ const NewMemberForm = () => {
         {(formikProps) => (
           <Form>
             <RegistrationName classes={classes} />
-
+            <RegistrationEmail classes={classes} />
             <RegistrationPhone classes={classes} />
-
-            <RegistrationName classes={classes} />
-            
             <RegistrationPassword classes={classes} formikProps={formikProps} />
-
             <AgreementConfirmation />
             {formikProps.errors.isConfirmed &&
               formikProps.touched.isConfirmed && (

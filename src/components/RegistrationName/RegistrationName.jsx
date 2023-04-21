@@ -7,7 +7,7 @@ const RegistrationName = ({classes}) => {
     return (
     <section>
       <StyledFormField
-        label="Имя*"
+        label="Имя"
         name="user_name"
         type="text"
         placeholder="Введите имя"

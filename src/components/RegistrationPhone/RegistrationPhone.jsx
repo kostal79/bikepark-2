@@ -16,7 +16,7 @@ const RegistrationPhone = ({classes}) => {
     <section>
       <StyledFormField
         id="registration_phone"
-        label="Номер телефона*"
+        label="Номер телефона"
         name="user_phone"
         type="phone"
         placeholder="+7 XXX-XXX-XX-XX"

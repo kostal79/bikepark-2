@@ -37,5 +37,5 @@ tr .th__top:nth-child(1) {
 }
 
 .spinner {
-    margin-left: calc(50vw - 60px);
+    margin-left: calc(50% - 60px);
 }
