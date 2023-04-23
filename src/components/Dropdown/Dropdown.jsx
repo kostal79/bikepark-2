@@ -3,6 +3,7 @@ import classes from "./Dropdown.module.css";
 import { ReactComponent as DropdownArrow } from "../../assets/select.svg";
 
 const Dropdown = ({ optionsList, onClick, title }) => {
+  optionsList = optionsList ? optionsList : [""];
   const [selectedOption, setSelectedOption] = useState(optionsList[0]);
   const [contentIsActive, setContentIsActive] = useState(false);
   const [options, setOptions] = useState();

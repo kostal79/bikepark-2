@@ -34,39 +34,34 @@
     margin-bottom: 20px;
 }
 
-.link {
-    padding: 20px 90px;
-    border: 1px solid rgba(41, 127, 255, 1);
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: 700;
-}
-
-.link--active {
-    background-color: rgba(41, 127, 255, 1);
-    color: rgba(255, 255, 255, 1);
-}
-
-.link--disactive {
-    background-color: rgba(255, 255, 255, 1);
-    color:rgba(41, 127, 255, 1);
-}
 
 @media screen and (min-width: 700px) {
-    .list, .filters {
+
+    .list,
+    .filters {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .popup__container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 
 
 @media screen and (min-width: 1060px) {
-    .list, .filters {
+
+    .list,
+    .filters {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
 @media screen and (min-width: 1240px) {
-    .list, .filters {
+
+    .list,
+    .filters {
         grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }

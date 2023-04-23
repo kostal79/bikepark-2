@@ -1,48 +1,45 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Bridge from "../Bridge/Bridge";
 import classes from "./SelectBikeOptions.module.css";
-import { Link } from "react-router-dom";
-import useFilterBySize from "../../hooks/useFilterBySize/useFilterBySize";
-import useFilterByBrend from "../../hooks/useFilterByBrend/useFilterByBrend";
 import BikeCardSmall from "../BikeCardSmall/BikeCardSmall";
 import Dropdown from "../Dropdown/Dropdown";
+import BlueButton from "../BlueButton/BlueButton";
+import { useAllSizes } from "../../hooks/useAllSizes/useAllSizes";
+import { useAllBrends } from "../../hooks/useAllBrends/useAllBrends";
+import useSearchBikes from "../../hooks/useSearchBikes/useSearchBikes";
+import { getBikeForOrder } from "../../redux/slices/orderBikeSlice";
+import PopupBook from "../PopupBook/PopupBook";
 
 const SelectBikeOptions = () => {
   const allResults = useSelector((state) => state.searchResults.resultList);
+  const sizes = useAllSizes();
+  const brends = useAllBrends();
+  const [selectedBrend, setSelectedBrend] = useState("Все");
+  const [selectedSize, setSelectedSize] = useState("Все");
+  const [, fetchBikes] = useSearchBikes();
+  const [amount, setAmount] = useState(8);
+  const bikesInOrder = useSelector(getBikeForOrder);
 
-  const orderedBikes = useSelector((state) => state.orderedBikes.bikeForOrder);
-
-  const { filteredByBrend, handleBrend } =
-    useFilterByBrend(allResults);
-
-  const { filteredBySize, handleSize } =
-    useFilterBySize(allResults);
+  useEffect(() => {
+    fetchBikes(amount, selectedBrend, selectedSize);
+    // eslint-disable-next-line
+  }, [selectedBrend, selectedSize, amount]);
 
   if (allResults.length > 0) {
-    const brendList = ["Все"].concat(
-      Array.from(new Set(allResults.map((item) => item.brend)))
-    );
-    const sizeList = ["Все"].concat(
-      Array.from(new Set(allResults.map((item) => item.size)))
-    );
-
-    const filteredBikes = filteredByBrend.map(
-      (item) =>
-        filteredBySize.includes(item) && (
-          <BikeCardSmall
-            id={item.id}
-            image={item.imageRef}
-            bookedDates={item.bookedDates}
-            name={item.brend}
-            price={item.price}
-            size={item.size}
-            type={item.type}
-            model={item.model}
-            key={item.id}
-          />
-        )
-    );
+    const filteredBikes = allResults.map((item) => (
+      <BikeCardSmall
+        id={item.id}
+        image={item.imageRef}
+        bookedDates={item.bookedDates}
+        name={item.brend}
+        price={item.price}
+        size={item.size}
+        type={item.type}
+        model={item.model}
+        key={item.id}
+      />
+    ));
 
     return (
       <div className={classes.container}>
@@ -50,32 +47,29 @@ const SelectBikeOptions = () => {
         <div className={classes["search-results-block"]}>
           <div className={classes.filters}>
             <Dropdown
-              optionsList={brendList}
+              optionsList={brends}
               title="Бренд"
-              onClick={handleBrend}
+              onClick={(event) => setSelectedBrend(event.target.innerText)}
             />
             <Dropdown
-              optionsList={sizeList}
+              optionsList={sizes}
               title="Размер"
-              onClick={handleSize}
+              onClick={(event) => setSelectedSize(event.target.innerText)}
             />
           </div>
           <ul className={classes.list}>{filteredBikes}</ul>
           <div className={classes.button}>
-            {orderedBikes.length > 0 ? (
-              <Link
-                className={`${classes.link} ${classes["link--active"]}`}
-                to="/order"
-              >
-                Далее
-              </Link>
-            ) : (
-              <div className={`${classes.link} ${classes["link--disactive"]}`}>
-                Далее
-              </div>
-            )}
+            <BlueButton
+              text="Далее"
+              height={60}
+              width={300}
+              fontSize={18}
+              onClick={() => setAmount((prev) => prev + 8)}
+              disabled={allResults.length < amount ? true : false}
+            />
           </div>
         </div>
+        {bikesInOrder.length > 0 && <PopupBook />}
       </div>
     );
   }

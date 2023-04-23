@@ -12,5 +12,6 @@ export const searchResultsSlice = createSlice({
     }
 })
 
-export const { setResultList } = searchResultsSlice.actions
+export const { setResultList } = searchResultsSlice.actions;
 export default searchResultsSlice.reducer
+export const getResultList = state => state.searchResults.resultList;

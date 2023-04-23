@@ -6,9 +6,9 @@ import classes from "./BlueButton.module.css";
  * @params {width: string, height: string, text: string, onClick: function}
  * @returns component
  */
-const BlueButton = ({ width, height, text, uppercase, fontSize, onClick, }) => {
+const BlueButton = ({ width, height, text, uppercase, fontSize, onClick, disabled}) => {
   return (
-    <div
+    <button
       className={classes.button}
       style={{
         width: `${width}px`,
@@ -17,9 +17,10 @@ const BlueButton = ({ width, height, text, uppercase, fontSize, onClick, }) => {
         fontSize: `${fontSize ? fontSize : 14}px`
       }}
       onClick={onClick}
+      disabled={disabled}
     >
       {text}
-    </div>
+    </button>
   );
 };
 

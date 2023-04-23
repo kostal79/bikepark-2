@@ -3,23 +3,21 @@ import classes from "./SelectBikeType.module.css";
 import TypeBikeItem from "../TypeBikeItem/TypeBikeItem";
 import BlueButton from "../BlueButton/BlueButton";
 import TypeSkeleton from "../TypeSkeleton/TypeSkeleton";
-import { useDispatch, useSelector } from "react-redux";
-import { setResultList } from "../../redux/slices/searchResultsSlice";
+import { useSelector } from "react-redux";
 import { ReactComponent as Scroller } from "../../assets/scroller.svg";
-import { collection, query, where } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 import { db } from "../../config/firebase";
 import getAllCollection from "../../Api/getAllCollection";
 import scrollFunc from "../../utils/scrollFunc/scrollFunc";
 import { selectedDateFinish, selectedDateStart } from "../../redux/slices/calendarSlice";
-import { bikesTypes } from "../../redux/slices/bikeSlice";
+import useSearchBikes from "../../hooks/useSearchBikes/useSearchBikes";
 
 const SelectBikeType = () => {
   const [types, setTypes] = useState();
   const scrollRef = useRef(0);
   const dateStart = useSelector(selectedDateStart);
   const dateFinish = useSelector(selectedDateFinish);
-  const selectedBikeTypes = useSelector(bikesTypes);
-  const dispatch = useDispatch();
+  const [, getBikes] = useSearchBikes();
   
   const scrollBikes = () => {
     const scrollField = document.querySelector(`.${classes.types}`);
@@ -27,12 +25,9 @@ const SelectBikeType = () => {
     scrollFunc(scrollField, steps, scrollRef);
   }
   
-  const searchBikes = async () => {
+  const searchHandler = (num) => {
     if (dateStart && dateFinish) {
-      const collectionRef = collection(db, "bikes")
-      const q = query(collectionRef, where("type" , "in", selectedBikeTypes));
-      const searchResults = await getAllCollection(q);
-      dispatch(setResultList(searchResults))
+        getBikes(num);
     } else {
       alert("Choose dates")
     }
@@ -55,6 +50,7 @@ const SelectBikeType = () => {
   }
   fetchData()
   }, []);
+  
 
   return (
     <div className={classes.container}>
@@ -82,7 +78,7 @@ const SelectBikeType = () => {
           text={"Найти"}
           uppercase={false}
           fontSize={18}
-          onClick={searchBikes}
+          onClick={() => searchHandler(8)}
         />
       </div>
     </div>

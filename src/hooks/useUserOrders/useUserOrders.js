@@ -14,20 +14,27 @@ export function useUserOrders(uid) {
     useEffect(() => {
         async function getOrders() {
             const user = await getDocument(userRef);
-            const ordersIds = user.user_orders;
-            const tempCurrent = [];
-            const tempComplited = [];
-            for (let id of ordersIds) {
-                const orderRef = doc(db, "orders", id);
-                const order = await getDocument(orderRef);
-                if (order.status === "завершен") {
-                    tempComplited.push(<CurrentOrders {...order} key={id} />)
-                } else {
-                    tempCurrent.push(<CurrentOrders {...order} key={id} />)
+            if (user.user_orders !== undefined) {
+                const ordersIds = user.user_orders;
+                const tempCurrent = [];
+                const tempComplited = [];
+                for (let id of ordersIds) {
+                    const orderRef = doc(db, "orders", id);
+                    const order = await getDocument(orderRef);
+                    if (order.status === "завершен") {
+                        tempComplited.push(<CurrentOrders {...order} key={id} />)
+                    } else {
+                        tempCurrent.push(<CurrentOrders {...order} key={id} />)
+                    }
                 }
+                setOrdersCurrent(tempCurrent.reverse());
+                tempComplited.length > 0 ?
+                setOrdersComplited(tempComplited.reverse()) :
+                setOrdersComplited(<p style={{ textAlign: "center", marginTop: "20px", fontWeight: "600" }}>У вас еще нет завершенных заказов</p>);
+            } else {
+                setOrdersCurrent(<p style={{ textAlign: "center", marginTop: "20px", fontWeight: "600" }}>У вас еще нет заказов</p>)
+                setOrdersComplited(<p style={{ textAlign: "center", marginTop: "20px", fontWeight: "600" }}>У вас еще нет завершенных заказов</p>);
             }
-            setOrdersCurrent(tempCurrent.reverse())
-            setOrdersComplited(tempComplited.reverse())
             setLoaded(true);
         }
         getOrders();

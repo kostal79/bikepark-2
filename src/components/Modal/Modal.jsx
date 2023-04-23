@@ -1,5 +1,5 @@
 import React from "react";
-import * as ReactDOM from 'react-dom'
+import {createPortal}  from 'react-dom'
 
 const modal = document.getElementById("modal")
 
@@ -18,7 +18,7 @@ class Modal extends React.Component {
     }
 
     render() {
-        return ReactDOM.createPortal(this.props.children, this.el)
+        return createPortal(this.props.children, this.el)
     }
 }
 

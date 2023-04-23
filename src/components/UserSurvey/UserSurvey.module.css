@@ -58,10 +58,6 @@
     color: rgba(115, 123, 152, 1);
 }
 
-.bubble {
-    position: relative;
-    margin-left: auto;
-}
 
 .payment-radio {
     appearance: none;

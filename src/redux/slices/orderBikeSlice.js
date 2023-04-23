@@ -16,5 +16,5 @@ export const orderBikeSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const { addBikeForOrder, removeBikeFromOrder, clearOrder } = orderBikeSlice.actions
-
+export const getBikeForOrder = state => state.orderedBikes.bikeForOrder;
 export default orderBikeSlice.reducer

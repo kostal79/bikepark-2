@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OrderForm from "../../components/orderForm/OrderForm";
 import Bridge from "../../components/Bridge/Bridge";
 import UserSurvey from "../../components/UserSurvey/UserSurvey";
@@ -11,7 +11,7 @@ import {
   selectedTimeStart,
   selectedTimeFinish,
 } from "../../redux/slices/calendarSlice";
-import { getUserId } from "../../redux/slices/authSlice";
+import { getUserData, getUserId } from "../../redux/slices/authSlice";
 import makeNewOrder from "../../Api/makeNewOrder";
 import { useNavigate } from "react-router-dom";
 import { getRentType } from "../../redux/slices/rentTypeSlice";
@@ -25,7 +25,8 @@ const OrderPage = () => {
   const timeStart = useSelector(selectedTimeStart);
   const timeFinish = useSelector(selectedTimeFinish);
   const navigate = useNavigate();
-  const rentType = useSelector(getRentType)
+  const rentType = useSelector(getRentType);
+  const userData = useSelector(getUserData);
 
   const initialValues = {
     dateOfOrder: (new Date()).toString(),
@@ -38,14 +39,17 @@ const OrderPage = () => {
     helmet: [],
     flashlighter: [],
     locker: [],
-    name: "",
-    phone: "",
+    name: userData?.user_name,
+    phone: userData?.user_phone,
     addres: "",
-    "payment-type": "",
+    payment_type: "",
     id: userId,
     status: "в обработке",
     isPaid: false,
     rentType: rentType,
+    returns_date: "",
+    returns_time: "",
+    returns_addres: "",
   };
 
   const makeOrder = async (orderInfo) => {

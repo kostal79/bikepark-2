@@ -59,20 +59,19 @@ const UserSurvey = ({ errors, touched }) => {
           <div className={classes.error}>{errors.addres}</div>
         )}
       </div>
-      <div className={classes["payment-type"]}>
+      <div className={classes["payment_type"]}>
         <h4 className={classes.title}>Форма оплаты</h4>
         <div
           className={classes["payment-button-group"]}
           role="group"
-          aria-labelledby="payment-radio-group"
+          aria-labelledby="payment_radio_group"
         >
           <label className={classes["radio-button"]}>
             <Field
               className={`${classes.input} ${classes["payment-radio"]}`}
               type="radio"
-              name="payment-type"
+              name="payment_type"
               value="online"
-              checked
             />
             Онлайн
           </label>
@@ -80,13 +79,10 @@ const UserSurvey = ({ errors, touched }) => {
             <Field
               className={`${classes.input} ${classes["payment-radio"]}`}
               type="radio"
-              name="payment-type"
+              name="payment_type"
               value="on delivery"
             />
             На месте
-            <div className={classes.bubble}>
-              <ButtonSpechBubble description={"how to pay?"} />
-            </div>
           </label>
         </div>
       </div>
@@ -95,17 +91,17 @@ const UserSurvey = ({ errors, touched }) => {
         <Field
           className={`${classes.input} ${classes["returns__date"]}`}
           type="date"
-          name="returns date"
+          name="returns_date"
         />
         <Field
           className={`${classes.input} ${classes["returns__time"]}`}
           type="time"
-          name="returns time"
+          name="returns_time"
         />
         <Field
           className={`${classes.input} ${classes["returns__addres"]}`}
           type="text"
-          name="returns addres"
+          name="returns_addres"
           placeholder="Возврат по адресу"
         />
       </div>
