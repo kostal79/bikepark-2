@@ -2,6 +2,12 @@ import React from "react";
 import BlueButton from "../BlueButton/BlueButton";
 import WhiteButton from "../WhiteButton/WhiteButton";
 import classes from "./CurrentOrdersBody.module.css";
+import PopupCancelOrder from "../PopupCancelOrder/PopupCancelOrder";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getPopupCancelOrder,
+  setPopupCancelOrder,
+} from "../../redux/slices/popupSlice";
 
 const CurrentOrdersBody = ({
   orderDetails,
@@ -12,7 +18,10 @@ const CurrentOrdersBody = ({
   paymentType,
   deliveryType,
   status,
+  orderId,
 }) => {
+  const popup = useSelector(getPopupCancelOrder);
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -33,10 +42,7 @@ const CurrentOrdersBody = ({
         <tbody>
           <tr>
             <th className={classes.th}>Доставка</th>
-            <td
-              className={classes.td}
-              style={{ textAlign: "right" }}
-            >
+            <td className={classes.td} style={{ textAlign: "right" }}>
               0 AED
             </td>
           </tr>
@@ -74,9 +80,11 @@ const CurrentOrdersBody = ({
             height={60}
             text={"Отменить заказ"}
             fontSize={18}
+            onClick={() => dispatch(setPopupCancelOrder(true))}
           />
         </div>
       </div>
+      {popup && <PopupCancelOrder orderId={orderId} />}
     </>
   );
 };

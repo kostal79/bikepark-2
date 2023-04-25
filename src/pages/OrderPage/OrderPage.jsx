@@ -16,6 +16,7 @@ import makeNewOrder from "../../Api/makeNewOrder";
 import { useNavigate } from "react-router-dom";
 import { getRentType } from "../../redux/slices/rentTypeSlice";
 import { setOrder } from "../../redux/slices/orderSlice";
+import dayBetween from "../../utils/dayBetween/dayBetween";
 
 const OrderPage = () => {
   const userId = useSelector(getUserId);
@@ -31,7 +32,7 @@ const OrderPage = () => {
   const dispatch = useDispatch();
 
   const initialValues = {
-    dateOfOrder: (new Date()).toString(),
+    dateOfOrder: new Date().toString(),
     dateStart: dateStart,
     dateFinish: dateFinish,
     timeStart: timeStart,
@@ -55,10 +56,21 @@ const OrderPage = () => {
   };
 
   const makeOrder = async (orderInfo) => {
-    dispatch(setOrder(orderInfo))
-    await makeNewOrder(orderInfo);
-    console.log(orderInfo)
-    navigate("/processed");
+    try {
+      const amountOfDays = dayBetween(orderInfo.dateStart, orderInfo.dateFinish);
+  
+      const orderSum = orderInfo.bikes?.reduce((acc, bike) => {
+        return Number(bike.price) * amountOfDays + acc;
+      }, 0);
+  
+      orderInfo = { ...orderInfo, orderSum: orderSum };
+      await makeNewOrder(orderInfo);
+      dispatch(setOrder(orderInfo));
+      navigate("/processed");
+    } catch (error) {
+      console.error(error)
+      navigate("/error")
+    }
   };
 
   return (

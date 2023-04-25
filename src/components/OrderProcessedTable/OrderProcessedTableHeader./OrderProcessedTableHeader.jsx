@@ -3,7 +3,6 @@ import classes from "./OrderProcessedTableHeader.module.css";
 import dateFormat, { masks } from "dateformat";
 import { orderState } from "../../../redux/slices/orderSlice";
 import { useSelector } from "react-redux";
-import CurrentOrders from "../../CurrentOrders/CurrentOrders";
 
 const OrderProcessedTableHeader = () => {
   const order = useSelector(orderState);
@@ -25,7 +24,7 @@ const OrderProcessedTableHeader = () => {
               <th className={classes.th__top}>Тип аренды</th>
               <th className={classes.th__top}>Дата и время начала</th>
               <th className={classes.th__top}>Дата и время конца</th>
-              <th className={classes.th__top}>доставка</th>
+              <th className={classes.th__top}>Доставка</th>
               <th className={classes.th__top}>Метод оплаты</th>
             </tr>
           </thead>
@@ -35,7 +34,7 @@ const OrderProcessedTableHeader = () => {
               <td className={classes.td}>{start}</td>
               <td className={classes.td}>{finish}</td>
               <td className={classes.td}>{order.deliveryType}</td>
-              <td className={classes.td}>{order.payment_type}</td>
+              <td className={classes.td}>{paymentType}</td>
             </tr>
           </tbody>
         </table>

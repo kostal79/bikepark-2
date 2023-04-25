@@ -27,6 +27,7 @@ const AppRouters = () => {
         <Route path="/rent" element={<Home />} />
         <Route path="/wheretoride" element={<WhereToRide />} />
         <Route path="/rules" element={<Rules />} />
+        <Route path="/error" element={<ErrorPage />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
     );
@@ -44,6 +45,7 @@ const AppRouters = () => {
       <Route path="/order" element={<OrderPage />} />
       <Route path="/processed" element={<OrderProcessed />} />
       <Route path="/account" element={<Account />} />
+      <Route path="/error" element={<ErrorPage />} />
       <Route path="/*" element={<ErrorPage />} />
     </Routes>
   );

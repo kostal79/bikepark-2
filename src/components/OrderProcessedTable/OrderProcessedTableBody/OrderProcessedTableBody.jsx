@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const OrderProcessedTableBody = () => {
   const order = useSelector(orderState);
+  const orderSum = order.orderSum || "0";
   const navigate = useNavigate();
 
   const orderInfo = order.bikes.map((bike) => {
@@ -46,7 +47,7 @@ const OrderProcessedTableBody = () => {
             <th className={classes.th} colSpan={2}>
               Итого
             </th>
-            <td className={classes.td}>{`300 AED`}</td>
+            <td className={classes.td}>{`${orderSum} AED`}</td>
           </tr>
         </tfoot>
       </table>

@@ -14,7 +14,7 @@ export function useUserOrders(uid) {
     useEffect(() => {
         async function getOrders() {
             const user = await getDocument(userRef);
-            if (user.user_orders !== undefined) {
+            if (user.user_orders !== undefined && user.user_orders.length > 0) {
                 const ordersIds = user.user_orders;
                 const tempCurrent = [];
                 const tempComplited = [];
@@ -22,9 +22,9 @@ export function useUserOrders(uid) {
                     const orderRef = doc(db, "orders", id);
                     const order = await getDocument(orderRef);
                     if (order.status === "завершен") {
-                        tempComplited.push(<CurrentOrders {...order} key={id} />)
+                        tempComplited.push(<CurrentOrders {...order} orderId={id} key={id} />)
                     } else {
-                        tempCurrent.push(<CurrentOrders {...order} key={id} />)
+                        tempCurrent.push(<CurrentOrders {...order} orderId={id} key={id} />)
                     }
                 }
                 setOrdersCurrent(tempCurrent.reverse());
