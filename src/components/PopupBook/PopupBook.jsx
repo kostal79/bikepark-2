@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { getIsAuth } from "../../redux/slices/authSlice";
 import { setSignIn } from "../../redux/slices/modalSlice";
 import Modal from "../Modal/Modal";
-import { clearOrder, getBikeForOrder } from "../../redux/slices/orderBikeSlice";
+import { getBikeForOrder } from "../../redux/slices/orderBikeSlice";
 import BlueButton from "../BlueButton/BlueButton";
 import classes from "./PopupBook.module.css"
 
-const PopupBook = ({}) => {
+const PopupBook = () => {
     const navigate = useNavigate();
     const isAuth = useSelector(getIsAuth);
     const dispatch = useDispatch();

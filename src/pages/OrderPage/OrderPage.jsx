@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import OrderForm from "../../components/orderForm/OrderForm";
 import Bridge from "../../components/Bridge/Bridge";
 import UserSurvey from "../../components/UserSurvey/UserSurvey";
 import { Form, Formik } from "formik";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deliveryState } from "../../redux/slices/deliverySlice";
 import {
   selectedDateFinish,
@@ -15,6 +15,7 @@ import { getUserData, getUserId } from "../../redux/slices/authSlice";
 import makeNewOrder from "../../Api/makeNewOrder";
 import { useNavigate } from "react-router-dom";
 import { getRentType } from "../../redux/slices/rentTypeSlice";
+import { setOrder } from "../../redux/slices/orderSlice";
 
 const OrderPage = () => {
   const userId = useSelector(getUserId);
@@ -27,6 +28,7 @@ const OrderPage = () => {
   const navigate = useNavigate();
   const rentType = useSelector(getRentType);
   const userData = useSelector(getUserData);
+  const dispatch = useDispatch();
 
   const initialValues = {
     dateOfOrder: (new Date()).toString(),
@@ -53,8 +55,10 @@ const OrderPage = () => {
   };
 
   const makeOrder = async (orderInfo) => {
+    dispatch(setOrder(orderInfo))
     await makeNewOrder(orderInfo);
-    navigate("/account");
+    console.log(orderInfo)
+    navigate("/processed");
   };
 
   return (

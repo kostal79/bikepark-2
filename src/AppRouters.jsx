@@ -12,6 +12,7 @@ import WhereToRide from "./pages/WhereToRide/WhereToRide";
 import Account from "./pages/Account/Account";
 import { useSelector } from "react-redux";
 import { getIsAuth } from "./redux/slices/authSlice";
+import OrderProcessed from "./pages/OrderProcessed/OrderProcessed";
 
 const AppRouters = () => {
   const isAuth = useSelector(getIsAuth);
@@ -41,6 +42,7 @@ const AppRouters = () => {
       <Route path="/wheretoride" element={<WhereToRide />} />
       <Route path="/rules" element={<Rules />} />
       <Route path="/order" element={<OrderPage />} />
+      <Route path="/processed" element={<OrderProcessed />} />
       <Route path="/account" element={<Account />} />
       <Route path="/*" element={<ErrorPage />} />
     </Routes>

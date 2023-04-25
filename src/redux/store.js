@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './slices/counter/counterSlice'
 import clockReducer from './slices/clockSlice'
 import hamburgerReducer from './slices/hamburgerSlice'
 import rentTypeReducer from './slices/rentTypeSlice'
@@ -16,7 +15,6 @@ import authSlice from './slices/authSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
     clock: clockReducer,
     hamburger: hamburgerReducer,
     rentType: rentTypeReducer,

@@ -1,27 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    order: {
-        dateStart: "",
-        dateFinish: "",
-        timeStart: "",
-        timeFinish: "",
-        bikes: [],
-        userId: "",
-        name: "",
-        phone: "",
-        addres: "",
-        "payment-type": "",
-        status: "в работе",
-        paid: false,
-    }
+    orderState: {}
 }
 
 export const orderSlice = createSlice({
     name: 'order',
     initialState,
     reducers: {
-        setOrder: (state, action) => { state.order = action.payload },
+        setOrder: (state, action) => { state.orderState = action.payload },
     }
 })
 
@@ -29,6 +16,6 @@ export const {
     setOrder,
 } = orderSlice.actions
 
-export const orderState = (state) => state.order.order;
+export const orderState = (state) => state.order.orderState;
 
 export default orderSlice.reducer
