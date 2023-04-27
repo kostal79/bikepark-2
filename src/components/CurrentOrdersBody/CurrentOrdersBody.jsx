@@ -20,7 +20,7 @@ const CurrentOrdersBody = ({
   status,
   orderId,
 }) => {
-  const popup = useSelector(getPopupCancelOrder);
+  const popupCancel = useSelector(getPopupCancelOrder);
   const dispatch = useDispatch();
 
   return (
@@ -84,7 +84,7 @@ const CurrentOrdersBody = ({
           />
         </div>
       </div>
-      {popup && <PopupCancelOrder orderId={orderId} />}
+      {popupCancel && <PopupCancelOrder orderId={orderId} />}
     </>
   );
 };

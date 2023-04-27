@@ -4,9 +4,13 @@ import AccountProfile from "../../components/AccountProfile/AccountProfile";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import Scroller from "../../components/Scroller/Scroller";
 import classes from "./Account.module.css";
+import PopupCancelResult from "../../components/PopupCancelResult/PopupCancelResult";
+import { useSelector } from "react-redux";
+import { getPopupCancelResult } from "../../redux/slices/popupSlice";
 
 const Account = () => {
   const [activeWindow, setActivWindow] = useState("current");
+  const popup = useSelector(getPopupCancelResult)
 
   const handleDropDown = (event) => {
     switch (event.target.innerText) {
@@ -78,6 +82,7 @@ const Account = () => {
           <AccountOrders activeWindow={activeWindow} />
         )}
       </div>
+      {popup && <PopupCancelResult />}
     </div>
   );
 };

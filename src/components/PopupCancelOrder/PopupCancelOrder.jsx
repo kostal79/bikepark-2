@@ -4,7 +4,7 @@ import WhiteButton from "../WhiteButton/WhiteButton";
 import Modal from "../Modal/Modal";
 import classes from "./PopupCancelOrder.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setPopupCancelOrder } from "../../redux/slices/popupSlice";
+import { setPopupCancelOrder, setPopupCancelResult } from "../../redux/slices/popupSlice";
 import { getUserId } from "../../redux/slices/authSlice";
 import { deleteOrder } from "../../Api/deleteOrder";
 
@@ -16,8 +16,10 @@ const PopupCancelOrder = ({ orderId }) => {
   const userId = useSelector(getUserId);
 
   const cancelOrder = async (orderId, userId) => {
-    deleteOrder(orderId, userId);
-    dispatch(setPopupCancelOrder(false));
+    deleteOrder(orderId, userId)
+    .then((resolve) => dispatch(setPopupCancelOrder(false)))
+    .then((resolve) => dispatch(setPopupCancelResult(true)))
+    .catch(error => console.error(error))
   };
 
   return (

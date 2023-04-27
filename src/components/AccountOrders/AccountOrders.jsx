@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useUserOrders } from "../../hooks/useUserOrders/useUserOrders";
 import { getUserId } from "../../redux/slices/authSlice";
@@ -7,7 +7,11 @@ import classes from "./AccountOrders.module.css"
 
 const AccountOrders = ({ activeWindow }) => {
   const uid = useSelector(getUserId);
-  const [ordersCurrent, ordersComplited, loaded] = useUserOrders(uid);
+  const [ordersCurrent, ordersComplited, loaded, unsub] = useUserOrders(uid);
+
+  useEffect(() => {
+    return () => unsub()
+  })
 
   return (
     <div className={classes.container}>

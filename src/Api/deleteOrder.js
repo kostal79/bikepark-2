@@ -5,10 +5,10 @@ export async function deleteOrder(orderId, userId){
     const orderRef = doc(db, "orders", orderId);
     const userRef = doc(db, "users", userId);
     try {
-        await deleteDoc(orderRef);
         await updateDoc(userRef, {
             user_orders: arrayRemove(orderId)
         });
+        await deleteDoc(orderRef);
         console.log(`Order ${orderId} was deleted`)
     } catch (error) {
         console.error(error)
