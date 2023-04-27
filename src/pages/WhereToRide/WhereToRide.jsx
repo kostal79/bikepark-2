@@ -1,5 +1,4 @@
 import React from "react";
-import cityPhoto from "../../assets/city.png";
 import classes from "./WhereToRide.module.css";
 
 const WhereToRide = () => {

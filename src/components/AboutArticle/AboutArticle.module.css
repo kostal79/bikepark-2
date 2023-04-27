@@ -1,0 +1,50 @@
+.container {
+    padding: 30px 20px;
+    background-color: rgba(242, 244, 247, 1);
+    border-radius: 20px;
+    margin-top: 30px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.header {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.image {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        padding: 46px 20px;
+        margin-top: 40px;
+    }
+    .section {
+        flex-direction: row;
+        column-gap: 30px;
+        align-items: flex-start;
+    }
+
+    .section>* {
+        flex: 1 1;
+    }
+
+    .header {
+        font-size: 36px;
+        margin-bottom: 35px;
+
+    }
+
+}

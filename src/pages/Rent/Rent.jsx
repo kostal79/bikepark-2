@@ -1,11 +1,14 @@
-import { collection } from "firebase/firestore";
+import { Timestamp, collection } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
 import getAllCollection from "../../Api/getAllCollection";
 import makeNewBike from "../../Api/makeNewBike";
 import uploadImage from "../../Api/uploadImage";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import UserWidget from "../../components/UserWidget/UserWidget";
 import { db } from "../../config/firebase";
+import { useSelector } from "react-redux";
+import { getUserData } from "../../redux/slices/authSlice";
+import { getUserId } from "../../redux/slices/authSlice";
+import { makeNewReview } from "../../Api/makeNewReview";
 
 const Rent = () => {
   const [typesList, setTypesList] = useState([]);
@@ -78,6 +81,29 @@ const Rent = () => {
     );
     console.log("new real bike added");
   };
+
+  //review
+  const userData = useSelector(getUserData);
+  const userName = userData.user_name;
+  const userId = useSelector(getUserId)
+  const [review, setReview] = useState("");
+
+  const addReview = async () => {
+    if (review.length > 0) {
+      const reviewDoc = {
+        user_name: userName,
+        user_id: userId,
+        text: review,
+        is_published: false,
+        date: Timestamp.fromDate(new Date()),
+      }
+      await makeNewReview(reviewDoc);
+      setReview("");
+      alert("review added");
+    } else {
+      alert("write smpf")
+    }
+  }
 
   return (
     <div>
@@ -177,7 +203,10 @@ const Rent = () => {
       <br />
       <br />
       <br />
-      <UserWidget visability={true}/>
+      <br />
+      <br />
+      <textarea value={review} onChange={(event) => setReview(event.target.value)}/>
+      <button onClick={addReview} >add review</button>
     </div>
   );
 };
