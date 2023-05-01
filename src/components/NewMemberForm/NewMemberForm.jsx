@@ -25,7 +25,7 @@ const NewMemberForm = () => {
     isConfirmed: false,
   };
 
-  const [error, registeredUser, isLoading, createNewUserWithEmail] =
+  const [, , isLoading, createNewUserWithEmail] =
     useCreateUserWithEmailAndPassword(auth);
 
   const tabHandler = (event) => {

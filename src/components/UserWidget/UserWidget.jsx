@@ -7,7 +7,7 @@ import TooltipHOC from "../TooltipHOC/TooltipHOC";
 import classes from "./UserWidget.module.css";
 
 const UserWidget = () => {
-  const [error, isSignOut, logOut] = useSignOut();
+  const [error, , logOut] = useSignOut();
   const dispatch = useDispatch();
 
 

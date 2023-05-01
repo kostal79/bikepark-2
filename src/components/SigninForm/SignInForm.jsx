@@ -20,7 +20,7 @@ const SigninForm = () => {
     user_password: "",
   }
 
-  const [isLoading, error, logedUser, userName, logIn] = useSignInWithEmailAndPassword(auth);
+  const [, , logedUser, , logIn] = useSignInWithEmailAndPassword(auth);
 
   const tabHandler = (event) => {
     dispatch(setActiveWindow(event.target.value));
