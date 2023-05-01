@@ -1,0 +1,36 @@
+.error-message {
+    position: absolute;
+    color: red;
+    top: 90px;
+    left: 0;
+}
+
+.section {
+    position: relative;
+}
+
+
+.title {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(171, 177, 197, 1);
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.text {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1240px) {
+    .title {
+        font-size: 16px;
+    }
+
+    .section label {
+        font-size: 16px;
+    }
+
+}

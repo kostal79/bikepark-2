@@ -1,0 +1,58 @@
+.underlay {
+    position:fixed;
+    width: 100%;
+    height: 100%;
+    background-color:rgba(0,0,0,0.3);
+    z-index: 1000;
+}
+
+.container {
+    width: 100%;
+    max-width: 640px;
+    min-width: 380px;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 60px 40px;
+    border-radius: 15px;
+    position: absolute;
+    top: calc(50vh - 310px);
+    left: calc(50vw - 320px);
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: -50px;
+    cursor: pointer
+}
+
+@media screen and (max-width: 740px) {
+    .close {
+        left: calc(100vw - 70px);
+        top: 20px;
+    }
+
+    .close path {
+        stroke: rgba(0,0,0,1);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .container {
+    left: 0;
+    }
+
+    .close {
+        left: auto;
+        right: 40px;
+        top: 40px;
+    }
+
+}
+
+@media screen and (max-width: 380px) {
+    .close {
+        left: 320px;
+        right: 40px;
+        top: 40px;
+    }
+}

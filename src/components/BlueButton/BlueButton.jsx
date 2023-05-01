@@ -6,10 +6,11 @@ import classes from "./BlueButton.module.css";
  * @params {width: string, height: string, text: string, onClick: function}
  * @returns component
  */
-const BlueButton = ({ width, height, text, uppercase, fontSize, onClick, disabled}) => {
+const BlueButton = ({type, width, height, text, uppercase, fontSize, onClick, disabled}) => {
   return (
     <button
       className={classes.button}
+      type={type}
       style={{
         width: `${width}px`,
         height: `${height}px`,

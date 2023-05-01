@@ -5,7 +5,7 @@ import StyledFormField from "../StyledFormField/StyledFormField";
 
 const RegistrationName = ({classes}) => {
     return (
-    <section>
+    <section className={classes.section}>
       <StyledFormField
         label="Имя"
         name="user_name"

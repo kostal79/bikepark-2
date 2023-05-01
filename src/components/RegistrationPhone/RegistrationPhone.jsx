@@ -13,7 +13,7 @@ const RegistrationPhone = ({classes}) => {
     IMask(element, maskOptions);
   }, []);
   return (
-    <section>
+    <section className={classes.section}>
       <StyledFormField
         id="registration_phone"
         label="Номер телефона"

@@ -2,11 +2,11 @@ import React from "react";
 import Clock from "../Clock/Clock";
 import HamburgerMenu from "../Hamburger/HamburgerMenu";
 import classes from "./Header.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../../logo.svg";
 import BlueButton from "../BlueButton/BlueButton";
-import {ReactComponent as SignInLogo} from "../../assets/contacts.svg";
-import {ReactComponent as SignedInLogo} from "../../assets/authorizedLogo.svg";
+import { ReactComponent as SignInLogo } from "../../assets/contacts.svg";
+import { ReactComponent as SignedInLogo } from "../../assets/authorizedLogo.svg";
 import { useDispatch, useSelector } from "react-redux";
 import Modal from "../Modal/Modal";
 import { getIsSignActive, setSignIn } from "../../redux/slices/modalSlice";
@@ -14,6 +14,8 @@ import Registration from "../Registration/Registration";
 import UserWidget from "../UserWidget/UserWidget";
 import { setUserWidget, widgetState } from "../../redux/slices/tooltipsSlice";
 import { getIsAuth } from "../../redux/slices/authSlice";
+import { getPopupFeedback, setPopupFeedback } from "../../redux/slices/popupSlice";
+import PopupFeedback from "../PopupFeedback/PopupFeedback";
 
 const Header = () => {
   const isActive = useSelector((state) => state.hamburger.isActive);
@@ -22,6 +24,8 @@ const Header = () => {
   const isAuth = useSelector(getIsAuth);
   const userLogo = isAuth ? <SignedInLogo /> : <SignInLogo />;
   const widget = useSelector(widgetState);
+  const location = useLocation();
+  const popupFeedbackIsVisible = useSelector(getPopupFeedback)
 
   const openModal = () => {
     dispatch(setSignIn(true));
@@ -34,9 +38,12 @@ const Header = () => {
   };
 
   const widgetHandler = () => {
-    dispatch(setUserWidget(!widget))
+    dispatch(setUserWidget(!widget));
+  };
+
+  const showFeedBackForm = () => {
+    dispatch(setPopupFeedback(true))
   }
-  
 
   return (
     <div className={classes.header}>
@@ -48,7 +55,15 @@ const Header = () => {
         </div>
         <div className={classes.about}>
           <NavLink to="/about" data-testid="about-link">
-            О нас
+            <span
+              className={
+                location.pathname === "/about"
+                  ? classes.page__active
+                  : classes.page
+              }
+            >
+              О нас
+            </span>
           </NavLink>
         </div>
         <div
@@ -57,7 +72,15 @@ const Header = () => {
           }
         >
           <NavLink to="/rent" data-testid="rent-link">
-            Аренда
+            <span
+              className={
+                location.pathname === "/rent"
+                  ? classes.page__active
+                  : classes.page
+              }
+            >
+              Аренда
+            </span>
           </NavLink>
         </div>
         <div
@@ -68,17 +91,41 @@ const Header = () => {
           }
         >
           <NavLink to="/delivery" data-testid="delivery-link">
-            Доставка
+            <span
+              className={
+                location.pathname === "/delivery"
+                  ? classes.page__active
+                  : classes.page
+              }
+            >
+              Доставка
+            </span>
           </NavLink>
         </div>
         <div className={classes.wheretoride}>
           <NavLink to="/wheretoride" data-testid="wheretoride-link">
-            Где кататься
+            <span
+              className={
+                location.pathname === "/wheretoride"
+                  ? classes.page__active
+                  : classes.page
+              }
+            >
+              Где кататься
+            </span>
           </NavLink>
         </div>
         <div className={classes.contacts}>
           <NavLink to="/contacts" data-testid="contacts-link">
-            Контакты
+            <span
+              className={
+                location.pathname === "/contacts"
+                  ? classes.page__active
+                  : classes.page
+              }
+            >
+              Контакты
+            </span>
           </NavLink>
         </div>
       </div>
@@ -87,10 +134,12 @@ const Header = () => {
           +971 52 563 4064
         </a>
         <div>
-        <div
-          className={classes.imgSignLogo}
-          onClick={isAuth ? widgetHandler : openModal}
-          >{userLogo}</div>
+          <div
+            className={classes.imgSignLogo}
+            onClick={isAuth ? widgetHandler : openModal}
+          >
+            {userLogo}
+          </div>
           <div>{widget && <UserWidget />}</div>
         </div>
         <div className={classes.additionalButton}>
@@ -99,7 +148,7 @@ const Header = () => {
             height={"34"}
             text={"Обратная связь"}
             uppercase={true}
-            onClick={() => console.log("click")}
+            onClick={showFeedBackForm}
           />
         </div>
         <Clock />
@@ -112,6 +161,7 @@ const Header = () => {
           </div>
         ) : null}
       </Modal>
+      {popupFeedbackIsVisible && <PopupFeedback />}
     </div>
   );
 };
