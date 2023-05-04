@@ -1,25 +1,18 @@
 import React from "react";
-import Modal from "../Modal/Modal";
-import classes from "./PopupFeedback.module.css";
 import FeedbackForm from "../FeedbackForm/FeedbackForm";
-import {ReactComponent as CloseSvg} from "../../assets/close.svg"
+import PopupWithCloseCross from "../PopupWithCloseCross/PopupWithCloseCross";
 import { useDispatch } from "react-redux";
 import { setPopupFeedback } from "../../redux/slices/popupSlice";
 
 const PopupFeedback = () => {
-    const dispatch = useDispatch();
-    const closePopup = () => {
-        dispatch(setPopupFeedback(false))
-    }
+  const dispatch = useDispatch();
+  const closePopup = () => {
+      dispatch(setPopupFeedback(false))
+  }
   return (
-    <Modal>
-      <div className={classes.underlay}>
-        <div className={classes.container}>
-          <FeedbackForm />
-          <CloseSvg className={classes.close} onClick={closePopup}/>
-        </div>
-      </div>
-    </Modal>
+    <PopupWithCloseCross closePopup={closePopup}>
+      <FeedbackForm />
+    </PopupWithCloseCross>
   );
 };
 

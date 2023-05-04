@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/authSlice";
 import { getUserId } from "../../redux/slices/authSlice";
 import { makeNewReview } from "../../Api/makeNewReview";
+import PopupBikeCard from "../../components/CustomSlider/CustomSlider";
 
 const Rent = () => {
   const [typesList, setTypesList] = useState([]);
@@ -207,6 +208,7 @@ const Rent = () => {
       <br />
       <textarea value={review} onChange={(event) => setReview(event.target.value)}/>
       <button onClick={addReview} >add review</button>
+      <PopupBikeCard />
     </div>
   );
 };

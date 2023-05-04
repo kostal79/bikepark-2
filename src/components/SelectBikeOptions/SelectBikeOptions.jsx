@@ -27,17 +27,10 @@ const SelectBikeOptions = () => {
   }, [selectedBrend, selectedSize, amount]);
 
   if (allResults.length > 0) {
-    const filteredBikes = allResults.map((item) => (
+    const filteredBikes = allResults.map((bikeCard) => (
       <BikeCardSmall
-        id={item.id}
-        image={item.imageRef}
-        bookedDates={item.bookedDates}
-        name={item.brend}
-        price={item.price}
-        size={item.size}
-        type={item.type}
-        model={item.model}
-        key={item.id}
+        {...bikeCard}
+        key={bikeCard.id}
       />
     ));
 

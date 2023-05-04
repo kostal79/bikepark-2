@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBikeForOrder, removeBikeFromOrder } from "../../redux/slices/orderBikeSlice";
+import {
+  addBikeForOrder,
+  removeBikeFromOrder,
+} from "../../redux/slices/orderBikeSlice";
 import isBooked from "../../utils/isBooked/isBooked";
 import BlueButton from "../BlueButton/BlueButton";
 import WhiteButton from "../WhiteButton/WhiteButton";
 import classes from "./BikeCardSmall.module.css";
+import PopupCard from "../PopupCard/PopupCard";
 
-const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type }) => {
+const BikeCardSmall = (props) => {
+  const { id, imageRef, bookedDates, brend, price, size, model, type } = props;
   const startDate = useSelector((state) => state.calendar.dateStart);
   const finishDate = useSelector((state) => state.calendar.dateFinish);
   const startTime = useSelector((state) => state.calendar.timeStart);
@@ -15,14 +20,21 @@ const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type 
   const dispatch = useDispatch();
 
   const addBike = () => {
-    setIsPressed(true)
-    dispatch(addBikeForOrder({ id, image, name, price, size, model, type }))
+    setIsPressed(true);
+    dispatch(
+      addBikeForOrder(props)
+    );
   };
 
   const removeBike = () => {
-    setIsPressed(false)
-    dispatch(removeBikeFromOrder(id))
-  }
+    setIsPressed(false);
+    dispatch(removeBikeFromOrder(id));
+  };
+
+  const [isPopupCardVisible, setIsPopupCardVisible] = useState(false);
+  const closePopup = () => {
+    setIsPopupCardVisible(false);
+  };
 
   if (
     bookedDates &&
@@ -32,10 +44,10 @@ const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type 
       <div className={classes.container}>
         <div className={classes.header}>
           <p>{`${size}”`}</p>
-          <p>{name}</p>
+          <p>{brend}</p>
         </div>
         <div className={classes.imageBox}>
-          <img className={classes.image} src={image} alt="bike" />
+          <img className={classes.image} src={imageRef[0]} alt="bike" />
         </div>
         <div className={classes.info}>
           <p
@@ -43,7 +55,7 @@ const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type 
           >
             {type}
             <br />
-            {`${name} ${model} ${size}”`}
+            {`${brend} ${model} ${size}”`}
           </p>
           <div className={`${classes.price} ${classes["price--booked"]}`}>
             {price} AED/день
@@ -65,16 +77,19 @@ const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type 
       <div className={classes.container}>
         <div className={classes.header}>
           <p>{`${size}”`}</p>
-          <p>{name}</p>
+          <p>{brend}</p>
         </div>
-        <div className={classes.imageBox}>
-          <img className={classes.image} src={image} alt="bike" />
+        <div
+          className={classes.imageBox}
+          onClick={() => setIsPopupCardVisible(true)}
+        >
+          <img className={classes.image} src={imageRef[0]} alt="bike" />
         </div>
         <div className={classes.info}>
           <p className={classes.description}>
             {type}
             <br />
-            {`${name} ${model} ${size}”`}
+            {`${brend} ${model} ${size}”`}
           </p>
           <div className={classes.price}>{price} AED/день</div>
           {!isPressed ? (
@@ -96,6 +111,7 @@ const BikeCardSmall = ({ id, image, bookedDates, name, price, size, model, type 
             />
           )}
         </div>
+        {isPopupCardVisible && <PopupCard closePopup={closePopup} {...props} />}
       </div>
     );
   }

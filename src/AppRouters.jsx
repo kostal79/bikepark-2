@@ -13,41 +13,46 @@ import Account from "./pages/Account/Account";
 import { useSelector } from "react-redux";
 import { getIsAuth } from "./redux/slices/authSlice";
 import OrderProcessed from "./pages/OrderProcessed/OrderProcessed";
+import Layout from "./layouts/Layout";
 
 const AppRouters = () => {
   const isAuth = useSelector(getIsAuth);
   if (!isAuth) {
     return (
-      <Routes>
-        <Route path="/bikepark-2" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/delivery" element={<Delivery />} />
-        <Route path="/feedback" element={<Feedback />} />
-        <Route path="/rent" element={<Home />} />
-        <Route path="/wheretoride" element={<WhereToRide />} />
-        <Route path="/rules" element={<Rules />} />
-        <Route path="/error" element={<ErrorPage />} />
-        <Route path="/*" element={<ErrorPage />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/bikepark-2" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/delivery" element={<Delivery />} />
+            <Route path="/feedback" element={<Feedback />} />
+            <Route path="/rent" element={<Home />} />
+            <Route path="/wheretoride" element={<WhereToRide />} />
+            <Route path="/rules" element={<Rules />} />
+            <Route path="/error" element={<ErrorPage />} />
+            <Route path="/*" element={<ErrorPage />} />
+          </Route>
+        </Routes>
     );
   }
   return (
-    <Routes>
-      <Route path="/bikepark-2" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/contacts" element={<Contacts />} />
-      <Route path="/delivery" element={<Delivery />} />
-      <Route path="/feedback" element={<Feedback />} />
-      <Route path="/rent" element={<Rent />} />
-      <Route path="/wheretoride" element={<WhereToRide />} />
-      <Route path="/rules" element={<Rules />} />
-      <Route path="/order" element={<OrderPage />} />
-      <Route path="/processed" element={<OrderProcessed />} />
-      <Route path="/account" element={<Account />} />
-      <Route path="/error" element={<ErrorPage />} />
-      <Route path="/*" element={<ErrorPage />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="/bikepark-2" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/feedback" element={<Feedback />} />
+          <Route path="/rent" element={<Rent />} />
+          <Route path="/wheretoride" element={<WhereToRide />} />
+          <Route path="/rules" element={<Rules />} />
+          <Route path="/order" element={<OrderPage />} />
+          <Route path="/processed" element={<OrderProcessed />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/error" element={<ErrorPage />} />
+          <Route path="/*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
   );
 };
 

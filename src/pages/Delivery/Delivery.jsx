@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const Delivery = () => {
-    return (
-        <div data-testid="delivery-page">
-            delivery
-        </div>
-    );
+  return (
+    <div>delivery</div>
+  );
 };
 
-export default Delivery
+export default Delivery;

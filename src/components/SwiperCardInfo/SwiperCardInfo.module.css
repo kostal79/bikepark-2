@@ -1,0 +1,28 @@
+.table {
+    table-layout: fixed;
+    width: 100%;
+    max-width: 400px;
+}
+
+.caption {
+    font-size: 28px;
+    font-weight: 600px;
+    padding-bottom: 10px;
+    text-align: left;
+}
+
+.td, .th {
+    text-align: left;
+    padding: 10px 5px 10px 0;
+}
+
+.th {
+    font-size: 16px;
+    color: rgba(171, 177, 197, 1);
+    font-weight: 500;
+}
+
+.td {
+    font-size: 18px;
+    font-weight: 500;
+}
