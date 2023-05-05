@@ -6,53 +6,62 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Feedback from "./pages/Feedback/Feedback";
 import Home from "./pages/Home/Home";
 import OrderPage from "./pages/OrderPage/OrderPage";
-import Rent from "./pages/Rent/Rent";
 import Rules from "./pages/Rules/Rules";
 import WhereToRide from "./pages/WhereToRide/WhereToRide";
 import Account from "./pages/Account/Account";
-import { useSelector } from "react-redux";
-import { getIsAuth } from "./redux/slices/authSlice";
 import OrderProcessed from "./pages/OrderProcessed/OrderProcessed";
 import Layout from "./layouts/Layout";
+import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
+import Admin from "./pages/Admin/Admin";
 
 const AppRouters = () => {
-  const isAuth = useSelector(getIsAuth);
-  if (!isAuth) {
-    return (
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route path="/bikepark-2" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/delivery" element={<Delivery />} />
-            <Route path="/feedback" element={<Feedback />} />
-            <Route path="/rent" element={<Home />} />
-            <Route path="/wheretoride" element={<WhereToRide />} />
-            <Route path="/rules" element={<Rules />} />
-            <Route path="/error" element={<ErrorPage />} />
-            <Route path="/*" element={<ErrorPage />} />
-          </Route>
-        </Routes>
-    );
-  }
   return (
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/bikepark-2" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contacts" element={<Contacts />} />
-          <Route path="/delivery" element={<Delivery />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/rent" element={<Rent />} />
-          <Route path="/wheretoride" element={<WhereToRide />} />
-          <Route path="/rules" element={<Rules />} />
-          <Route path="/order" element={<OrderPage />} />
-          <Route path="/processed" element={<OrderProcessed />} />
-          <Route path="/account" element={<Account />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/*" element={<ErrorPage />} />
-        </Route>
-      </Routes>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/delivery" element={<Delivery />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/rent" element={<Home />} />
+        <Route path="/wheretoride" element={<WhereToRide />} />
+        <Route path="/rules" element={<Rules />} />
+        <Route
+          path="/order"
+          element={
+            <PrivateRoute>
+              <OrderPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/processed"
+          element={
+            <PrivateRoute>
+              <OrderProcessed />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <PrivateRoute >
+              <Account />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute  role="moderator">
+              <Admin />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/error" element={<ErrorPage />} />
+        <Route path="/*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
   );
 };
 

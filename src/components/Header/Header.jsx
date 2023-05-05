@@ -8,32 +8,34 @@ import BlueButton from "../BlueButton/BlueButton";
 import { ReactComponent as SignInLogo } from "../../assets/contacts.svg";
 import { ReactComponent as SignedInLogo } from "../../assets/authorizedLogo.svg";
 import { useDispatch, useSelector } from "react-redux";
-import Modal from "../Modal/Modal";
-import { getIsSignActive, setSignIn } from "../../redux/slices/modalSlice";
-import Registration from "../Registration/Registration";
 import UserWidget from "../UserWidget/UserWidget";
 import { setUserWidget, widgetState } from "../../redux/slices/tooltipsSlice";
 import { getIsAuth } from "../../redux/slices/authSlice";
-import { getPopupFeedback, setPopupFeedback } from "../../redux/slices/popupSlice";
+import {
+  getPopupFeedback,
+  getPopupSignIn,
+  setPopupFeedback,
+  setPopupSignIn,
+} from "../../redux/slices/popupSlice";
 import PopupFeedback from "../PopupFeedback/PopupFeedback";
+import PopupSignInForm from "../PopupSignInForm/PopupSignInForm";
 
 const Header = () => {
   const isActive = useSelector((state) => state.hamburger.isActive);
-  const isSignInActive = useSelector(getIsSignActive);
+  const isSignInActive = useSelector(getPopupSignIn);
   const dispatch = useDispatch();
   const isAuth = useSelector(getIsAuth);
-  const userLogo = isAuth ? <SignedInLogo /> : <SignInLogo />;
   const widget = useSelector(widgetState);
   const location = useLocation();
-  const popupFeedbackIsVisible = useSelector(getPopupFeedback)
+  const popupFeedbackIsVisible = useSelector(getPopupFeedback);
 
   const openModal = () => {
-    dispatch(setSignIn(true));
+    dispatch(setPopupSignIn(true));
   };
 
   const closeModal = (event) => {
     if (event.target.className === `${classes.sign}`) {
-      dispatch(setSignIn(false));
+      dispatch(setPopupSignIn(false));
     }
   };
 
@@ -42,8 +44,8 @@ const Header = () => {
   };
 
   const showFeedBackForm = () => {
-    dispatch(setPopupFeedback(true))
-  }
+    dispatch(setPopupFeedback(true));
+  };
 
   return (
     <div className={classes.header}>
@@ -138,7 +140,7 @@ const Header = () => {
             className={classes.imgSignLogo}
             onClick={isAuth ? widgetHandler : openModal}
           >
-            {userLogo}
+            {isAuth ? <SignedInLogo /> : <SignInLogo />}
           </div>
           <div>{widget && <UserWidget />}</div>
         </div>
@@ -154,13 +156,7 @@ const Header = () => {
         <Clock />
         <HamburgerMenu />
       </div>
-      <Modal>
-        {isSignInActive ? (
-          <div className={classes.sign} onClick={closeModal}>
-            <Registration />
-          </div>
-        ) : null}
-      </Modal>
+      {isSignInActive && <PopupSignInForm />}
       {popupFeedbackIsVisible && <PopupFeedback />}
     </div>
   );

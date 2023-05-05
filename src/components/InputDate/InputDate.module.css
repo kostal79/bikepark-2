@@ -1,0 +1,24 @@
+.container {
+    width: 100%;
+}
+.title {
+   font-size: 16px;
+   font-weight: 500;
+   color: rgba(171, 177, 197, 1);
+   margin: 15px 0;
+}
+
+.input {
+    outline: none;
+    border: 1px solid rgba(221, 227, 235, 1);
+    border-radius: 15px;
+    color: rgba(115, 123, 152, 1);
+    font-size: 18px;
+    font-weight: 500;
+    padding: 20px;
+    width: 100%;
+}
+
+.input:focus {
+    border-color: rgba(41, 127, 255, 1);
+}

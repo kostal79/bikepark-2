@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+    popupSignIn: false,
     popupCancelOrder: false,
     popupBook: false,
     popupCancelResult: false,
@@ -12,6 +13,7 @@ export const popupSlice = createSlice({
     name: 'popup',
     initialState,
     reducers: {
+        setPopupSignIn: (state, action) => {state.popupSignIn = action.payload},
         setPopupCancelOrder: (state, action) => { state.popupCancelOrder = action.payload },
         setPopupBook: (state, action) => { state.popupBook = action.payload },
         setPopupCancelResult: (state, action) => { state.popupCancelResult = action.payload },
@@ -21,12 +23,14 @@ export const popupSlice = createSlice({
 })
 
 export const {
+    setPopupSignIn,
     setPopupCancelOrder,
     setPopupBook,
     setPopupCancelResult,
     setPopupFeedback,
     setPopupCard
 } = popupSlice.actions;
+export const getPopupSignIn = state => state.popup.popupSignIn;
 export const getPopupCancelOrder = state => state.popup.popupCancelOrder;
 export const getPopupBook = state => state.popup.popupBook;
 export const getPopupCancelResult = state => state.popup.popupCancelResult;

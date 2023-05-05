@@ -13,7 +13,8 @@
     border: 1px solid rgba(221, 227, 235, 1);
     border-radius: 15px;
     background-color: rgba(255, 255, 255, 1);
-    z-index: 1;
+    outline: none;
+
 }
 
 .icon {
@@ -41,9 +42,14 @@
     transform: translateY(-50%) scaleY(0)
 }
 
+.select-btn--active {
+    z-index: 2;
+}
+
 .content--active {
     display: block;
     transform:translateY(0%)scaleY(1);
+    z-index: 1;
 }
 
 
@@ -65,4 +71,8 @@
     font-weight: 500;
     color: rgba(171, 177, 197, 1);
     margin: 15px 0;
+}
+
+.select-btn:focus {
+    border: 1px solid rgba(41, 127, 255, 1);
 }

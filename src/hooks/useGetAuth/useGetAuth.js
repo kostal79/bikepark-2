@@ -8,13 +8,13 @@ import { setUserData } from "../../redux/slices/authSlice";
 
 export default function useGetAuth() {
     const [isAuth, setIsAuth] = useState(false);
-    const [error, setError] = useState();
+    const [isLoading, setisLoading] = useState(true);
     const [userId, setUserId] = useState();
     const dispatch = useDispatch();
     const auth = getAuth();
 
     useEffect(() => {
-        const listener = (auth) => {
+        const listener = async (auth) => {
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
                     const uid = user.uid;
@@ -24,14 +24,14 @@ export default function useGetAuth() {
                     const userData = await getDocument(userRef);
                     dispatch(setUserData(userData))
                 } else {
-                    setError("not authorized")
                     setIsAuth(false)
                 }
+                setisLoading(false)
             });
         }
         listener(auth)
     }, [auth])
 
 
-    return [isAuth, error, userId]
+    return [isAuth, isLoading, userId]
 }
