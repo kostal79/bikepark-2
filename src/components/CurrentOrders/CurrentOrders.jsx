@@ -9,9 +9,8 @@ const CurrentOrders = (props) => {
   masks.orderDate = "dd.mm.yy";
   const amountOfDays = dayBetween(props.dateStart, props.dateFinish);
   const orderSum = props.orderSum;
-  const rentType = props.rentType === "days" ? "по дням" : "2 часа";
-  const paymentType =
-    props.payment_type === "on delivery" ? "На месте" : "Онлайн";
+  const rentType = props.rentType;
+  const paymentType = props.payment_type;
   const dateOfOrder = dateFormat(props.dateOfOrder, "orderDate");
   const [hidden, setHidden] = useState(true);
   const clickHandler = () => {

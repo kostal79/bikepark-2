@@ -39,16 +39,16 @@ const SelectBikeOptions = () => {
         <Bridge />
         <div className={classes["search-results-block"]}>
           <div className={classes.filters}>
-            <Dropdown
+            {brends && <Dropdown
               optionsList={brends}
               title="Бренд"
               onClick={(event) => setSelectedBrend(event.target.innerText)}
-            />
-            <Dropdown
+            />}
+            {sizes && <Dropdown
               optionsList={sizes}
               title="Размер"
               onClick={(event) => setSelectedSize(event.target.innerText)}
-            />
+            />}
           </div>
           <ul className={classes.list}>{filteredBikes}</ul>
           <div className={classes.button}>

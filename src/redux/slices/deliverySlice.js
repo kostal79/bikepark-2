@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-   value: "Самовывоз",
+   value: "самовывоз",
 }
 
 export const deliverySlice = createSlice({

@@ -30,7 +30,7 @@ export default function useGetAuth() {
             });
         }
         listener(auth)
-    }, [auth])
+    }, [auth, dispatch])
 
 
     return [isAuth, isLoading, userId]

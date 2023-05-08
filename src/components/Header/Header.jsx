@@ -33,12 +33,6 @@ const Header = () => {
     dispatch(setPopupSignIn(true));
   };
 
-  const closeModal = (event) => {
-    if (event.target.className === `${classes.sign}`) {
-      dispatch(setPopupSignIn(false));
-    }
-  };
-
   const widgetHandler = () => {
     dispatch(setUserWidget(!widget));
   };

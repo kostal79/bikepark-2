@@ -11,6 +11,7 @@ import { setActiveWindow } from "../../redux/slices/regFormSlice";
 import useSignInWithEmailAndPassword from "../../hooks/useSignInWhitEmailAndPassword/useSignInWithEmailAndPassword";
 import { auth } from "../../config/firebase";
 import { setSignIn } from "../../redux/slices/modalSlice";
+import { setPopupSignIn } from "../../redux/slices/popupSlice";
 
 const SigninForm = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -81,7 +82,7 @@ const SigninForm = () => {
       </div>
     );
   } else {
-    setTimeout(() => dispatch(setSignIn(false)), 1000)
+    setTimeout(() => dispatch(setPopupSignIn(false)), 1000)
     return (
       <div>You loged in!</div>
     )

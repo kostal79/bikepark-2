@@ -8,7 +8,6 @@ import Loader from './components/Loader/Loader';
 function App() {
   const [isAuth, isLoading, userId] = useGetAuth();
   const dispatch = useDispatch();
-  console.log("App")
 
   useEffect(() => {
     dispatch(setIsAuth(isAuth));

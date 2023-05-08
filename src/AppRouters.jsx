@@ -9,7 +9,6 @@ import OrderPage from "./pages/OrderPage/OrderPage";
 import Rules from "./pages/Rules/Rules";
 import WhereToRide from "./pages/WhereToRide/WhereToRide";
 import Account from "./pages/Account/Account";
-import OrderProcessed from "./pages/OrderProcessed/OrderProcessed";
 import Layout from "./layouts/Layout";
 import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 import Admin from "./pages/Admin/Admin";
@@ -31,14 +30,6 @@ const AppRouters = () => {
           element={
             <PrivateRoute>
               <OrderPage />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/processed"
-          element={
-            <PrivateRoute>
-              <OrderProcessed />
             </PrivateRoute>
           }
         />

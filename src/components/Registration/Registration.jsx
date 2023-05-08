@@ -16,12 +16,6 @@ const Registration = () => {
     dispatch(setActiveWindow(event.target.value));
   };
 
-  const closeModal = (event) => {
-    if (event.target.className === `sign`) {
-      dispatch(setPopupSignIn(false));
-    }
-  };
-
   const closeButton = () => {
     dispatch(setPopupSignIn(false));
   };

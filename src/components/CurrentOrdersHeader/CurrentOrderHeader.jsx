@@ -27,7 +27,7 @@ const CurrentOrderHeader = ({
           </td>
           <td className={classes.td}>{dateOfOrder}</td>
           <td className={classes.td}>{`${orderSum} AED`}</td>
-          <td className={classes.td}>{isPaid ? "Есть" : "Нет"}</td>
+          <td className={classes.td}>{isPaid}</td>
           <td className={classes.td}>
             <div
               className={classes.status}

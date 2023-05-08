@@ -70,7 +70,7 @@ const UserSurvey = ({ errors, touched }) => {
               className={`${classes.input} ${classes["payment-radio"]}`}
               type="radio"
               name="payment_type"
-              value="online"
+              value="онлайн"
             />
             Онлайн
           </label>
@@ -79,7 +79,7 @@ const UserSurvey = ({ errors, touched }) => {
               className={`${classes.input} ${classes["payment-radio"]}`}
               type="radio"
               name="payment_type"
-              value="on delivery"
+              value="на месте"
             />
             На месте
           </label>

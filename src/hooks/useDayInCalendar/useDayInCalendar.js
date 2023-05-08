@@ -12,7 +12,7 @@ export default function useDayInCalendar(currentMonth, item) {
 
     const saveStartDate = (date) => {
         dispatch(setDateFinish(undefined))
-        dispatch(setDateStart(date.toString()))
+        dispatch(setDateStart(date.toISOString().slice(0, 10)))
         dispatch(setIsClicked())
     }
 
@@ -22,7 +22,7 @@ export default function useDayInCalendar(currentMonth, item) {
             dispatch(setDateStart(undefined))
             dispatch(setDateFinish(undefined))
         };
-        dispatch(setDateFinish(date.toString()))
+        dispatch(setDateFinish(date.toISOString().slice(0, 10)))
         dispatch(setIsClicked())
     }
 
@@ -38,9 +38,9 @@ export default function useDayInCalendar(currentMonth, item) {
 
     useEffect(() => {
         function makeClassName() {
-            if (start && (item.toString() === start)) {
+            if (start && (item.toISOString().slice(0, 10) === start)) {
                 setClassName("activeDateStart");
-            } else if (item.toString() === finish) {
+            } else if (item.toISOString().slice(0, 10) === finish) {
                 setClassName("activeDateFinish");
             } else if (
                 start &&

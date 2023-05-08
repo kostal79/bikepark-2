@@ -1,13 +1,11 @@
-import React  from "react";
-import { useSelector } from "react-redux";
-import { orderState } from "../../../redux/slices/orderSlice";
+import React from "react";
 import classes from "./OrderProcessedTableBody.module.css";
 import BlueButton from "../../BlueButton/BlueButton";
 import WhiteButton from "../../WhiteButton/WhiteButton";
 import { useNavigate } from "react-router-dom";
 
-const OrderProcessedTableBody = () => {
-  const order = useSelector(orderState);
+const OrderProcessedTableBody = ({order}) => {
+  // const order = useSelector(orderState);
   const orderSum = order.orderSum || "0";
   const navigate = useNavigate();
 
@@ -15,7 +13,7 @@ const OrderProcessedTableBody = () => {
     return (
       <tr key={bike.id}>
         <td className={classes.td}>
-          <img className={classes.image} src={bike.image} alt="bike" />
+          <img className={classes.image} src={bike.imageRef[0]} alt="bike" />
         </td>
         <td
           className={classes.td}

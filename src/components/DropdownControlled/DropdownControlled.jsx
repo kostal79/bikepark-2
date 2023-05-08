@@ -1,23 +1,20 @@
 import React, { useEffect, useState } from "react";
-import classes from "./Dropdown.module.css";
+import classes from "./DropdownControlled.module.css";
 import { ReactComponent as DropdownArrow } from "../../assets/select.svg";
 
-const Dropdown = ({ optionsList, onClick, title, placeholder, name, reload}) => {
+const DropdownControlled = ({
+  optionsList,
+  onClick,
+  title,
+  placeholder,
+  name,
+  value,
+
+}) => {
+  value = value ? value : placeholder;
   optionsList = optionsList ? optionsList : [""];
   const [contentIsActive, setContentIsActive] = useState(false);
   const [options, setOptions] = useState();
-
-  const [selectedOption, setSelectedOption] = useState(
-    placeholder || optionsList[0]
-  );
-
-
-    useEffect(() => {
-      if (reload) {
-        setSelectedOption(placeholder || optionsList[0])
-      }
-    }, [reload])
-
 
   useEffect(() => {
     setOptions(
@@ -25,7 +22,7 @@ const Dropdown = ({ optionsList, onClick, title, placeholder, name, reload}) => 
         return (
           <li
             className={
-              String(option) === String(selectedOption)
+              String(option) === String(value)
                 ? `${classes.option} ${classes["option--active"]}`
                 : classes.option
             }
@@ -56,10 +53,7 @@ const Dropdown = ({ optionsList, onClick, title, placeholder, name, reload}) => 
   };
 
   const optionClickHandler = (event) => {
-    setSelectedOption(event.target.innerText);
-    if (onClick) {
-      onClick(event);
-    }
+    onClick(event);
   };
 
   return (
@@ -74,12 +68,12 @@ const Dropdown = ({ optionsList, onClick, title, placeholder, name, reload}) => 
         onClick={buttonClickHandler}
         tabIndex={1}
         style={
-          placeholder && selectedOption === placeholder
+          placeholder && value === placeholder
             ? { color: "rgba(115, 123, 152, 1)" }
             : {}
         }
       >
-        {selectedOption}
+        {value}
         <i
           className={
             contentIsActive
@@ -103,4 +97,4 @@ const Dropdown = ({ optionsList, onClick, title, placeholder, name, reload}) => 
   );
 };
 
-export default Dropdown;
+export default DropdownControlled;

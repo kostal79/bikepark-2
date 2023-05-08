@@ -7,6 +7,7 @@ import Modal from "../Modal/Modal";
 import { getBikeForOrder } from "../../redux/slices/orderBikeSlice";
 import BlueButton from "../BlueButton/BlueButton";
 import classes from "./PopupBook.module.css"
+import { setPopupBook } from "../../redux/slices/popupSlice";
 
 const PopupBook = () => {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ const PopupBook = () => {
     const onBookHandler = () => {
         if (isAuth) {
           navigate("/order");
+          dispatch(setPopupBook(false))
         } else {
           dispatch(setSignIn(true));
         }

@@ -1,14 +1,11 @@
 import React from "react";
 import classes from "./OrderProcessedTableHeader.module.css";
 import dateFormat, { masks } from "dateformat";
-import { orderState } from "../../../redux/slices/orderSlice";
-import { useSelector } from "react-redux";
 
-const OrderProcessedTableHeader = () => {
-  const order = useSelector(orderState);
+const OrderProcessedTableHeader = ({order}) => {
   masks.readableTime = "dd.mm.yy";
-  const rentType = order.rentType === "days" ? "По дням" : "2 часа";
-  const paymentType = order.payment_type === "online" ? "Онлайн" : "На месте"
+  const rentType = order.rentType;
+  const paymentType = order.payment_type;
   const start = `${dateFormat(order.dateStart, "readableTime")} ${
     order.timeStart
   }`;

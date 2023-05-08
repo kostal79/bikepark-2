@@ -8,10 +8,10 @@ const RentType = ({ className }) => {
   const dispatch = useDispatch();
 
   function handleType() {
-    if (rentType === "days") {
-      dispatch(setType("hours"));
+    if (rentType === "по дням") {
+      dispatch(setType("2 часа"));
     } else {
-      dispatch(setType("days"));
+      dispatch(setType("по дням"));
     }
   }
 
@@ -24,12 +24,12 @@ const RentType = ({ className }) => {
           </div>
           <div
             className={
-              rentType === "days"
+              rentType === "по дням"
                 ? classes.rentType__toggler
                 : `${classes.rentType__toggler} ${classes.rentType__toggler_shifted}`
             }
           >
-            {rentType === "days" ? "по дням" : "2 часа"}
+            {rentType}
           </div>
           <div className={classes.rentType__button} onClick={handleType}>
             2 часа

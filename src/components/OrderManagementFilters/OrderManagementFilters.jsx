@@ -1,41 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import InputDate from "../InputDate/InputDate";
 import Dropdown from "../Dropdown/Dropdown";
 import BlueButton from "../BlueButton/BlueButton";
 import WhiteButton from "../WhiteButton/WhiteButton";
 import classes from "./OrderManagementFilters.module.css";
+import DropdownControlled from "../DropdownControlled/DropdownControlled";
 
-const OrderManagementFilters = ({ findHandler, clearHandler }) => {
-  const [filterParams, setFilterParams] = useState({
-    returns_date: "",
-    dateStart: "",
-    dateFinish: "",
-    orderStatus: "",
-    rentType: "",
-    deliveryType: "",
-    paymentType: "",
-    paymentStatus: "",
-  });
-
-  const dateHandler = (event) => {
-    setFilterParams((prevState) => {
-      return {
-        ...prevState,
-        [event.target.name]: event.target.value,
-      };
-    });
-  };
-
-  const dropdownHandler = (event) => {
-    if (event.target.dataset.name) {
-      setFilterParams((prevState) => {
-        return {
-          ...prevState,
-          [event.target.dataset.name]: event.target.innerText,
-        };
-      });
-    }
-  };
+const OrderManagementFilters = ({
+  filterParams,
+  getOrders,
+  dateHandler,
+  dropdownHandler,
+  clearHandler,
+}) => {
+  const [reload, setReload] = useState(false);
 
   return (
     <div className={classes.container}>
@@ -57,47 +35,47 @@ const OrderManagementFilters = ({ findHandler, clearHandler }) => {
         value={filterParams.dateFinish}
         onChange={(event) => dateHandler(event)}
       />
-      <Dropdown
-        name="orderStatus"
+      <DropdownControlled
+        name="status"
         title="Статус заказа"
         optionsList={["в обработке", "доставляется", "в работе", "завершен"]}
         placeholder={"Выберите статус"}
+        value={filterParams.status}
         onClick={(event) => dropdownHandler(event)}
       />
-      <Dropdown
+      <DropdownControlled
         name="rentType"
         title="Тип аренды"
-        optionsList={["все","по дням", "2 часа"]}
+        optionsList={["по дням", "2 часа"]}
         placeholder={"Выберите тип"}
+        value={filterParams.rentType}
         onClick={(event) => dropdownHandler(event)}
       />
-      <Dropdown
+      <DropdownControlled
         name="deliveryType"
         title="Тип доставки"
         optionsList={["самовывоз", "доставка"]}
         placeholder={"Выберите тип"}
+        value={filterParams.deliveryType}
         onClick={(event) => dropdownHandler(event)}
       />
-      <Dropdown
-        name="paymentType"
+      <DropdownControlled
+        name="payment_type"
         title="Тип оплаты"
         optionsList={["онлайн", "на месте"]}
         placeholder={"Выберите тип"}
+        value={filterParams.payment_type}
         onClick={(event) => dropdownHandler(event)}
       />
-      <Dropdown
-        name="paymentStatus"
+      <DropdownControlled
+        name="isPaid"
         title="Статус оплаты"
         optionsList={["оплачен", "не оплачен"]}
         placeholder={"Выберите тип"}
+        value={filterParams.isPaid}
         onClick={(event) => dropdownHandler(event)}
       />
-      <BlueButton
-        text="Найти"
-        fontSize={20}
-        height={60}
-        onClick={findHandler}
-      />
+      <BlueButton text="Найти" fontSize={20} height={60} onClick={getOrders} />
       <WhiteButton
         text="Сбросить фильтр"
         fontSize={20}

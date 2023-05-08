@@ -6,9 +6,7 @@ import classes from "./OrderOptions.module.css";
 
 const OrderOptions = () => {
   const rentType =
-    useSelector((state) => state.rentType.type) === "days"
-      ? "По дням"
-      : "По часам";
+    useSelector((state) => state.rentType.type)
 
   const dateStart = getStringDate(
     useSelector((state) => state.calendar.dateStart)

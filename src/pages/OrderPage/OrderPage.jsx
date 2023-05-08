@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import OrderForm from "../../components/orderForm/OrderForm";
 import Bridge from "../../components/Bridge/Bridge";
 import UserSurvey from "../../components/UserSurvey/UserSurvey";
@@ -17,6 +17,9 @@ import { useNavigate } from "react-router-dom";
 import { getRentType } from "../../redux/slices/rentTypeSlice";
 import { setOrder } from "../../redux/slices/orderSlice";
 import dayBetween from "../../utils/dayBetween/dayBetween";
+import OrderProcessedTable from "../../components/OrderProcessedTable/OrderProcessedTable";
+import { clearOrder } from "../../redux/slices/orderBikeSlice";
+import { setResultList } from "../../redux/slices/searchResultsSlice";
 
 const OrderPage = () => {
   const userId = useSelector(getUserId);
@@ -30,9 +33,10 @@ const OrderPage = () => {
   const rentType = useSelector(getRentType);
   const userData = useSelector(getUserData);
   const dispatch = useDispatch();
+  const [newOrderId, setNewOrderId] = useState();
 
   const initialValues = {
-    dateOfOrder: new Date().toString(),
+    dateOfOrder: new Date().toISOString().slice(0, 10),
     dateStart: dateStart,
     dateFinish: dateFinish,
     timeStart: timeStart,
@@ -48,14 +52,14 @@ const OrderPage = () => {
     payment_type: "",
     id: userId,
     status: "в обработке",
-    isPaid: false,
+    isPaid: "не оплачен",
     rentType: rentType,
     returns_date: "",
     returns_time: "",
     returns_addres: "",
   };
 
-  const makeOrder = async (orderInfo) => {
+  const makeOrderHandler = async (orderInfo) => {
     try {
       const amountOfDays = dayBetween(orderInfo.dateStart, orderInfo.dateFinish);
   
@@ -64,33 +68,44 @@ const OrderPage = () => {
       }, 0);
   
       orderInfo = { ...orderInfo, orderSum: orderSum };
-      await makeNewOrder(orderInfo);
+      const DocId = await makeNewOrder(orderInfo);
       dispatch(setOrder(orderInfo));
-      navigate("/processed");
+      setNewOrderId(DocId);
+      dispatch(clearOrder());
+      dispatch(setResultList([]))
     } catch (error) {
       console.error(error)
       navigate("/error")
     }
   };
 
-  return (
-    <div>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={async (values) => {
-          makeOrder(values);
-        }}
-      >
-        {(props) => (
-          <Form>
-            <OrderForm />
-            <Bridge />
-            <UserSurvey {...props} />
-          </Form>
-        )}
-      </Formik>
-    </div>
-  );
+  if (newOrderId) {
+
+    return(
+      <OrderProcessedTable newOrderId={newOrderId} />
+    )
+  } else {
+
+    return (
+      <div>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={async (values) => {
+            makeOrderHandler(values);
+          }}
+        >
+          {(props) => (
+            <Form>
+              <OrderForm />
+              <Bridge />
+              <UserSurvey {...props} />
+            </Form>
+          )}
+        </Formik>
+      </div>
+    );
+  }
+
 };
 
 export default OrderPage;

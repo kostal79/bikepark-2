@@ -16,7 +16,7 @@ const HomeUpperSelectionZone = () => {
       <RentType className={classes.rentType} />
       <SelectDate className={classes.selectDate} />
       <Dropdown
-        optionsList={["Самовывоз", "Доставка"]}
+        optionsList={["самовывоз", "доставка"]}
         onClick={onClickDelivery}
         title="Доставка"
       />

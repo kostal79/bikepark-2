@@ -18,7 +18,7 @@ export default async function makeNewOrder(orderInfo) {
         const data = userSnap.data();
         data.user_orders = data.user_orders ? [...data.user_orders, docRef.id] : [docRef.id]
         await setDoc(userRef, data)
-        console.log("new order created")
+        return docRef.id
     } catch (error) {
         console.error(error)
     }

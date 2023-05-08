@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-   type: 'days',
+   type: 'по дням',
 }
 
 export const rentTypeSlice = createSlice({

@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    dateStart: (new Date()).toString(),
-    dateFinish: (new Date()).toString(),
+    dateStart: (new Date()).toISOString().slice(0, 10),
+    dateFinish: (new Date()).toISOString().slice(0, 10),
     timeStart: "12:00",
     timeFinish: "12:00",
     isClicked: false,
