@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InputDate from "../InputDate/InputDate";
-import Dropdown from "../Dropdown/Dropdown";
 import BlueButton from "../BlueButton/BlueButton";
 import WhiteButton from "../WhiteButton/WhiteButton";
 import classes from "./OrderManagementFilters.module.css";
@@ -8,7 +7,7 @@ import DropdownControlled from "../DropdownControlled/DropdownControlled";
 
 const OrderManagementFilters = ({
   filterParams,
-  getOrders,
+  findOrders,
   dateHandler,
   dropdownHandler,
   clearHandler,
@@ -75,7 +74,7 @@ const OrderManagementFilters = ({
         value={filterParams.isPaid}
         onClick={(event) => dropdownHandler(event)}
       />
-      <BlueButton text="Найти" fontSize={20} height={60} onClick={getOrders} />
+      <BlueButton text="Найти" fontSize={20} height={60} onClick={findOrders} />
       <WhiteButton
         text="Сбросить фильтр"
         fontSize={20}

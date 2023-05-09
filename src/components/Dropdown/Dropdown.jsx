@@ -16,7 +16,7 @@ const Dropdown = ({ optionsList, onClick, title, placeholder, name, reload}) => 
       if (reload) {
         setSelectedOption(placeholder || optionsList[0])
       }
-    }, [reload])
+    }, [reload, placeholder, optionsList])
 
 
   useEffect(() => {
