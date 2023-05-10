@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo } from "react";
 import InputDate from "../InputDate/InputDate";
 import BlueButton from "../BlueButton/BlueButton";
 import WhiteButton from "../WhiteButton/WhiteButton";
@@ -12,8 +12,6 @@ const OrderManagementFilters = ({
   dropdownHandler,
   clearHandler,
 }) => {
-  const [reload, setReload] = useState(false);
-
   return (
     <div className={classes.container}>
       <InputDate
@@ -85,4 +83,6 @@ const OrderManagementFilters = ({
   );
 };
 
-export default OrderManagementFilters;
+export default memo(OrderManagementFilters, (prev, next) => {
+  return prev.filterParams === next.filterParams;
+});

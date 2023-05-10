@@ -1,0 +1,39 @@
+.table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.td {
+    padding: 7px;
+    text-align: right;
+    line-height: 19px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.number {
+    margin-left: 10px;
+}
+
+.arrow {
+    margin-bottom: 3px;
+}
+
+.tr .td:nth-child(1),
+.tr .td:nth-child(2),
+.tr .td:nth-child(3) {
+    cursor: pointer;
+}
+
+.select__payment,
+.select__status {
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    text-transform: uppercase;
+    border: 1px solid black;
+    border-radius: 6px;
+    height: 34px;
+    background-color: transparent;
+    padding-left: 14px;
+}

@@ -8,6 +8,12 @@
     border-radius: 20px;
 }
 
+.table {
+    padding: 40px 40px 65px;
+    background-color: rgba(242, 244, 247, 1);
+    border-radius: 20px;
+}
+
 .title {
     font-size: 32px;
     font-weight: 600;

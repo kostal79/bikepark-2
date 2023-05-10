@@ -1,4 +1,12 @@
-import { collection, getDocs, limit, orderBy, query, startAfter, where } from "firebase/firestore";
+import {
+    collection,
+    getDocs,
+    limit,
+    orderBy,
+    query,
+    startAfter,
+    where
+} from "firebase/firestore";
 import clearObjectFromEmptyValues from "../utils/clearObjectFromEmptyValues/clearObjectFromEmptyValues";
 import { db } from "../config/firebase";
 
