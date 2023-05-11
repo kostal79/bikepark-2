@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import classes from "./InputDate.module.css";
 
 const InputDate = ({ title, name, value, onChange }) => {
@@ -22,4 +22,9 @@ const InputDate = ({ title, name, value, onChange }) => {
   );
 };
 
-export default InputDate;
+export default memo(InputDate, memoInput);
+
+function memoInput(prev, next) {
+  if (prev.value !== next.value) return false;
+  return true;
+}

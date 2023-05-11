@@ -1,14 +1,6 @@
-import React, { useState } from "react";
-import classes from "./Delivery.module.css";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import InputDate from "../../components/InputDate/InputDate";
-import OrderManagementFilters from "../../components/OrderManagementFilters/OrderManagementFilters";
+import React from "react";
 const Delivery = () => {
-return (
-  <div>
-    <OrderManagementFilters />
-  </div>
-)
+  return <div>delivery</div>;
 };
 
 export default Delivery;

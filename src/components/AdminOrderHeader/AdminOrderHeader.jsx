@@ -54,23 +54,31 @@ const AdminOrderHeader = ({ order, onHiddenHandler, isBodyHidden }) => {
   };
 
   return (
-    <tr key={order.docId} className={classes.tr}>
-      <td className={classes.td} onClick={onHiddenHandler}>
-        <span className={classes.arrow}><Arrow
-          className={classes.arrow}
-          style={{ transform: isBodyHidden ? "rotate(-90deg)" : "none" }}
-        /></span>
-        <span className={classes.number}>{`Заказ № ${order.docNumber}`}</span>
-      </td>
-      <td className={classes.td} onClick={onHiddenHandler}>
-        {order.returns_date}
-      </td>
-      <td className={classes.td} onClick={onHiddenHandler}>
-        {`${order.orderSum} AED`}
-      </td>
-      <td className={classes.td}>{paymentStatus(order)}</td>
-      <td className={classes.td}>{orderStatus(order)}</td>
-    </tr>
+    <table className={classes.table}>
+      <tbody>
+        <tr key={order.docId} className={classes.tr}>
+          <td className={classes.td} onClick={onHiddenHandler}>
+            <span className={classes.arrow}>
+              <Arrow
+                className={classes.arrow}
+                style={{ transform: isBodyHidden ? "rotate(-90deg)" : "none" }}
+              />
+            </span>
+            <span
+              className={classes.number}
+            >{`Заказ № ${order.docNumber}`}</span>
+          </td>
+          <td className={classes.td} onClick={onHiddenHandler}>
+            {order.returns_date}
+          </td>
+          <td className={classes.td} onClick={onHiddenHandler}>
+            {`${order.orderSum} AED`}
+          </td>
+          <td className={classes.td}>{paymentStatus(order)}</td>
+          <td className={classes.td}>{orderStatus(order)}</td>
+        </tr>
+      </tbody>
+    </table>
   );
 };
 

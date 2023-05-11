@@ -11,25 +11,15 @@ const AdminOrdersTable = ({ order }) => {
   };
 
   return (
-    <div className={classes.container}>
-      <table className={classes.table__top}>
-        <thead>
-          <tr>
-            <th className={classes.th__top}>Номер заказа</th>
-            <th className={classes.th__top}>Дата</th>
-            <th className={classes.th__top}>Стоимость</th>
-            <th className={classes.th__top}>Оплата</th>
-            <th className={classes.th__top}>Статус</th>
-          </tr>
-          <AdminOrderHeader
-            order={order}
-            onHiddenHandler={onHiddenHandler}
-            isBodyHidden={isBodyHidden}
-          />
-        </thead>
-      </table>
+    <>
+      <AdminOrderHeader
+        order={order}
+        onHiddenHandler={onHiddenHandler}
+        isBodyHidden={isBodyHidden}
+      />
+      <hr className={classes.line}></hr>
       {!isBodyHidden && <AdminOrderBody order={order} />}
-    </div>
+    </>
   );
 };
 

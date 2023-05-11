@@ -1,5 +1,6 @@
 .container {
     margin: 30px 0 90px;
+    min-width: 730px;
 }
 
 .container__upper {
@@ -14,10 +15,29 @@
     border-radius: 20px;
 }
 
+.table__top {
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+
 .title {
     font-size: 32px;
     font-weight: 600;
     margin-bottom: 13px;
+}
+
+.th__top {
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(171, 177, 197, 1);
+    padding: 7px;
+}
+
+.table__top .th__top:nth-child(1) {
+    text-align: left;
 }
 
 @media screen and (min-width: 768px) {

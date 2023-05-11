@@ -26,7 +26,7 @@ const Admin = () => {
   const lastVisible = useRef(new Map());
   const currentPage = useRef(0);
   const totalPages = useRef(null);
-  const limitPerPage = 6;
+  const limitPerPage = 2;
   const [orders, setOrders] = useState();
 
   const dateHandler = (event) => {
@@ -73,6 +73,7 @@ const Admin = () => {
     const ordersCount = await getCountOrders(filterParams);
     totalPages.current = Math.ceil(ordersCount / limitPerPage);
     setOrders(orderList);
+    currentPage.current = 0;
   };
 
   const nextPage = async () => {
@@ -114,9 +115,20 @@ const Admin = () => {
       {orders && <Bridge />}
       {orders && (
         <div className={classes.table}>
-          {orders.map((order) => (
-            <AdminOrdersTable order={order} key={order.docId} />
-          ))}
+          <table className={classes.table__top}>
+            <thead>
+              <tr>
+                <th className={classes.th__top}>Номер заказа</th>
+                <th className={classes.th__top}>Дата</th>
+                <th className={classes.th__top}>Стоимость</th>
+                <th className={classes.th__top}>Оплата</th>
+                <th className={classes.th__top}>Статус</th>
+              </tr>
+              </thead>
+            </table>
+              {orders?.map((order) => (
+                <AdminOrdersTable order={order} key={order.docId} />
+              ))}
 
           <Pagination
             nextPage={nextPage}

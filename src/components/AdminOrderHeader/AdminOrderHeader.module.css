@@ -19,6 +19,10 @@
     margin-bottom: 3px;
 }
 
+.tr .td:nth-child(1) {
+    text-align: left;
+}
+
 .tr .td:nth-child(1),
 .tr .td:nth-child(2),
 .tr .td:nth-child(3) {

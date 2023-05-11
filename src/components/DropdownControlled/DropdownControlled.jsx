@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useMemo, useState } from "react";
 import classes from "./DropdownControlled.module.css";
 import { ReactComponent as DropdownArrow } from "../../assets/select.svg";
 
@@ -12,31 +12,30 @@ const DropdownControlled = ({
 
 }) => {
   value = value ? value : placeholder;
-  optionsList = optionsList ? optionsList : [""];
   const [contentIsActive, setContentIsActive] = useState(false);
-  const [options, setOptions] = useState();
 
-  useEffect(() => {
-    setOptions(
-      optionsList.map((option) => {
-        return (
-          <li
-            className={
-              String(option) === String(value)
-                ? `${classes.option} ${classes["option--active"]}`
-                : classes.option
-            }
-            onClick={(event) => optionClickHandler(event)}
-            key={option}
-            data-name={name ? name : null}
-          >
-            {option}
-          </li>
-        );
-      })
-    );
-    // eslint-disable-next-line
-  }, []);
+  
+  const options = useMemo(
+    () => {
+      const optionClickHandler = (event) => {
+        onClick(event);
+      };
+      return optionsList?.map((option) => {
+      return (
+        <li
+          className={
+            String(option) === String(value)
+              ? `${classes.option} ${classes["option--active"]}`
+              : classes.option
+          }
+          onClick={(event) => optionClickHandler(event)}
+          key={option}
+          data-name={name ? name : null}
+        >
+          {option}
+        </li>
+      );
+    })}, [optionsList, name, value, onClick]);
 
   const clickListener = (event) => {
     if (!event.target.className.includes(classes["select-btn"])) {
@@ -52,9 +51,6 @@ const DropdownControlled = ({
     });
   };
 
-  const optionClickHandler = (event) => {
-    onClick(event);
-  };
 
   return (
     <div className={classes.wrapper}>
@@ -97,4 +93,7 @@ const DropdownControlled = ({
   );
 };
 
-export default DropdownControlled;
+export default memo(DropdownControlled, (prev, next) => {
+  if (prev.value !== next.value) return false;
+  return true;
+});
