@@ -1,5 +1,8 @@
 .svg {
-
     margin-left: 5vw;
     margin-bottom: -5px;
+}
+
+.svg:hover {
+    filter: none;
 }

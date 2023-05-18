@@ -4,13 +4,18 @@ import { getDocument } from "./getDocument";
 
 export default async function makeNewOrder(orderInfo) {
     const collectionRef = collection(db, "orders");
-    const numberRef = doc(db, "numbers", "In6f3UFw04qdikpdIQva")
+    const numberRef = doc(db, "numbers", "In6f3UFw04qdikpdIQva");
     try {
-        //get current number, save number in doc, increase number
+        //get current number, save number in doc, write doc on orders, increase number
         const snapshot = await getDocument(numberRef);
         const docNumber = snapshot.current_order_number;
         const docRef = await addDoc(collectionRef, { ...orderInfo, docNumber: docNumber });
-        await updateDoc(numberRef, { current_order_number: increment(1) })
+        await updateDoc(numberRef, { current_order_number: increment(1) });
+
+        for (let bike of orderInfo.bikes) {
+            const bikeRef = doc(db, "bikes", bike.id);
+            updateDoc(bikeRef, { bookedDates: bike.bookedDates })
+        }
 
         //save doc number in user
         const userRef = doc(db, "users", orderInfo.id);

@@ -32,5 +32,6 @@ export const selectedDateStart = (state) => state.calendar.dateStart;
 export const selectedDateFinish = (state) => state.calendar.dateFinish;
 export const selectedTimeStart = (state) => state.calendar.timeStart;
 export const selectedTimeFinish = (state) => state.calendar.timeFinish;
+export const getOrderDates = (state) => state.calendar;
 
 export default calendarSlice.reducer

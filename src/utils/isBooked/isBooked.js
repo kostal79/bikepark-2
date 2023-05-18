@@ -2,15 +2,10 @@ function isBooked(startDate, startTime, finishDate, finishTime, bookedDates) {
     if (!bookedDates) {
         return false 
     }
-    startTime = startTime.split(":")
-    const startHour = startTime[0] === "--" ? '00' : startTime[0]
-    const startMin = startTime[1] === "--" ? '00' : startTime[1]
-    startDate = (new Date(startDate)).setHours(startHour, startMin)
+    
+    startDate = (new Date(startDate + " " + startTime))
 
-    finishTime = finishTime.split(":")
-    const finishHour = finishTime[0] === "--"? "23" : finishTime[0];
-    const finishMax = finishTime[1] === "--" ? "59" : finishTime[1];
-    finishDate = (new Date(finishDate)).setHours(finishHour, finishMax)
+    finishDate = (new Date(finishDate + " " + finishTime))
 
     let res = []
     // eslint-disable-next-line

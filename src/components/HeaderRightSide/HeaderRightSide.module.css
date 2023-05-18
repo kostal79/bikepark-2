@@ -1,0 +1,67 @@
+svg:hover {
+    filter: invert(37%) sepia(95%) saturate(6927%) hue-rotate(217deg) brightness(100%) contrast(103%);
+}
+
+.right_side_menu svg:hover{
+    filter: none;
+}
+
+.right_side_menu svg:hover rect{
+    filter: invert(37%) sepia(95%) saturate(6927%) hue-rotate(217deg) brightness(100%) contrast(103%);
+}
+
+.right_side_menu {
+    display: flex;
+    flex-direction: row;
+    column-gap: 12px;
+    align-items: center;
+}
+
+
+
+.phone {
+    display: none;
+    color: rgba(62, 128, 247, 1);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.sign {
+    display: flex;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    padding: 3vh 0;
+    z-index: 2;
+}
+
+.imgSignLogo {
+    position: relative;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+
+    .additionalButton,
+    .additionalSignIn {
+        display: none;
+    }
+}
+
+
+
+@media screen and (min-width: 1240px) {
+
+    .phone {
+        display: block;
+    }
+
+    .phone:hover {
+        color: rgba(0, 94, 255, 1)
+    }
+
+}

@@ -66,6 +66,8 @@ const OrderPage = () => {
       const orderSum = orderInfo.bikes?.reduce((acc, bike) => {
         return Number(bike.price) * amountOfDays + acc;
       }, 0);
+
+      
   
       orderInfo = { ...orderInfo, orderSum: orderSum };
       const DocId = await makeNewOrder(orderInfo);
@@ -75,7 +77,6 @@ const OrderPage = () => {
       dispatch(setResultList([]))
     } catch (error) {
       console.error(error)
-      navigate("/error")
     }
   };
 

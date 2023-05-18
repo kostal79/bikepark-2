@@ -1,0 +1,52 @@
+.leftSide {
+    display: flex;
+    flex-direction: row;
+    column-gap: 32px;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.imgSignLogo {
+    position: relative;
+    cursor: pointer;
+}
+
+.imgLogo:hover {
+    filter: invert(37%) sepia(95%) saturate(6927%) hue-rotate(217deg) brightness(100%) contrast(103%);
+}
+
+.rent--disactive,
+.rent--active,
+.delivery--disactive,
+.delivery--active,
+.about,
+.wheretoride,
+.contacts {
+    display: none
+}
+
+.page__active {
+    color: rgba(41, 127, 255, 1);
+}
+
+
+
+@media screen and (min-width: 768px) {
+
+    .rent--active,
+    .delivery--active {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 1240px) {
+
+    .rent--active,
+    .delivery--active,
+    .about,
+    .wheretoride,
+    .contacts{
+        display: block;
+    }
+}

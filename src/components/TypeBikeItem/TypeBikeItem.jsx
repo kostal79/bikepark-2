@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import ButtonAddBike from "../ButtonAddBike/ButtonAddBike";
 import ButtonSpeachBubble from "../ButtonSpechBubble/ButtonSpeachBubble";
 import classes from './TypeBikeItem.module.css'
 
 
-const TypeBikeItem = ({material, description, price, imageRef, id}) => {
+const TypeBikeItem = ({material, description, price, imageRef }) => {
   return (
     <div className={classes.container}>
       <img className={classes.image} src={imageRef} alt="bike"></img>
@@ -20,4 +20,4 @@ const TypeBikeItem = ({material, description, price, imageRef, id}) => {
   );
 };
 
-export default TypeBikeItem;
+export default memo(TypeBikeItem);

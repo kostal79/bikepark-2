@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { setDelivery } from "../../redux/slices/deliverySlice";
 import Dropdown from "../Dropdown/Dropdown";
-import RentType from "../RentType/RentType";
+import Toggler from "../Toggler/Toggler";
 import SelectDate from "../SelectDate/SelectDate";
 import classes from "./HomeUpperSelectionZone.module.css";
 
@@ -13,8 +13,12 @@ const HomeUpperSelectionZone = () => {
 
   return (
     <section className={classes.selections}>
-      <RentType className={classes.rentType} />
-      <SelectDate className={classes.selectDate} />
+      <div className={classes.rentType}>
+        <Toggler />
+      </div>
+      <div className={classes.selectDate}>
+        <SelectDate  />
+      </div>
       <Dropdown
         optionsList={["самовывоз", "доставка"]}
         onClick={onClickDelivery}

@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./RentType.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setType } from "../../redux/slices/rentTypeSlice";
+import classes from "./Toggler.module.css";
 
-const RentType = ({ className }) => {
+const Toggler = () => {
   const rentType = useSelector((state) => state.rentType.type);
   const dispatch = useDispatch();
 
@@ -16,7 +16,7 @@ const RentType = ({ className }) => {
   }
 
   return (
-      <div className={className}>
+      <>
         <p className={classes.rentType__title}>Тип аренды</p>
         <div className={classes.rentType__container}>
           <div className={classes.rentType__button} onClick={handleType}>
@@ -35,8 +35,8 @@ const RentType = ({ className }) => {
             2 часа
           </div>
         </div>
-      </div>
+      </>
   );
 };
 
-export default RentType;
+export default Toggler;

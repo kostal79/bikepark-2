@@ -19,8 +19,7 @@ const FeedbackForm = () => {
 
   return (
     <div>
-      <h6 className={classes.title}>Оставить заявку</h6>
-      <p className={classes.text}>Остались вопросы? Свяжитесь с нами</p>
+      <p className={classes.text}>Есть вопросы? Оставьте номер, и мы всё обсудим</p>
       <Formik
         initialValues={initialValues}
         onSubmit={async (values, actions) => {

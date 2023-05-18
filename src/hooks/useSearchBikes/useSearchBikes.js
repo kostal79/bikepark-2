@@ -12,7 +12,7 @@ export default function useSearchBikes() {
     const collectionRef = collection(db, "bikes");
     const dispatch = useDispatch();
 
-    const fetchBikes = useCallback(async (amount, brend = "Все", size = "Все") => {
+    const getBikes = useCallback(async (amount, brend = "Все", size = "Все") => {
         setIsLoading(true)
         if (selectedBikeTypes.length > 0) {
             let q;
@@ -20,30 +20,30 @@ export default function useSearchBikes() {
                 q = query(collectionRef,
                     where("type", "in", selectedBikeTypes),
                     limit(amount));
-                } else if (brend === "Все" && size !== "Все") {
-                    q = query(collectionRef,
-                        where("type", "in", selectedBikeTypes),
-                        where("size", "==", size),
-                        limit(amount));
-                        
-                    } else if (brend !== "Все" && size === "Все") {
-                        q = query(collectionRef,
-                            where("type", "in", selectedBikeTypes),
-                            where("brend", "==", brend),
-                            limit(amount));
-                            
-                        } else {
-                            q = query(collectionRef,
-                                where("type", "in", selectedBikeTypes),
-                                where("brend", "==", brend),
-                                where("size", "==", size), limit(amount));
-                                
-                            }
-                            const searchResults = await getAllCollection(q);
-                            dispatch(setResultList(searchResults));
+            } else if (brend === "Все" && size !== "Все") {
+                q = query(collectionRef,
+                    where("type", "in", selectedBikeTypes),
+                    where("size", "==", size),
+                    limit(amount));
+
+            } else if (brend !== "Все" && size === "Все") {
+                q = query(collectionRef,
+                    where("type", "in", selectedBikeTypes),
+                    where("brend", "==", brend),
+                    limit(amount));
+
+            } else {
+                q = query(collectionRef,
+                    where("type", "in", selectedBikeTypes),
+                    where("brend", "==", brend),
+                    where("size", "==", size), limit(amount));
+
+            }
+            const searchResults = await getAllCollection(q);
+            dispatch(setResultList(searchResults));
         }
         setIsLoading(false)
     }, [selectedBikeTypes, collectionRef, dispatch]);
 
-    return [isLoading, fetchBikes ]
+    return [isLoading, getBikes]
 }

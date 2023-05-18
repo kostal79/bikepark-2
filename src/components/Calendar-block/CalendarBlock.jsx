@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectedTimeFinish,
@@ -15,28 +15,38 @@ import {
 import Calendar from "./calendar/Calendar";
 import classes from "./CalendarBlock.module.css";
 
-const CalendarBlock = () => {
+const CalendarBlock = ({disabledDays}) => {
   const dispatch = useDispatch();
   const timeStart = useSelector(selectedTimeStart);
   const timeFinish = useSelector(selectedTimeFinish);
 
-  const handleTimeStart = (event) => dispatch(setTimeStart(event.target.value));
-  const handleTimeFinish = (event) =>
-    dispatch(setTimeFinish(event.target.value));
+  const handleTimeStart = useCallback(
+    (event) => dispatch(setTimeStart(event.target.value)),
+    [dispatch]
+  );
+  const handleTimeFinish = useCallback((event) =>
+    dispatch(setTimeFinish(event.target.value)),
+    [dispatch]
+  );
 
   return (
     <section className={classes.wrapper}>
       <Calendar
         initialYear={initialYearStart()}
         initialMonth={initialMonthStart()}
-        time={timeStart}
         handleTime={handleTimeStart}
+        time={timeStart}
+        id={"up"}
+        disabledDays={disabledDays}
+
       />
       <Calendar
         initialYear={initialYearFinish()}
         initialMonth={initialMonthFinish()}
         handleTime={handleTimeFinish}
         time={timeFinish}
+        id={"down"}
+        disabledDays={disabledDays}
       />
     </section>
   );

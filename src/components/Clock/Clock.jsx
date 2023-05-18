@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTime } from "../../redux/slices/clockSlice";
 import calcTime from "../../utils/calcTime/calcTime";
@@ -26,4 +26,4 @@ const Clock = () => {
   );
 };
 
-export default Clock;
+export default memo(Clock);

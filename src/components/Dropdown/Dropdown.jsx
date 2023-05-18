@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import classes from "./Dropdown.module.css";
 import { ReactComponent as DropdownArrow } from "../../assets/select.svg";
 
@@ -103,4 +103,4 @@ const Dropdown = ({ optionsList, onClick, title, placeholder, name, reload}) => 
   );
 };
 
-export default Dropdown;
+export default memo(Dropdown);

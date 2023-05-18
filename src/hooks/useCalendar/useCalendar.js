@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import getWeekDay from "../../utils/getWeekDay/GetWeekDay";
 
 export default function useCalendar(initialYear, initialMonth) {
@@ -20,43 +20,42 @@ export default function useCalendar(initialYear, initialMonth) {
         "Декабрь",
     ];
 
-    const [currentArr, setArr] = useState([]);
+    // const [currentArr, setArr] = useState([]);
 
-    useEffect(() => {
-        function datesArray() {
-            let arr = [];
-            let date = new Date(currentYear, currentMonth);
+    const datesArray = useCallback(() => {
+        let arr = [];
+        let date = new Date(Date.UTC(currentYear, currentMonth));
 
-            for (let i = 0; i < getWeekDay(date); i++) {
-                let prevDate = new Date(
-                    currentYear,
-                    currentMonth,
-                    date.getDate() - getWeekDay(date) + i
-                );
-                arr.push(prevDate);
-            }
-
-            while (date.getMonth() === currentMonth) {
-                arr.push(date);
-                let nextDay = new Date(
-                    date.getFullYear(),
-                    date.getMonth(),
-                    date.getDate() + 1
-                );
-                date = nextDay;
-            }
-
-            if (getWeekDay(date) !== 0) {
-                let newDate = 1;
-                for (let i = getWeekDay(date); i < 7; i++) {
-                    let nextDate = new Date(currentYear, currentMonth + 1, newDate++);
-                    arr.push(nextDate);
-                }
-            }
-            return arr;
+        for (let i = 0; i < getWeekDay(date); i++) {
+            let prevDate = new Date(Date.UTC(
+                currentYear,
+                currentMonth,
+                date.getDate() - getWeekDay(date) + i
+            ));
+            arr.push(prevDate);
         }
-        setArr(datesArray());
-    }, [currentMonth, currentYear]);
+
+        while (date.getMonth() === currentMonth) {
+            arr.push(date);
+            let nextDay = new Date(Date.UTC(
+                date.getFullYear(),
+                date.getMonth(),
+                date.getDate() + 1
+            ));
+            date = nextDay;
+        }
+
+        if (getWeekDay(date) !== 0) {
+            let newDate = 1;
+            for (let i = getWeekDay(date); i < 7; i++) {
+                let nextDate = new Date(Date.UTC(currentYear, currentMonth + 1, newDate++));
+                arr.push(nextDate);
+            }
+        }
+        return arr;
+    }, [currentMonth, currentYear])
+
+
 
     function nextMonth() {
         if (currentMonth === 11) {
@@ -80,7 +79,7 @@ export default function useCalendar(initialYear, initialMonth) {
         monthName: months[currentMonth],
         nextMonth,
         prevMonth,
-        currentArr,
+        currentArr: datesArray(),
         currentMonth
     })
 }
