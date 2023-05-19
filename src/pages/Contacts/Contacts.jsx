@@ -1,8 +1,8 @@
 import React from 'react'
-import ContactsInfo from '../../components/ContactsInfo/ContactsInfo';
+import ContactsInfo from './ContactsInfo/ContactsInfo';
 import classes from "./Contacts.module.css"
-import FeedbackForm from '../../components/FeedbackForm/FeedbackForm';
-import MapForm from '../../components/MapForm/MapForm';
+import FeedbackForm from '@components/FeedbackForm/FeedbackForm';
+import MapForm from '@components/MapForm/MapForm';
 
 const Contacts = () => {
     return (

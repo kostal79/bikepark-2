@@ -1,7 +1,7 @@
 import { collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
-import getAllCollection from "../../Api/getAllCollection";
+import getAllCollection from "../../api/getAllCollection";
 
 export function useAllBrends() {
     const [brends, setBrends] = useState();

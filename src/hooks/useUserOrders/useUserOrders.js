@@ -1,7 +1,7 @@
 
 import { doc, onSnapshot } from "firebase/firestore";
 import { useState } from "react";
-import { getDocument } from "../../Api/getDocument";
+import { getDocument } from "../../api/getDocument";
 import CurrentOrders from "../../components/CurrentOrders/CurrentOrders";
 import { db } from "../../config/firebase";
 

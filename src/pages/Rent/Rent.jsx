@@ -1,14 +1,14 @@
 import { Timestamp, collection } from "firebase/firestore";
 import React, { useEffect, useRef, useState } from "react";
-import getAllCollection from "../../Api/getAllCollection";
-import makeNewBike from "../../Api/makeNewBike";
-import uploadImage from "../../Api/uploadImage";
+import getAllCollection from "../../api/getAllCollection";
+import makeNewBike from "../../api/makeNewBike";
+import uploadImage from "../../api/uploadImage";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { db } from "../../config/firebase";
 import { useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/authSlice";
 import { getUserId } from "../../redux/slices/authSlice";
-import { makeNewReview } from "../../Api/makeNewReview";
+import { makeNewReview } from "../../api/makeNewReview";
 import PopupBikeCard from "../../components/CustomSlider/CustomSlider";
 
 const Rent = () => {

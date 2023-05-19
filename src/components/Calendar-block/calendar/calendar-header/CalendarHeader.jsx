@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './CalendarHeader.module.css'
 import InputTimeField from './input-time-field/InputTimeField';
-import ArrowButton from '../../../arrow-button/ArrowButton'
+import ArrowButton from '../../../Arrow-button/ArrowButton'
 
 const CalendarHeader = ({monthName, nextMonth, prevMonth, handleTime, time }) => {
     return (

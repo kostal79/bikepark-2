@@ -55,7 +55,7 @@ export default function useDayInCalendar(currentMonth, item, disabledDays) {
         } else {
             return "day";
         }
-    }, [finish, start, item, currentMonth]);
+    }, [finish, start, item, currentMonth, disabledDays]);
 
     const onClickDate = () => {
         if (makeClassName === "disabled") {

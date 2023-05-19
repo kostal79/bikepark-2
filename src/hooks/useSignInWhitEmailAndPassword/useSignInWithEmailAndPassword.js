@@ -1,7 +1,7 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc } from "firebase/firestore";
 import { useCallback, useState } from "react";
-import { getDocument } from "../../Api/getDocument";
+import { getDocument } from "../../api/getDocument";
 import { db } from "../../config/firebase";
 
 

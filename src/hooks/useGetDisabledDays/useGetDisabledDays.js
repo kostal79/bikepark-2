@@ -1,7 +1,7 @@
 import { doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "../../config/firebase";
-import { getDocument } from "../../Api/getDocument";
+import { getDocument } from "../../api/getDocument";
 
 export default function useGetDisabledDays(bikeId) {
     const [disabledDays, setDisabledDays] = useState([])

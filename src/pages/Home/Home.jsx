@@ -1,9 +1,9 @@
 import React from "react";
-import Bonuses from "../../components/Bonuses/Bonuses";
-import Bridge from "../../components/Bridge/Bridge";
-import HomeUpperSelectionZone from "../../components/HomeUpperSelectionZone/HomeUpperSelectionZone";
-import SelectBikeOptions from "../../components/SelectBikeOptions/SelectBikeOptions";
-import SelectBikeType from "../../components/SelectBikeType/SelectBikeType";
+import Bonuses from "./Bonuses/Bonuses";
+import Bridge from "@components/Bridge/Bridge";
+import HomeUpperSelectionZone from "./HomeUpperSelectionZone/HomeUpperSelectionZone";
+import SelectBikeOptions from "./SelectBikeOptions/SelectBikeOptions";
+import SelectBikeType from "./SelectBikeType/SelectBikeType";
 import classes from "./Home.module.css";
 
 const Home = () => {

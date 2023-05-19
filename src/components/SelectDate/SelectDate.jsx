@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./SelectDate.module.css";
-import DropdownDates from "../OrderOptions/DropdownDates/DropdownDates";
+import DropdownDates from "../../pages/OrderPage/orderForm/OrderOptions/DropdownDates/DropdownDates";
 import useReadableDate from "../../hooks/useReadableDate/useReadableDate";
 import { useDispatch, useSelector } from "react-redux";
 import {

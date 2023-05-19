@@ -2,7 +2,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { getDocument } from "../../Api/getDocument";
+import { getDocument } from "../../api/getDocument";
 import { db } from "../../config/firebase";
 import { setUserData } from "../../redux/slices/authSlice";
 

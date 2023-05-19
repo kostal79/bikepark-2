@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import dayBetween from "../../utils/dayBetween/dayBetween";
 import classes from "./CurrentOrders.module.css";
 import dateFormat, { masks } from "dateformat";
-import CurrentOrderHeader from "../CurrentOrdersHeader/CurrentOrderHeader";
-import CurrentOrdersBody from "../CurrentOrdersBody/CurrentOrdersBody";
+import CurrentOrderHeader from "./CurrentOrdersHeader/CurrentOrderHeader";
+import CurrentOrdersBody from "./CurrentOrdersBody/CurrentOrdersBody";
 
 const CurrentOrders = (props) => {
   masks.orderDate = "dd.mm.yy";

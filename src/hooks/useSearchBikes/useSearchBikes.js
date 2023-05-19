@@ -1,5 +1,5 @@
 import { collection, limit, query, where } from "firebase/firestore";
-import getAllCollection from "../../Api/getAllCollection";
+import getAllCollection from "../../api/getAllCollection";
 import { useDispatch, useSelector } from "react-redux";
 import { bikesTypes } from "../../redux/slices/bikeSlice";
 import { db } from "../../config/firebase";

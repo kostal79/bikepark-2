@@ -10,7 +10,6 @@ import { useDispatch } from "react-redux";
 import { setActiveWindow } from "../../redux/slices/regFormSlice";
 import useSignInWithEmailAndPassword from "../../hooks/useSignInWhitEmailAndPassword/useSignInWithEmailAndPassword";
 import { auth } from "../../config/firebase";
-import { setSignIn } from "../../redux/slices/modalSlice";
 import { setPopupSignIn } from "../../redux/slices/popupSlice";
 
 const SigninForm = () => {

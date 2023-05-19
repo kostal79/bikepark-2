@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
-import AccountOrders from "../../components/AccountOrders/AccountOrders";
-import AccountProfile from "../../components/AccountProfile/AccountProfile";
-import Dropdown from "../../components/Dropdown/Dropdown";
-import Scroller from "../../components/Scroller/Scroller";
+import AccountOrders from "./AccountOrders/AccountOrders";
+import AccountProfile from "./AccountProfile/AccountProfile";
+import Dropdown from "@components/Dropdown/Dropdown";
+import Scroller from "@components/Scroller/Scroller";
 import classes from "./Account.module.css";
-import PopupCancelResult from "../../components/PopupCancelResult/PopupCancelResult";
+import PopupCancelResult from "@components/PopupCancelResult/PopupCancelResult";
 import { useSelector } from "react-redux";
-import { getPopupCancelResult } from "../../redux/slices/popupSlice";
+import { getPopupCancelResult } from "@redux/slices/popupSlice";
 
 const Account = () => {
   const [activeWindow, setActivWindow] = useState("current");

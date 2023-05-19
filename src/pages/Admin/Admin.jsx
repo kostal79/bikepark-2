@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
-import OrderManagementFilters from "../../components/OrderManagementFilters/OrderManagementFilters";
-import Bridge from "../../components/Bridge/Bridge";
+import OrderManagementFilters from "./OrderManagementFilters/OrderManagementFilters";
+import Bridge from "@components/Bridge/Bridge";
 import classes from "./Admin.module.css";
-import AdminOrdersTable from "../../components/AdminOrdersTable/AdminOrdersTable";
-import getOrdersData from "../../Api/getOrdersData";
-import { getCountOrders } from "../../Api/getCountOrders";
-import Pagination from "../../components/Pagination/Pagination";
+import AdminOrdersTable from "./AdminOrdersTable/AdminOrdersTable";
+import getOrdersData from "@api/getOrdersData";
+import { getCountOrders } from "@api/getCountOrders";
+import Pagination from "@components/Pagination/Pagination";
 
 let renders = 0;
 

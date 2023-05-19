@@ -6,7 +6,7 @@ import classes from "./PopupCancelOrder.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupCancelOrder, setPopupCancelResult } from "../../redux/slices/popupSlice";
 import { getUserId } from "../../redux/slices/authSlice";
-import { deleteOrder } from "../../Api/deleteOrder";
+import { deleteOrder } from "../../api/deleteOrder";
 
 const PopupCancelOrder = ({ orderId }) => {
   const dispatch = useDispatch();
