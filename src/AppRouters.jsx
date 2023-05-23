@@ -18,6 +18,7 @@ const AppRouters = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/bikepark-2" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/delivery" element={<Delivery />} />
