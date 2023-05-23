@@ -1,21 +1,30 @@
 {
   "files": {
-    "main.css": "/bikepark-2/static/css/main.cb457174.css",
-    "main.js": "/bikepark-2/static/js/main.54cb41e9.js",
+    "main.css": "/bikepark-2/static/css/main.4403ce0d.css",
+    "main.js": "/bikepark-2/static/js/main.fc740240.js",
+    "static/media/city.png": "/bikepark-2/static/media/city.abe14e73292cad5536a7.png",
+    "static/media/about.png": "/bikepark-2/static/media/about.9d6d47235d067a971b6e.png",
     "static/media/instagram.svg": "/bikepark-2/static/media/instagram.8929c2e711e9b839f006688724a59feb.svg",
     "static/media/eyeHidden.svg": "/bikepark-2/static/media/eyeHidden.64ac50851a00dd39767d4dee259c5312.svg",
     "static/media/logo.svg": "/bikepark-2/static/media/logo.8b482b85164717bfe8a23b1bb2aba5d5.svg",
     "static/media/scroller.svg": "/bikepark-2/static/media/scroller.88cd7efb3dba7854a07f7ed81fd2497a.svg",
     "static/media/contacts.svg": "/bikepark-2/static/media/contacts.0c5a37e3b5b1aad8dc9dce06d2bb0c83.svg",
     "static/media/eyeVisible.svg": "/bikepark-2/static/media/eyeVisible.97a71687508a86d3c68fdd7cf2ebe60a.svg",
+    "static/media/zoom.svg": "/bikepark-2/static/media/zoom.80c5f9c31a5e540f587bea9acc90198e.svg",
+    "static/media/authorizedLogo.svg": "/bikepark-2/static/media/authorizedLogo.b3c8d94c816ca9389895009376ada5f2.svg",
     "index.html": "/bikepark-2/index.html",
+    "static/media/zoomout.svg": "/bikepark-2/static/media/zoomout.1e958766e91879d59f12f7d82f7e041e.svg",
     "static/media/facebook.svg": "/bikepark-2/static/media/facebook.ebbf7e80a4958ac9741fb84cc4837c09.svg",
+    "static/media/backarrow.svg": "/bikepark-2/static/media/backarrow.8e3e4442a8a26a721e9caaad7d60b284.svg",
+    "static/media/close.svg": "/bikepark-2/static/media/close.8d185cfacc6fb050276ef778f0a0be9b.svg",
+    "static/media/signature.svg": "/bikepark-2/static/media/signature.fad88a4b62f9815f035f.svg",
+    "static/media/select.svg": "/bikepark-2/static/media/select.be6cef07683621a5786ec3adf92211fb.svg",
     "static/media/mark.svg": "/bikepark-2/static/media/mark.90ad458b8adcdac55a01.svg",
-    "main.cb457174.css.map": "/bikepark-2/static/css/main.cb457174.css.map",
-    "main.54cb41e9.js.map": "/bikepark-2/static/js/main.54cb41e9.js.map"
+    "main.4403ce0d.css.map": "/bikepark-2/static/css/main.4403ce0d.css.map",
+    "main.fc740240.js.map": "/bikepark-2/static/js/main.fc740240.js.map"
   },
   "entrypoints": [
-    "static/css/main.cb457174.css",
-    "static/js/main.54cb41e9.js"
+    "static/css/main.4403ce0d.css",
+    "static/js/main.fc740240.js"
   ]
 }
