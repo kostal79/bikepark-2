@@ -3,6 +3,7 @@ import classes from "./OrderProcessedTableBody.module.css";
 import BlueButton from "@components/BlueButton/BlueButton";
 import WhiteButton from "@components/WhiteButton/WhiteButton";
 import { useNavigate } from "react-router-dom";
+import { replace } from "formik";
 
 const OrderProcessedTableBody = ({order}) => {
   // const order = useSelector(orderState);
@@ -62,7 +63,7 @@ const OrderProcessedTableBody = ({order}) => {
           height={60}
           text={"Назад на главную"}
           fontSize={18}
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/rent", replace)}
         />
       </div>
     </>

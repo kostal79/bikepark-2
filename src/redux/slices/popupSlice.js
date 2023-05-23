@@ -8,6 +8,7 @@ const initialState = {
     popupFeedback: false,
     popupCard: false,
     popupCalendar: false,
+    popupReauthenticateUser: true,
 }
 
 export const popupSlice = createSlice({
@@ -21,6 +22,7 @@ export const popupSlice = createSlice({
         setPopupFeedback: (state, action) => { state.popupFeedback = action.payload },
         setPopupCard: (state, action) => { state.popupCard = action.payload },
         setPopupCalendar: (state, action) => { state.popupCalendar = action.payload },
+        setPopupReauthenticateUser: (state, action) => { state.popupReauthenticateUser = action.payload },
     }
 })
 
@@ -32,6 +34,7 @@ export const {
     setPopupFeedback,
     setPopupCard,
     setPopupCalendar,
+    setPopupReauthenticateUser,
 } = popupSlice.actions;
 
 export const getPopupSignIn = state => state.popup.popupSignIn;
@@ -41,5 +44,6 @@ export const getPopupCancelResult = state => state.popup.popupCancelResult;
 export const getPopupFeedback = state => state.popup.popupFeedback;
 export const getPopupCard = state => state.popup.popupCard;
 export const getPopupCalendar = state => state.popup.popupCalendar;
+export const getPopupReauthenticateUser = state => state.popup.popupReauthenticateUser;
 
 export default popupSlice.reducer

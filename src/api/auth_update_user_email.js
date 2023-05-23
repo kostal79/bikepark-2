@@ -1,8 +1,13 @@
+import { db } from "../config/firebase";
 import { getAuth, updateEmail } from "firebase/auth";
-import { updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 
-export async function authUpdateUserEmail(email, docRef) {
+export async function authUpdateUserEmail(email) {
     const auth = getAuth();
+    const user = auth.currentUser;
+    const userId = user.uid;
+    const docRef = doc(db, "users", userId);
+
     if (auth.currentUser) {
         try {
             await updateEmail(auth.currentUser, email);

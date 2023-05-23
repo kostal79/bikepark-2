@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useUserOrders } from "@hooks/useUserOrders/useUserOrders";
 import { getUserId } from "@redux/slices/authSlice";
 import Spinner from "@components/Spinner/Spinner";
 import classes from "./AccountOrders.module.css"
 
+let render = 0;
 const AccountOrders = ({ activeWindow }) => {
+  console.log("AccountOrders: ", ++render)
   const uid = useSelector(getUserId);
-  const [ordersCurrent, ordersComplited, loaded, unsub] = useUserOrders(uid);
-
-  useEffect(() => {
-    return () => unsub()
-  })
+  const [ordersCurrent, ordersComplited, loaded] = useUserOrders(uid);
 
   return (
     <div className={classes.container}>

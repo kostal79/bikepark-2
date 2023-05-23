@@ -12,13 +12,13 @@ import useSignInWithEmailAndPassword from "../../hooks/useSignInWhitEmailAndPass
 import { auth } from "../../config/firebase";
 import { setPopupSignIn } from "../../redux/slices/popupSlice";
 
-const SigninForm = () => {
+const SigninForm = ({ submitHandle }) => {
   const [isVisible, setIsVisible] = useState(false);
   const dispatch = useDispatch();
   const initialValues = {
     user_email: "",
     user_password: "",
-  }
+  };
 
   const [, , logedUser, , logIn] = useSignInWithEmailAndPassword(auth);
 
@@ -32,7 +32,10 @@ const SigninForm = () => {
         <Formik
           initialValues={initialValues}
           onSubmit={(values) => {
-            logIn(values.user_email, values.user_password)}}
+            submitHandle
+              ? submitHandle(values.user_email, values.user_password)
+              : logIn(values.user_email, values.user_password);
+          }}
         >
           {(formikProps) => (
             <Form>
@@ -42,14 +45,14 @@ const SigninForm = () => {
                 type="email"
                 placeholder="Введите email"
               />
-  
+
               <ErrorMessage
                 name={"user_email"}
                 render={(msg) => (
                   <div className={classes["error-message"]}>{msg}</div>
                 )}
               />
-  
+
               <div className={classes.password}>
                 <StyledFormField
                   label="Пароль"
@@ -57,7 +60,7 @@ const SigninForm = () => {
                   type={isVisible ? "text" : "password"}
                   placeholder="Введите пароль"
                 />
-  
+
                 <div
                   className={classes.tab}
                   onClick={() => setIsVisible((prev) => !prev)}
@@ -81,12 +84,9 @@ const SigninForm = () => {
       </div>
     );
   } else {
-    setTimeout(() => dispatch(setPopupSignIn(false)), 1000)
-    return (
-      <div>You loged in!</div>
-    )
+    setTimeout(() => dispatch(setPopupSignIn(false)), 1000);
+    return <div>You loged in!</div>;
   }
-
 };
 
 export default SigninForm;
