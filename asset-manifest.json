@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/bikepark-2/static/css/main.4403ce0d.css",
-    "main.js": "/bikepark-2/static/js/main.fc740240.js",
+    "main.js": "/bikepark-2/static/js/main.4a5f4f54.js",
     "static/media/city.png": "/bikepark-2/static/media/city.abe14e73292cad5536a7.png",
     "static/media/about.png": "/bikepark-2/static/media/about.9d6d47235d067a971b6e.png",
     "static/media/instagram.svg": "/bikepark-2/static/media/instagram.8929c2e711e9b839f006688724a59feb.svg",
@@ -21,10 +21,10 @@
     "static/media/select.svg": "/bikepark-2/static/media/select.be6cef07683621a5786ec3adf92211fb.svg",
     "static/media/mark.svg": "/bikepark-2/static/media/mark.90ad458b8adcdac55a01.svg",
     "main.4403ce0d.css.map": "/bikepark-2/static/css/main.4403ce0d.css.map",
-    "main.fc740240.js.map": "/bikepark-2/static/js/main.fc740240.js.map"
+    "main.4a5f4f54.js.map": "/bikepark-2/static/js/main.4a5f4f54.js.map"
   },
   "entrypoints": [
     "static/css/main.4403ce0d.css",
-    "static/js/main.fc740240.js"
+    "static/js/main.4a5f4f54.js"
   ]
 }
