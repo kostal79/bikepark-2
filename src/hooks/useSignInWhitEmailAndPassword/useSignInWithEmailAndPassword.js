@@ -6,13 +6,12 @@ import { db } from "../../config/firebase";
 
 
 export default function useSignInWithEmailAndPassword(auth) {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     const [error, setError] = useState();
     const [logedUser, setLogedUser] = useState();
     const [userName, setUserName] = useState();
 
     const logIn = useCallback(async ( email, password) => {
-        setIsLoading(true)
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const uid = userCredential.user.uid;
@@ -20,14 +19,13 @@ export default function useSignInWithEmailAndPassword(auth) {
             const docRef = doc(db, "users", uid)
             const data = await getDocument(docRef);
             setUserName(data.user_name)
-            console.log("userName:  ", data.user_name)
         } catch (error) {
             console.log(error)
-            setError(error)
+            setError("Неправильное поле пользователя или пароль!")
         } finally {
-            setIsLoading(false)
+            setIsLoaded(true)
         }
     }, [auth])
 
-    return [isLoading, error, logedUser, userName, logIn]
+    return {isLoaded, error, logedUser, userName, logIn}
 }

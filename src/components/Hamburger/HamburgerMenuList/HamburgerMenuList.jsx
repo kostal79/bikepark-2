@@ -1,7 +1,7 @@
 import React, { memo } from "react";
-import classes from "./HamburgerMenuList.module.css";
+import classes from "../HamburgerMenu.module.css";
 import { NavLink } from "react-router-dom";
-import {useSignOut} from "../../hooks/useSignOut/useSignOut";
+import {useSignOut} from "@hooks/useSignOut/useSignOut";
 
 const HamburgerMenuList = () => {
   const [, , logOut] = useSignOut();

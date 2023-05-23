@@ -1,10 +1,10 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import BlueButton from "../BlueButton/BlueButton";
 import classes from "./HamburgerMenu.module.css";
-import HamburgerMenuList from "../HamburgerMenuList/HamburgerMenuList";
-import HamburgerCross from "../HamburgerCross/HamburgerCross";
+import HamburgerMenuList from "./HamburgerMenuList/HamburgerMenuList";
+import HamburgerCross from "./HamburgerCross/HamburgerCross";
 import { useDispatch } from "react-redux";
-import { setPopupFeedback } from "../../redux/slices/popupSlice";
+import { setPopupFeedback } from "@redux/slices/popupSlice";
 
 const HamburgerMenu = () => {
   const [isActive, setIsActive] = useState(false);

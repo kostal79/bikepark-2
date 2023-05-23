@@ -10,6 +10,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log("App updated")
     dispatch(setIsAuth(isAuth));
     dispatch(setUserId(userId))
   }, [isAuth, userId, dispatch])

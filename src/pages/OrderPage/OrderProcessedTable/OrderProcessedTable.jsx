@@ -5,10 +5,12 @@ import OrderProcessedTableBody from "./OrderProcessedTableBody/OrderProcessedTab
 import { db } from "../../../config/firebase";
 import { doc } from "firebase/firestore";
 import { getDocument } from "@api/getDocument";
+import Loader from "@components/Loader/Loader";
 
 const OrderProcessedTable = ({ newOrderId }) => {
   const docRef = doc(db, "orders", newOrderId);
   const [order, setOrder] = useState();
+
   useEffect(() => {
     const getOrder = async (docRef) => {
       const order = await getDocument(docRef);
@@ -28,6 +30,7 @@ const OrderProcessedTable = ({ newOrderId }) => {
         </div>
         </div>
       )}
+      {!order && <Loader />}
     </>
   );
 };

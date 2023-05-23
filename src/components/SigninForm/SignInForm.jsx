@@ -20,7 +20,7 @@ const SigninForm = ({ submitHandle }) => {
     user_password: "",
   };
 
-  const [, , logedUser, , logIn] = useSignInWithEmailAndPassword(auth);
+  const { error, logedUser, userName, logIn} = useSignInWithEmailAndPassword(auth);
 
   const tabHandler = (event) => {
     dispatch(setActiveWindow(event.target.value));
@@ -81,11 +81,16 @@ const SigninForm = ({ submitHandle }) => {
             Забыли пароль?
           </button>
         </div>
+        {error && <p className={classes.error}>{error}</p>}
       </div>
     );
   } else {
     setTimeout(() => dispatch(setPopupSignIn(false)), 1000);
-    return <div>You loged in!</div>;
+    return (
+      <div className={classes.notification}>
+        {userName && <p> Добро пожаловать, {userName}!</p>}
+      </div>
+    );
   }
 };
 

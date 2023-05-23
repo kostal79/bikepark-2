@@ -1,10 +1,11 @@
-import { getAuth, updateProfile } from "firebase/auth";
-import { updateDoc } from "firebase/firestore";
+import { db } from "../config/firebase";
+import { updateProfile } from "firebase/auth";
+import { doc, updateDoc } from "firebase/firestore";
 
-export async function authUpdateUserName(docRef, newName) {
-  const auth = getAuth();
+export async function authUpdateUserName(user, newName) {
+  const docRef = doc(db, "users", user.uid)
   try {
-    await updateProfile(auth.currentUser, { displayName: newName });
+    await updateProfile(user, { displayName: newName });
     await updateDoc(docRef, { user_name: newName });
     console.log("name was updated")
 

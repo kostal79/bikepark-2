@@ -4,6 +4,13 @@
     row-gap: 18px;
 }
 
+.text {
+    color: rgba(41, 127, 255, 1);
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 50px;
+}
+
 .error-message {
     color: red;
     position: relative;
@@ -22,7 +29,7 @@
         grid-template-columns: 1fr 1fr;
         column-gap: 30px;
     }
-    
+
     .subtitle {
         grid-column-start: 1;
         grid-column-end: 3;
