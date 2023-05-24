@@ -1,1 +1,1 @@
-![gif1](src/assets/ezgif.com-video-to-gif.gif)![gif2](src/assets/ezgif.com-video-to-gif(1).gif)![gif3](src/assets/ezgif.com-video-to-gif(2).gif)
+![gif1](src/assets/ezgif.com-video-to-gif.gif)![gif2](src/assets/ezgif.com-video-to-gif(1).gif)![gif3](src/assets/ezgif.com-video-to-gif(2).gif)![Alt text](src/assets/ezgif.com-video-to-gif(4).gif)![Alt text](src/assets/ezgif.com-video-to-gif(5).gif)
